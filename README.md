@@ -2147,5 +2147,3 @@ The full method is documented for contributors in [docs/TESTING.md](docs/TESTING
 
 Pull requests welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). If you test on hardware or a Houdini
 configuration not listed here, please open an issue with your results.
-</content>
-</invoke>
