@@ -13,11 +13,11 @@ ML/ONNX · SideFX-Labs (tree/biome/world-building) · render & export — plus a
 lane** (DEM / USGS 3DEP / LIDAR) that reprojects and places elevation at true scale. One binary runs
 alongside Houdini and your AI client; that's the whole install.
 
-> **Status:** security-hardened, in active development, **not yet released** — watch the repo. The
-> in-Houdini executor (the tool surface) is feature-complete and the terrain downloader is implemented
-> (global + national coverage); the driver binary and packaging are being finalized. **Target: Houdini
-> 21.0.671** (Apprentice works; Houdini 22 exists but is not yet adopted here). Windows-first; other
-> platforms later.
+> **Status:** **v0.1.0 released** — security-hardened, feature-complete. The in-Houdini executor (the
+> typed tool surface), the terrain downloader (global + national coverage), and the Rust driver binary +
+> Houdini package are all shipped — grab the gateway from the [Releases](../../releases) page. **Target:
+> Houdini 21.0.671** (Apprentice works; Houdini 22 exists but is not yet adopted here). Windows-first;
+> other platforms later.
 
 ---
 
