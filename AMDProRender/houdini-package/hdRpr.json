@@ -1,0 +1,11 @@
+{
+    "//": "Houdini package that registers the native-H21 hdRpr (AMD Radeon ProRender) build.",
+    "//1": "Set HDRPR_DIR to the folder that contains the built package (the dir with houdini/ and lib/).",
+    "//2": "Drop this file in <HOUDINI_USER_PREF_DIR>/packages/ (e.g. Documents/houdini21.0/packages/).",
+    "env": [
+        { "HDRPR_DIR": "<PATH_TO_BUILT_HDRPR_PACKAGE>" },
+        { "HOUDINI_PATH": "$HDRPR_DIR/houdini" },
+        { "PATH": "$HDRPR_DIR/lib" },
+        { "PYTHONPATH": "$HDRPR_DIR/lib/python" }
+    ]
+}

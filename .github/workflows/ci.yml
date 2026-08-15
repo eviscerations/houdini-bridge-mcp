@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  gateway:
+    name: gateway build + test
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: gateway
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: gateway
+      - run: cargo build --release
+      - run: cargo test
+    # cargo test gates the security boundary: catalog_never_exposes_rce_tools,
+    # catalog_names_are_unique, the confine_path traversal cases, and emit_catalog_json.
+
+  executor:
+    name: python syntax + security tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: syntax check (compileall)
+        run: python -m compileall houdini_executor downloader scripts tests
+      - name: safe-VEX validator red-team corpus (pure Python, no Houdini)
+        run: python houdini_executor/vex_validator.py
+      - name: confined_path traversal + symlink-escape (hou-mocked, no Houdini)
+        run: python tests/executor/test_confine_cloud.py
+      - name: catalog <-> executor parity + no-RCE (hou-stubbed, no Houdini)
+        run: python tests/executor/test_catalog_parity_cloud.py
+      - name: no unaudited raw-code-text sink in the executor (RT-11 source guard)
+        run: python tests/executor/test_no_raw_vex_sinks.py
+      - name: handler construct-smoke — every tool runs against a mock hou (no Houdini)
+        run: python tests/executor/test_construct_smoke_cloud.py
+    # GitHub runners have no Houdini license, so the executor can't import a REAL `hou`. The testing
+    # method (docs/_TESTING_METHOD.md) splits into tiers by what a license-free runner can honestly
+    # prove. Cloud (this job): vex_validator.py red-team corpus (pure Python); confined_path traversal +
+    # symlink-escape (test_confine_cloud.py); catalog<->executor parity + dual no-RCE over the full
+    # 1,467-tool surface (test_catalog_parity_cloud.py); and a construct-smoke that calls every handler
+    # against a recording mock `hou` (test_construct_smoke_cloud.py) to catch Python-level regressions.
+    # These prove the surface is structurally sound and every handler's Python executes — NOT that a
+    # tool cooks correct geometry. The behavioural tests (handlers cooking real geometry, the A1
+    # regressions) need a licensed hython and MUST be run locally before pushing:
+    #   hython tests/executor/run_tests.py   (see tests/executor/README.md)

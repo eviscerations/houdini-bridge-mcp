@@ -1,0 +1,57 @@
+# cargo-about configuration for houdini-bridge-mcp (gateway crate).
+#
+# Generates THIRD-PARTY-LICENSES.md covering every crate in Cargo.lock. Run from `gateway/`:
+#
+#   cargo install cargo-about          # one-time
+#   cargo about generate about.hbs > ../THIRD-PARTY-LICENSES.md
+#
+# Regenerate whenever dependencies change so the notices stay in sync with Cargo.lock.
+# See https://embarkstudios.github.io/cargo-about/ for the config reference.
+
+# Accept only permissive / attribution-style licenses. The dependency audit (docs/_LICENSING.md)
+# confirmed the tree is 100% permissive: MIT / Apache-2.0 dominate, with BSD, ISC, Zlib, 0BSD,
+# CC0, Unicode, and one weak-copyleft MPL-2.0 file (option-ext) that imposes only attribution.
+# If cargo-about reports a license NOT in this list, stop and review it before shipping.
+# Skip crates that are never published to a public registry (`publish = false`) — chiefly OUR OWN
+# gateway crate, which carries the PolyForm-Noncommercial SPDX id (deliberately NOT a permissive
+# license, so it must not be in `accepted`). This file attributes THIRD-PARTY deps only.
+private = { ignore = true }
+
+accepted = [
+    "MIT",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Zlib",
+    "0BSD",
+    "CC0-1.0",
+    "Unlicense",
+    "MPL-2.0",
+    "Unicode-DFS-2016",
+    "Unicode-3.0",
+    "OpenSSL",
+    "BSL-1.0",
+]
+
+# Treat every target the gateway is built for as in-scope so platform-specific crates
+# (windows-rs, wgpu HAL backends, D-Bus on Linux, etc.) are all covered.
+targets = [
+    "x86_64-pc-windows-msvc",
+    "x86_64-unknown-linux-gnu",
+    "x86_64-apple-darwin",
+    "aarch64-apple-darwin",
+]
+
+# `ring` ships a custom aggregate license (ISC-style plus OpenSSL/BoringSSL fragments) that
+# cargo-about cannot always classify from crate metadata; clarify it explicitly.
+[ring]
+accepted = ["ISC", "MIT", "OpenSSL"]
+
+# `epaint_default_fonts` bundles the egui default font faces, licensed under the SIL Open Font
+# License (OFL-1.1) and the Ubuntu Font License (UFL-1.0) alongside MIT/Apache-2.0 for the code.
+# Both are standard permissive FONT licenses that expressly permit redistribution with attribution;
+# their full text is emitted into THIRD-PARTY-LICENSES.md, which IS the required attribution.
+[epaint_default_fonts]
+accepted = ["MIT", "Apache-2.0", "OFL-1.1", "LicenseRef-UFL-1.0"]

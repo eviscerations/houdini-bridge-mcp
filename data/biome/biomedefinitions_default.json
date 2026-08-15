@@ -1,0 +1,47 @@
+{
+    "Default_Tundra": {
+        "Biome Name": "Default_Tundra",
+        "Color R": 0.34437325596809387,
+        "Color G": 1.092374324798584,
+        "Color B": 1.1473731994628906,
+        "Average Temperature": -9.2,
+        "Average Precipitation": 347.5,
+        "Soil": 1
+    },
+    "Default_Desert": {
+        "Biome Name": "Default_Desert",
+        "Color R": 0.7410351634025574,
+        "Color G": 0.7879999876022339,
+        "Color B": 0.08352800458669662,
+        "Average Temperature": 23.3,
+        "Average Precipitation": 358.7,
+        "Soil": 1
+    },
+    "Default_Savannah": {
+        "Biome Name": "Default_Savannah",
+        "Color R": 0.47479677200317383,
+        "Color G": 0.590847373008728,
+        "Color B": 0.017318248748779297,
+        "Average Temperature": 23.5,
+        "Average Precipitation": 1584.3,
+        "Soil": 1
+    },
+    "Default_AlpineForest": {
+        "Biome Name": "Default_AlpineForest",
+        "Color R": 0.02151418849825859,
+        "Color G": 0.8029999732971191,
+        "Color B": 0.0927627757191658,
+        "Average Temperature": -0.9,
+        "Average Precipitation": 979.5,
+        "Soil": 1
+    },
+    "Default_TemperateForest": {
+        "Biome Name": "Default_TemperateForest",
+        "Color R": 0.05375000089406967,
+        "Color G": 0.2150000035762787,
+        "Color B": 0.0,
+        "Average Temperature": 12.8,
+        "Average Precipitation": 2448.9,
+        "Soil": 1
+    }
+}

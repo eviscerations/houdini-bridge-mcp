@@ -1,0 +1,83 @@
+# ── Rust gateway build artifacts ──────────────────────────────────────────────
+/gateway/target/
+**/target/
+*.pdb
+
+# ── Python executor / downloader caches ───────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# ── Internal working docs (NOT shipped) ───────────────────────────────────────
+# Session scratch / analysis / research — underscore-prefixed by convention.
+docs/_*.md
+docs/_*.json
+notes/*.md
+
+# Root-level dev review / audit reports — analysis INPUTS (the consumer-seat
+# review, red-team, production-readiness audit). Kept on disk for reference;
+# never shipped in the public package.
+/houdini-mcp-agent-review.md
+/*-review.md
+/*-audit.md
+/*_REVIEW.md
+/*_AUDIT.md
+
+# ── Draft docs staged for review (promoted deliberately, never auto-committed) ─
+README.NEW.md
+*.draft.md
+
+# ── Runtime / local config & secrets (live in the user profile, never the repo)─
+arm.json
+*.token
+*.secret
+
+# ── Executor / gateway run logs ───────────────────────────────────────────────
+houdini-mcp_*.log
+*.log
+
+# ── Session probe / experiment toolset — local only, NEVER shipped ────────────
+# Kept on disk as a reusable hython probe kit; excluded because prior-session
+# scripts here may carry local working paths that must not reach the repo.
+/scratchpad/
+
+# ── Transient third-party source we clone to work with, then delete ───────────
+# (kept out in case a clone ever lands under the tree; canonical location is C:\dev\)
+/RadeonProRenderUSD*/
+/third_party/
+/_scratch/
+
+# ── AMD ProRender prebuilt binaries — ship as a GitHub Release asset, NEVER in git ─
+# (source, patches, attribution + the pack script DO ship; only the built payload is out)
+/AMDProRender/dist/out/
+
+# ── Houdini working files that may appear during live testing ─────────────────
+*.hip
+*.hipnc
+*.hiplc
+backup/
+*.bak
+*.bak_*
+*.orig
+
+# ── Stray dev-test scratch (never ship) ───────────────────────────────────────
+/e2e_err.txt
+/geo/
+
+# ── Raw node-probe dumps — dev build-inputs that generated reference/houdini_nodes.json ─
+# (the generated runtime reference/*.json + NODE_REFERENCE.md DO ship; the raw probes don't)
+/reference/probes/
+
+# ── OS / editor cruft ─────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+
+# local Claude Code config (never ship)
+.claude/

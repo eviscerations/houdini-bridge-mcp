@@ -1,0 +1,120 @@
+diff --git a/cmake/macros/PlatformIntrospection.cmake b/cmake/macros/PlatformIntrospection.cmake
+index 5de1b37..f3020cc 100644
+--- a/cmake/macros/PlatformIntrospection.cmake
++++ b/cmake/macros/PlatformIntrospection.cmake
+@@ -54,7 +54,9 @@ macro(DETERMINE_PLATFORM var)
+             elseif(${MSVC_VERSION} LESS 1940)
+                 set(_plat "windows_msvc2022")
+             else()
+-                message(FATAL_ERROR "Unsupported MSVC version: ${MSVC_VERSION}")
++                # hdRpr-H21 patch: MSVC 1940+ (VS2022 17.10+, VS2026/19.50) is the same modern MSVC
++                # 19.x binary-compatible family — map to the msvc2022 platform instead of failing.
++                set(_plat "windows_msvc2022")
+             endif()
+         elseif(_plat STREQUAL "Darwin")
+             set(_plat "macosx")
+diff --git a/cmake/modules/FindHoudiniUSD.cmake b/cmake/modules/FindHoudiniUSD.cmake
+index 24c4aa8..6f486f1 100644
+--- a/cmake/modules/FindHoudiniUSD.cmake
++++ b/cmake/modules/FindHoudiniUSD.cmake
+@@ -213,6 +213,13 @@ if(HoudiniUSD_FOUND AND NOT TARGET hd)
+     # more than enough to get it linked in for us.
+     target_link_libraries(tf INTERFACE ${Houdini_Boostpython_LIB})
+     target_link_libraries(vt INTERFACE ${Houdini_Boostpython_LIB})
++    # hdRpr-H21 patch: USD 25.05 renamed boost.python -> pxr_boost::python, and its converter/registry
++    # runtime is exported by Houdini's libpxr_python (NOT hboost_python above). Link it into tf/vt so
++    # tf/vt and everything downstream (incl. rprUsd) resolve pxr_boost::python::converter::* symbols.
++    if(EXISTS "${HOUDINI_ROOT}/custom/houdini/dsolib/libpxr_python.lib")
++        target_link_libraries(tf INTERFACE "${HOUDINI_ROOT}/custom/houdini/dsolib/libpxr_python.lib")
++        target_link_libraries(vt INTERFACE "${HOUDINI_ROOT}/custom/houdini/dsolib/libpxr_python.lib")
++    endif()
+     if(APPLE)
+         target_link_libraries(tf INTERFACE ${Houdini_TBB_LIB})
+     endif(APPLE)
+diff --git a/pxr/imaging/plugin/CMakeLists.txt b/pxr/imaging/plugin/CMakeLists.txt
+index 6c787ec..b49a804 100644
+--- a/pxr/imaging/plugin/CMakeLists.txt
++++ b/pxr/imaging/plugin/CMakeLists.txt
+@@ -1,3 +1,3 @@
+ add_subdirectory(hdRpr)
+ add_subdirectory(glfRatImage)
+-add_subdirectory(rprHoudini)
++add_subdirectory(rprHoudini)  # hdRpr-H21: re-enabled; HDK signature churn being ported (OP_InputIdx etc.)
+diff --git a/pxr/imaging/plugin/hdRpr/rprApi.cpp b/pxr/imaging/plugin/hdRpr/rprApi.cpp
+index 93bb99e..cb1816a 100644
+--- a/pxr/imaging/plugin/hdRpr/rprApi.cpp
++++ b/pxr/imaging/plugin/hdRpr/rprApi.cpp
+@@ -2453,7 +2453,8 @@ public:
+                 projection = HdRprCamera::Orthographic;
+ 
+                 GfVec3f ndcTopLeft(-1.0f, 1.0f, 0.0f);
+-                GfVec3f nearPlaneTrace = m_cameraProjectionMatrix.GetInverse().Transform(ndcTopLeft);
++                // hdRpr-H21 patch: USD 25 GfMatrix4d::Transform() returns GfVec3d; no implicit narrow to GfVec3f.
++                GfVec3f nearPlaneTrace = GfVec3f(m_cameraProjectionMatrix.GetInverse().Transform(ndcTopLeft));
+ 
+                 sensorWidth = std::abs(nearPlaneTrace[0]) * 2.0;
+                 sensorHeight = std::abs(nearPlaneTrace[1]) * 2.0;
+diff --git a/pxr/imaging/plugin/rprHoudini/CMakeLists.txt b/pxr/imaging/plugin/rprHoudini/CMakeLists.txt
+index d50800e..88cdc12 100644
+--- a/pxr/imaging/plugin/rprHoudini/CMakeLists.txt
++++ b/pxr/imaging/plugin/rprHoudini/CMakeLists.txt
+@@ -44,8 +44,11 @@ function(add_plugin_activator name)
+     target_compile_definitions(${name} PRIVATE GHC_WIN_WSTRING_STRING_TYPE)
+ endfunction()
+ 
+-add_plugin_activator(activateHoudiniPlugin)
+-install(TARGETS activateHoudiniPlugin RUNTIME DESTINATION .)
++# hdRpr-H21 patch: the activateHoudiniPlugin auto-installer exe pulls in ATL (atlstr.h), a VS
++# component not in Build Tools; it is NOT needed — the package installs via its Houdini package JSON
++# (see INSTALL.md). Skip building/installing it so no ATL component is required.
++# add_plugin_activator(activateHoudiniPlugin)
++# install(TARGETS activateHoudiniPlugin RUNTIME DESTINATION .)
+ 
+ if(RPR_INSTALL_MATLIB_PACKAGE)
+     add_plugin_activator(activateMatlibPlugin)
+@@ -104,7 +107,9 @@ if(RESOLVER_SUPPORT)
+             ${CMAKE_CURRENT_SOURCE_DIR}/hda/rpr_exportToRenderStudio.hda
+         DESTINATION
+             houdini/otls)
+-    target_compile_definitions(activateHoudiniPlugin PRIVATE RESOLVER_SUPPORT)
++    if(TARGET activateHoudiniPlugin)  # hdRpr-H21: activator disabled above; guard the reference
++        target_compile_definitions(activateHoudiniPlugin PRIVATE RESOLVER_SUPPORT)
++    endif()
+ else ()
+     install(
+         FILES
+diff --git a/pxr/imaging/plugin/rprHoudini/VOP_RPRMaterial.cpp b/pxr/imaging/plugin/rprHoudini/VOP_RPRMaterial.cpp
+index 54fdefe..ae92e96 100644
+--- a/pxr/imaging/plugin/rprHoudini/VOP_RPRMaterial.cpp
++++ b/pxr/imaging/plugin/rprHoudini/VOP_RPRMaterial.cpp
+@@ -312,11 +312,11 @@ VOP_RPRMaterial::VOP_RPRMaterial(OP_Network* parent, const char* name, OP_Operat
+     }
+ }
+ 
+-const char* VOP_RPRMaterial::inputLabel(unsigned i_idx) const {
++const char* VOP_RPRMaterial::inputLabel(OP_InputIdx i_idx) const {
+     return m_shaderInfo->GetInput(i_idx)->GetName();
+ }
+ 
+-const char* VOP_RPRMaterial::outputLabel(unsigned i_idx) const {
++const char* VOP_RPRMaterial::outputLabel(OP_OutputIdx i_idx) const {
+     return m_shaderInfo->GetOutput(i_idx)->GetName();
+ }
+ 
+diff --git a/pxr/imaging/plugin/rprHoudini/VOP_RPRMaterial.h b/pxr/imaging/plugin/rprHoudini/VOP_RPRMaterial.h
+index be834d5..0244c7f 100644
+--- a/pxr/imaging/plugin/rprHoudini/VOP_RPRMaterial.h
++++ b/pxr/imaging/plugin/rprHoudini/VOP_RPRMaterial.h
+@@ -50,9 +50,10 @@ public:
+     VOP_RPRMaterial(OP_Network* parent, const char* name, OP_Operator* entry);
+ 
+     /// Returns the label for input port at index i_idx
+-    const char* inputLabel(unsigned i_idx) const override;
++    /// hdRpr-H21: OP_Node::inputLabel/outputLabel take OP_InputIdx/OP_OutputIdx in H21 (was unsigned).
++    const char* inputLabel(OP_InputIdx i_idx) const override;
+     /// Returns the label for output port at index i_idx
+-    const char* outputLabel(unsigned i_idx) const override;
++    const char* outputLabel(OP_OutputIdx i_idx) const override;
+ 
+     /// Minimum inputs that must be connected to a node for it to cook.
+     unsigned minInputs() const override;

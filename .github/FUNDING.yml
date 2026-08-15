@@ -1,0 +1,5 @@
+# Renders the "Sponsor" button on the repo → Ko-fi. Ko-fi is a natively supported
+# funding platform here; this needs NO GitHub Sponsors enrollment.
+# Voluntary support only — a tip grants no license. Commercial use is governed by
+# COMMERCIAL-LICENSE.md; noncommercial use by LICENSE (PolyForm Noncommercial 1.0.0).
+ko_fi: eviscerations

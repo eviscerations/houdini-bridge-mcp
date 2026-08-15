@@ -1,0 +1,36 @@
+[package]
+name = "houdini-bridge-mcp"
+version = "0.1.0"
+edition = "2021"
+description = "AI-driven geospatial scene construction in Houdini, over MCP — security-first, data-only."
+license = "PolyForm-Noncommercial-1.0.0"
+publish = false   # PolyForm-NC is not an OSI/crates.io license; never publish to a public registry
+
+# Dependency versions are pinned to the audited/resolved set; the committed Cargo.lock pins the exact
+# transitive build (reproducible + supply-chain-auditable). Bump deliberately, then re-commit the lock.
+[dependencies]
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+toml = "0.8.23"
+dirs = "5.0.1"                # OS per-user dirs — the tool NEVER hardcodes a developer path
+anyhow = "1.0.104"
+tokio = { version = "1.53.1", features = ["full"] }
+reqwest = { version = "0.12.28", features = ["json"] }   # loopback HTTP to the executor + downloader
+getrandom = "0.2.17"         # CSPRNG for the session token
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }  # RUST_LOG support, logs → stderr + file
+tracing-appender = "0.2.5"   # non-blocking sequential log file in the working directory
+# GUI (log toggle, working-dir field, live audit log):
+eframe = "0.29.1"
+egui = "0.29.1"
+# MCP stdio server — the sole AI entry point — is hand-rolled JSON-RPC 2.0 over stdin/stdout
+# (see `gateway.rs`): no external SDK, full control of the typed security boundary, and no async
+# runtime to reconcile with eframe. Uses tokio's stdio + serde_json only, already declared above.
+
+[[bin]]
+name = "houdini-bridge-mcp"
+path = "src/main.rs"
+
+# Embed the Windows .exe icon (the bridge logo) via a resource compiler. Build-only; no-op elsewhere.
+[target.'cfg(windows)'.build-dependencies]
+winresource = "0.1"

@@ -1,0 +1,74 @@
+{
+    "biomes": [
+        {
+            "name": "Tropical Evergreen Forest",
+            "average_temp": 25,
+            "average_precip": 3240
+        },
+        {
+            "name": "Tropical Seasonal Forest",
+            "average_temp": 25,
+            "average_precip": 2000
+        },
+        {
+            "name": "Savannah",
+            "average_temp": 15,
+            "average_precip": 375
+        },
+        {
+            "name": "Shrubland",
+            "average_temp": 0,
+            "average_precip": 187
+        },
+        {
+            "name": "Semi-arid",
+            "average_temp": 18,
+            "average_precip": 375
+        },
+        {
+            "name": "Desert",
+            "average_temp": 10,
+            "average_precip": 250
+        },
+        {
+            "name": "Prairie and Steppe",
+            "average_temp": 0,
+            "average_precip": 600
+        },
+        {
+            "name": "Temperate Forest",
+            "average_temp": 10,
+            "average_precip": 1500
+        },
+        {
+            "name": "Mixed Temperate Forest",
+            "average_temp": 5,
+            "average_precip": 1200
+        },
+        {
+            "name": "Boreal Evergreen Forest",
+            "average_temp": 0,
+            "average_precip": 400
+        },
+        {
+            "name": "Boreal Seasonal Forest",
+            "average_temp": -5,
+            "average_precip": 250
+        },
+        {
+            "name": "Tundra",
+            "average_temp": -10,
+            "average_precip": 350
+        },
+        {
+            "name": "Ice",
+            "average_temp": -17,
+            "average_precip": 300
+        },
+        {
+            "name": "None",
+            "average_temp": 0,
+            "average_precip": 0
+        }
+    ]
+}

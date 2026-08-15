@@ -1,0 +1,4 @@
+# Dependencies for the OPTIONAL geodata tile downloader (downloader/).
+# The core MCP (gateway + in-Houdini executor) needs none of this — only the
+# tile-prep downloader does. Install with:  python -m pip install -r downloader/requirements.txt
+numpy>=1.21

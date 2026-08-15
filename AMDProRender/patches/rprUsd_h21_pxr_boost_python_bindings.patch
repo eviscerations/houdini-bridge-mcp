@@ -1,0 +1,76 @@
+diff --git a/pxr/imaging/rprUsd/wrapConfig.cpp b/pxr/imaging/rprUsd/wrapConfig.cpp
+index 8aa77be..b0772ff 100644
+--- a/pxr/imaging/rprUsd/wrapConfig.cpp
++++ b/pxr/imaging/rprUsd/wrapConfig.cpp
+@@ -12,17 +12,20 @@ limitations under the License.
+ ************************************************************************/
+ 
+ #include "config.h"
+-#include "boostIncludePath.h"
+ 
+-#include BOOST_INCLUDE_PATH(python.hpp)
+-#include BOOST_INCLUDE_PATH(python/class.hpp)
+-#include BOOST_INCLUDE_PATH(python/def.hpp)
+-#include BOOST_INCLUDE_PATH(python/scope.hpp)
+-
+-using namespace BOOST_NS::python;
++// H21/USD25: this wrap TU is part of the same Python module (_rprUsd) whose
++// entry point and scope are pxr_boost::python (see toolkit tf/pyModule.h).
++// It must use pxr_boost::python, NOT hboost::python — mixing the two boost
++// runtimes in one module throws at import ("... already registered").
++#include "pxr/external/boost/python.hpp"
+ 
++// PXR_NAMESPACE_USING_DIRECTIVE MUST precede the pxr_boost using-directive:
++// with PXR_USE_NAMESPACES on, `pxr_boost` lives inside the versioned internal
++// namespace and is only visible after the pxr using-directive.
+ PXR_NAMESPACE_USING_DIRECTIVE
+ 
++using namespace pxr_boost::python;
++
+ void wrapConfig() {
+ 
+ #define CONFIG_SETTER(setter, type) \
+@@ -41,7 +44,7 @@ void wrapConfig() {
+     }) \
+     .staticmethod(#getter)
+ 
+-    scope s = class_<RprUsdConfig, BOOST_NS::noncopyable>("Config", no_init)
++    scope s = class_<RprUsdConfig, pxr_boost::python::noncopyable>("Config", no_init)
+         CONFIG_SETTER(SetRestartWarning, bool)
+         CONFIG_SETTER(SetTextureCacheDir, std::string)
+         CONFIG_SETTER(SetKernelCacheDir, std::string)
+diff --git a/pxr/imaging/rprUsd/wrapContextHelpers.cpp b/pxr/imaging/rprUsd/wrapContextHelpers.cpp
+index 448874a..193a456 100644
+--- a/pxr/imaging/rprUsd/wrapContextHelpers.cpp
++++ b/pxr/imaging/rprUsd/wrapContextHelpers.cpp
+@@ -12,21 +12,23 @@ limitations under the License.
+ ************************************************************************/
+ 
+ #include "contextHelpers.h"
+-#include "boostIncludePath.h"
+ 
+ #include "pxr/base/tf/pyEnum.h"
+ #include "pxr/base/tf/registryManager.h"
+ #include "pxr/base/tf/pyResultConversions.h"
+ 
+-#include BOOST_INCLUDE_PATH(python.hpp)
+-#include BOOST_INCLUDE_PATH(python/class.hpp)
+-#include BOOST_INCLUDE_PATH(python/def.hpp)
+-#include BOOST_INCLUDE_PATH(python/scope.hpp)
+-
+-using namespace BOOST_NS::python;
++// H21/USD25: this wrap TU is part of the _rprUsd module whose scope + init are
++// pxr_boost::python (toolkit tf/pyModule.h). It must use pxr_boost::python, not
++// hboost::python — mixing the two boost runtimes in one module throws at import.
++#include "pxr/external/boost/python.hpp"
+ 
++// PXR_NAMESPACE_USING_DIRECTIVE MUST precede the pxr_boost using-directive:
++// pxr_boost lives inside the versioned internal namespace and is only visible
++// after the pxr using-directive.
+ PXR_NAMESPACE_USING_DIRECTIVE
+ 
++using namespace pxr_boost::python;
++
+ TF_REGISTRY_FUNCTION(TfEnum) {
+     TF_ADD_ENUM_NAME(kPluginInvalid);
+     TF_ADD_ENUM_NAME(kPluginNorthstar);

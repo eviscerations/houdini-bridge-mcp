@@ -1,0 +1,20 @@
+# Third-Party Licenses
+
+This file is **generated** by [cargo-about](https://github.com/EmbarkStudios/cargo-about) from
+`gateway/Cargo.lock`. Do not edit by hand. Regenerate with:
+
+    cd gateway
+    cargo about generate about.hbs > ../THIRD-PARTY-LICENSES.md
+
+houdini-bridge-mcp bundles the following third-party components in its compiled gateway binary.
+
+{{#each licenses}}
+## {{name}}
+
+Used by {{#each used_by}}{{#if @index}}, {{/if}}{{crate.name}} {{crate.version}}{{/each}}
+
+```
+{{{text}}}
+```
+
+{{/each}}

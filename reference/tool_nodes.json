@@ -1,0 +1,8003 @@
+{
+  "note": "endpoint -> the Houdini nodetype(s) that handler creates. Hand-verified against houdini_executor/handlers/*.py (decorator-anchored). Powers the :tool=/:UNEXPOSED coverage flags in NODE_REFERENCE.md via scripts/generate_docs.py --coverage. Plumbing nodetypes (geo/object_merge/xform/python/file) are included where created; the join only annotates nodetypes that actually appear in the reference. Keep in sync when handlers change (the generator warns on catalog tools missing here). Bulk entries are auto-derived by scripts/derive_tool_nodes.py (first node-creating call per endpoint); re-run it with --write after adding handlers -- it preserves hand-maintained entries and only adds missing tools. Optional \"category\" (e.g. \"Cop\") disambiguates same-named nodes across categories in the coverage join; entries without it are category-agnostic (legacy).",
+  "tools": {
+    "create_geo": {
+      "nodes": []
+    },
+    "import_pointcloud": {
+      "nodes": [
+        "file",
+        "attribwrangle"
+      ]
+    },
+    "import_heightfield": {
+      "nodes": [
+        "heightfield"
+      ]
+    },
+    "import_geo": {
+      "nodes": [
+        "file"
+      ]
+    },
+    "import_alembic": {
+      "nodes": [
+        "alembic"
+      ]
+    },
+    "trace_raster": {
+      "nodes": [
+        "trace"
+      ]
+    },
+    "build_globe": {
+      "nodes": [
+        "sphere",
+        "attribwrangle",
+        "material",
+        "principledshader::2.0"
+      ]
+    },
+    "import_ecef_tile": {
+      "nodes": [
+        "grid"
+      ]
+    },
+    "point_normals": {
+      "nodes": [
+        "attribwrangle"
+      ]
+    },
+    "segment_planar": {
+      "nodes": [
+        "attribwrangle"
+      ]
+    },
+    "despeckle": {
+      "nodes": [
+        "attribwrangle"
+      ]
+    },
+    "tag_radial": {
+      "nodes": [
+        "attribwrangle"
+      ]
+    },
+    "read_geo_stats": {
+      "nodes": []
+    },
+    "level": {
+      "nodes": [
+        "xform"
+      ]
+    },
+    "isolate": {
+      "nodes": [
+        "attribwrangle"
+      ]
+    },
+    "attribute_create": {
+      "nodes": [
+        "attribcreate::2.0"
+      ]
+    },
+    "attribute_promote": {
+      "nodes": [
+        "attribpromote"
+      ]
+    },
+    "attribute_delete": {
+      "nodes": [
+        "attribdelete"
+      ]
+    },
+    "attribute_cast": {
+      "nodes": [
+        "attribcast"
+      ]
+    },
+    "connectivity": {
+      "nodes": [
+        "connectivity"
+      ]
+    },
+    "measure": {
+      "nodes": [
+        "measure::2.0"
+      ]
+    },
+    "group_combine": {
+      "nodes": [
+        "groupcombine"
+      ]
+    },
+    "setup_karma": {
+      "nodes": [
+        "karma"
+      ]
+    },
+    "export_geometry": {
+      "nodes": [
+        "geometry"
+      ]
+    },
+    "export_alembic": {
+      "nodes": [
+        "alembic"
+      ]
+    },
+    "export_usd": {
+      "nodes": [
+        "usd"
+      ]
+    },
+    "export_fbx": {
+      "nodes": [
+        "filmboxfbx"
+      ]
+    },
+    "export_gltf": {
+      "nodes": [
+        "gltf"
+      ]
+    },
+    "export_cache": {
+      "nodes": [
+        "geometry"
+      ]
+    },
+    "bake_texture": {
+      "nodes": [
+        "baketexture::3.0"
+      ]
+    },
+    "flipbook": {
+      "nodes": [
+        "opengl"
+      ]
+    },
+    "snapshot": {
+      "nodes": [
+        "opengl"
+      ]
+    },
+    "capture_ui": {
+      "nodes": []
+    },
+    "las_import": {
+      "nodes": [
+        "lidarimport"
+      ]
+    },
+    "osm_import": {
+      "nodes": [
+        "labs::osm_import"
+      ],
+      "category": "Labs"
+    },
+    "scatter_copy": {
+      "nodes": [
+        "grid",
+        "scatter",
+        "copytopoints"
+      ]
+    },
+    "copy_to_points": {
+      "nodes": [
+        "copytopoints::2.0"
+      ]
+    },
+    "scatter": {
+      "nodes": [
+        "scatter::2.0"
+      ]
+    },
+    "pack": {
+      "nodes": [
+        "pack"
+      ]
+    },
+    "unpack": {
+      "nodes": [
+        "unpack"
+      ]
+    },
+    "instance": {
+      "nodes": [
+        "instance"
+      ]
+    },
+    "biome_scatter": {
+      "nodes": [
+        "labs::biome_plant_scatter::1.0"
+      ],
+      "category": "Labs"
+    },
+    "add_light": {
+      "nodes": [
+        "envlight",
+        "hlight::2.0"
+      ]
+    },
+    "add_camera": {
+      "nodes": [
+        "cam"
+      ]
+    },
+    "set_view_camera": {
+      "nodes": []
+    },
+    "viewport_display": {
+      "nodes": []
+    },
+    "flightcam": {
+      "nodes": [
+        "file",
+        "cam"
+      ]
+    },
+    "assign_material": {
+      "nodes": [
+        "material",
+        "principledshader::2.0"
+      ]
+    },
+    "remesh": {
+      "nodes": [
+        "remesh::2.0"
+      ]
+    },
+    "polyreduce": {
+      "nodes": [
+        "polyreduce::2.0"
+      ]
+    },
+    "vdb_from_particles": {
+      "nodes": [
+        "vdbfromparticles",
+        "vdbfromparticlefluid"
+      ]
+    },
+    "fuse": {
+      "nodes": [
+        "fuse::2.0"
+      ]
+    },
+    "polydoctor": {
+      "nodes": [
+        "polydoctor"
+      ]
+    },
+    "polyfill": {
+      "nodes": [
+        "polyfill"
+      ]
+    },
+    "normals": {
+      "nodes": [
+        "normal"
+      ]
+    },
+    "facet_smooth_subdiv": {
+      "nodes": [
+        "facet",
+        "smooth::2.0",
+        "subdivide"
+      ]
+    },
+    "mesh_repair": {
+      "nodes": [
+        "labs::repair",
+        "labs::delete_small_parts",
+        "labs::clean_seams::1.0",
+        "labs::fast_remesh::1.1"
+      ],
+      "category": "Labs"
+    },
+    "lod_create": {
+      "nodes": [
+        "labs::lod_create",
+        "pack"
+      ],
+      "category": "Labs"
+    },
+    "vdb_from_polygons": {
+      "nodes": [
+        "vdbfrompolygons"
+      ]
+    },
+    "vdb_convert": {
+      "nodes": [
+        "convertvdb"
+      ]
+    },
+    "vdb_filter": {
+      "nodes": [
+        "vdbsmoothsdf",
+        "vdbsmooth",
+        "vdbreshapesdf",
+        "vdbrenormalizesdf",
+        "volumeblur",
+        "vdbextrapolate"
+      ]
+    },
+    "volume_rasterize": {
+      "nodes": [
+        "volumerasterizepoints",
+        "volumerasterizeparticles"
+      ]
+    },
+    "convert_volume": {
+      "nodes": [
+        "isooffset",
+        "convert"
+      ]
+    },
+    "vdb_analysis": {
+      "nodes": [
+        "vdbanalysis"
+      ]
+    },
+    "vdb_topology": {
+      "nodes": [
+        "vdbactivate",
+        "vdbclip",
+        "vdbresample",
+        "vdbsegmentbyconnectivity"
+      ]
+    },
+    "vdb_combine": {
+      "nodes": [
+        "vdbcombine",
+        "volumemix",
+        "vdbvectormerge",
+        "vdbvectorsplit"
+      ]
+    },
+    "vdb_advect": {
+      "nodes": [
+        "vdbadvectpoints",
+        "vdbadvectsdf",
+        "vdbmorphsdf"
+      ]
+    },
+    "vdb_shatter": {
+      "nodes": [
+        "vdbfracture",
+        "vdbtospheres"
+      ]
+    },
+    "volume_visualize": {
+      "nodes": [
+        "volumevisualization",
+        "volumeslice"
+      ]
+    },
+    "object_merge": {
+      "nodes": [
+        "geo",
+        "object_merge"
+      ]
+    },
+    "subnet_organize": {
+      "nodes": [
+        "subnet"
+      ]
+    },
+    "matchsize": {
+      "nodes": [
+        "matchsize",
+        "object_merge"
+      ]
+    },
+    "usd_layer": {
+      "nodes": [
+        "merge",
+        "sublayer",
+        "graftbranches"
+      ]
+    },
+    "usd_configure": {
+      "nodes": [
+        "configureprimitive",
+        "setvariant"
+      ]
+    },
+    "export_package": {
+      "nodes": [
+        "usd"
+      ]
+    },
+    "scene_assemble": {
+      "nodes": [
+        "geo",
+        "object_merge",
+        "matchsize",
+        "xform",
+        "material",
+        "principledshader::2.0",
+        "merge",
+        "sopimport",
+        "configureprimitive"
+      ]
+    },
+    "physical_sky": {
+      "nodes": [
+        "karmaphysicalsky"
+      ]
+    },
+    "light_link": {
+      "nodes": [
+        "lightlinker"
+      ]
+    },
+    "camera_aim": {
+      "nodes": []
+    },
+    "camera_path": {
+      "nodes": [
+        "cam"
+      ]
+    },
+    "mesh_pointcloud": {
+      "nodes": [
+        "vdbfromparticles",
+        "convertvdb",
+        "polyreduce::2.0",
+        "attribtransfer"
+      ]
+    },
+    "boolean": {
+      "nodes": [
+        "boolean::2.0"
+      ]
+    },
+    "polyextrude": {
+      "nodes": [
+        "polyextrude::2.0"
+      ]
+    },
+    "polybevel": {
+      "nodes": [
+        "polybevel::3.0"
+      ]
+    },
+    "deform": {
+      "nodes": [
+        "bend",
+        "twist",
+        "mountain",
+        "attribnoise",
+        "lattice",
+        "peak"
+      ]
+    },
+    "drape": {
+      "nodes": [
+        "ray",
+        "project"
+      ]
+    },
+    "transform": {
+      "nodes": [
+        "xform"
+      ]
+    },
+    "select_group": {
+      "nodes": [
+        "groupcreate",
+        "blast"
+      ]
+    },
+    "group_create": {
+      "nodes": [
+        "groupcreate"
+      ]
+    },
+    "group_promote": {
+      "nodes": [
+        "grouppromote"
+      ]
+    },
+    "group_range": {
+      "nodes": [
+        "grouprange"
+      ]
+    },
+    "group_expand": {
+      "nodes": [
+        "groupexpand"
+      ]
+    },
+    "group_transfer": {
+      "nodes": [
+        "grouptransfer"
+      ]
+    },
+    "group_delete": {
+      "nodes": [
+        "groupdelete"
+      ]
+    },
+    "group_rename": {
+      "nodes": [
+        "grouprename"
+      ]
+    },
+    "group_geo": {
+      "nodes": [
+        "groupcreate"
+      ]
+    },
+    "blast": {
+      "nodes": [
+        "blast"
+      ]
+    },
+    "attribute_transfer": {
+      "nodes": [
+        "attribtransfer"
+      ]
+    },
+    "merge": {
+      "nodes": [
+        "merge"
+      ]
+    },
+    "set_color": {
+      "nodes": [
+        "color"
+      ]
+    },
+    "uv": {
+      "nodes": [
+        "uvproject",
+        "uvunwrap",
+        "uvlayout::3.0",
+        "uvtransform"
+      ]
+    },
+    "create_primitive": {
+      "nodes": [
+        "box",
+        "grid",
+        "sphere",
+        "tube",
+        "line",
+        "circle"
+      ]
+    },
+    "create_curve": {
+      "nodes": []
+    },
+    "resample": {
+      "nodes": [
+        "resample"
+      ]
+    },
+    "trail": {
+      "nodes": [
+        "trail"
+      ]
+    },
+    "timeshift": {
+      "nodes": [
+        "timeshift"
+      ]
+    },
+    "polyframe": {
+      "nodes": [
+        "polyframe"
+      ]
+    },
+    "find_error_nodes": {
+      "nodes": []
+    },
+    "sim_rbd": {
+      "nodes": [
+        "rbdmaterialfracture::3.0",
+        "rbdbulletsolver"
+      ]
+    },
+    "rbd_constraint_properties": {
+      "nodes": [
+        "rbdconstraintproperties::2.0"
+      ]
+    },
+    "rbd_voronoi": {
+      "nodes": [
+        "scatter::2.0",
+        "voronoifracture::2.0",
+        "voronoisplit"
+      ]
+    },
+    "rbd_interior": {
+      "nodes": [
+        "rbdinteriordetail"
+      ]
+    },
+    "rbd_constraints": {
+      "nodes": [
+        "rbdconstraintsfromrules",
+        "connectadjacentpieces"
+      ]
+    },
+    "rbd_configure": {
+      "nodes": [
+        "rbdconfigure"
+      ]
+    },
+    "rbd_collision": {
+      "nodes": [
+        "object_merge",
+        "convertheightfield"
+      ]
+    },
+    "rbd_force": {
+      "nodes": [
+        "popaxisforce",
+        "windforce",
+        "uniformforce"
+      ]
+    },
+    "rbd_cache": {
+      "nodes": [
+        "filecache::2.0"
+      ]
+    },
+    "rbd_exploded": {
+      "nodes": [
+        "rbdexplodedview"
+      ]
+    },
+    "rbd_destruction": {
+      "nodes": [
+        "rbdmaterialfracture::3.0",
+        "rbdconstraintproperties::2.0",
+        "rbdbulletsolver",
+        "convertheightfield"
+      ]
+    },
+    "sim_flip": {
+      "nodes": [
+        "flipcontainer",
+        "flipsolver"
+      ]
+    },
+    "sim_pop": {
+      "nodes": [
+        "dopnet",
+        "popobject",
+        "popsource::2.0",
+        "popsolver::2.0",
+        "popforce",
+        "merge"
+      ]
+    },
+    "pop_source": {
+      "nodes": [
+        "popsource::2.0",
+        "merge"
+      ]
+    },
+    "pop_force": {
+      "nodes": [
+        "popforce",
+        "popwind",
+        "popaxisforce",
+        "popattract",
+        "popcurveforce",
+        "popdrag",
+        "popspin",
+        "popfan",
+        "popadvectbyvolumes"
+      ]
+    },
+    "pop_import": {
+      "nodes": [
+        "dopimport::2.0"
+      ]
+    },
+    "pop_collision": {
+      "nodes": [
+        "popcollisiondetect",
+        "popcollisionbehavior",
+        "popcollisionignore"
+      ]
+    },
+    "pop_group": {
+      "nodes": [
+        "popgroup",
+        "popstream"
+      ]
+    },
+    "pop_kill": {
+      "nodes": [
+        "popkill",
+        "poplimit",
+        "popsoftlimit",
+        "popspeedlimit"
+      ]
+    },
+    "pop_property": {
+      "nodes": [
+        "popproperty",
+        "popcolor",
+        "popsprite",
+        "popvelocity",
+        "poplookat",
+        "poptorque"
+      ]
+    },
+    "pop_instance": {
+      "nodes": [
+        "popinstance",
+        "popreplicate"
+      ]
+    },
+    "pop_cache": {
+      "nodes": [
+        "filecache::2.0"
+      ]
+    },
+    "sim_pyro": {
+      "nodes": [
+        "pyrosource",
+        "pyrosolver"
+      ]
+    },
+    "pyro_source": {
+      "nodes": [
+        "pyrosource"
+      ]
+    },
+    "pyro_collision": {
+      "nodes": [
+        "collisionsource::2.0"
+      ]
+    },
+    "pyro_ground": {
+      "nodes": [
+        "convertheightfield",
+        "collisionsource::2.0",
+        "pyrosource",
+        "pyrosolver",
+        "volumevisualization"
+      ]
+    },
+    "pyro_burst": {
+      "nodes": [
+        "pyroburstsource"
+      ]
+    },
+    "pyro_explosion": {
+      "nodes": [
+        "pyroburstsource",
+        "pyrosolver",
+        "volumevisualization",
+        "rbdmaterialfracture::3.0",
+        "rbdbulletsolver"
+      ]
+    },
+    "pyro_visualize": {
+      "nodes": [
+        "volumevisualization"
+      ]
+    },
+    "pyro_shade": {
+      "nodes": [
+        "pyrobakevolume"
+      ]
+    },
+    "pyro_post": {
+      "nodes": [
+        "pyropostprocess::2.0"
+      ]
+    },
+    "pyro_cache": {
+      "nodes": [
+        "filecache::2.0"
+      ]
+    },
+    "sim_whitewater": {
+      "nodes": [
+        "whitewatersource::3.0",
+        "whitewatersolver"
+      ]
+    },
+    "whitewater_source": {
+      "nodes": [
+        "whitewatersource::3.0"
+      ]
+    },
+    "whitewater_post": {
+      "nodes": [
+        "whitewaterpostprocess"
+      ]
+    },
+    "fluid_surface": {
+      "nodes": [
+        "particlefluidsurface::3.0"
+      ]
+    },
+    "sim_ripple": {
+      "nodes": [
+        "ripplesolver"
+      ]
+    },
+    "sim_grains": {
+      "nodes": [
+        "dopnet",
+        "popobject",
+        "popsource",
+        "popsolver::2.0",
+        "popgrains",
+        "popforce"
+      ]
+    },
+    "set_attrib_expr": {
+      "nodes": [
+        "attribwrangle",
+        "pointwrangle",
+        "volumewrangle",
+        "kinefx::rigattribwrangle",
+        "deformationwrangle",
+        "sopsolver::2.0",
+        "popwrangle",
+        "gasfieldwrangle",
+        "geometrywrangle",
+        "dopnet"
+      ]
+    },
+    "attribute_interpolate": {
+      "nodes": [
+        "attribinterpolate"
+      ]
+    },
+    "attribute_from_volume": {
+      "nodes": [
+        "attribfromvolume"
+      ]
+    },
+    "attribute_blur": {
+      "nodes": [
+        "attribblur"
+      ]
+    },
+    "attribute_copy": {
+      "nodes": [
+        "attribcopy"
+      ]
+    },
+    "attribute_randomize": {
+      "nodes": [
+        "attribrandomize"
+      ]
+    },
+    "attribute_composite": {
+      "nodes": [
+        "attribcomposite"
+      ]
+    },
+    "attribute_reorient": {
+      "nodes": [
+        "attribreorient"
+      ]
+    },
+    "attribute_swap": {
+      "nodes": [
+        "attribswap"
+      ]
+    },
+    "assign_name": {
+      "nodes": [
+        "name"
+      ]
+    },
+    "enumerate": {
+      "nodes": [
+        "enumerate"
+      ]
+    },
+    "assemble": {
+      "nodes": [
+        "assemble"
+      ]
+    },
+    "transform_pieces": {
+      "nodes": [
+        "xformpieces"
+      ]
+    },
+    "set_constraint_field": {
+      "nodes": [
+        "attribcreate::2.0"
+      ]
+    },
+    "glue_cluster": {
+      "nodes": [
+        "gluecluster"
+      ]
+    },
+    "rbd_constraints_from_curves": {
+      "nodes": [
+        "rbdconstraintsfromcurves",
+        "object_merge"
+      ]
+    },
+    "rbd_constraints_from_lines": {
+      "nodes": [
+        "rbdconstraintsfromlines"
+      ]
+    },
+    "rbd_group_constraints": {
+      "nodes": [
+        "rbdgroupconstraints",
+        "object_merge"
+      ]
+    },
+    "voronoi_adjacency": {
+      "nodes": [
+        "voronoiadjacency"
+      ]
+    },
+    "for_each": {
+      "nodes": [
+        "block_begin",
+        "null",
+        "block_end"
+      ]
+    },
+    "for_each_begin": {
+      "nodes": [
+        "block_begin"
+      ]
+    },
+    "for_each_end": {
+      "nodes": [
+        "block_end"
+      ]
+    },
+    "compile_block": {
+      "nodes": [
+        "compile_begin",
+        "null",
+        "compile_end"
+      ]
+    },
+    "pop_flock": {
+      "nodes": [
+        "popflock",
+        "popinteract",
+        "popsteerseek",
+        "popsteeravoid::2.0",
+        "popsteerwander",
+        "popsteerseparate",
+        "popsteercohesion",
+        "popsteeralign",
+        "popsteerobstacle::2.0",
+        "popproximity"
+      ]
+    },
+    "pop_scatter_sim": {
+      "nodes": [
+        "dopnet",
+        "popobject",
+        "popsource",
+        "popsolver::2.0",
+        "popforce",
+        "popcollisiondetect",
+        "dopimport::2.0",
+        "object_merge",
+        "copytopoints::2.0"
+      ]
+    },
+    "sim_viscosity": {
+      "nodes": [
+        "flipcontainer",
+        "flipsolver"
+      ]
+    },
+    "solver": {
+      "nodes": [
+        "solver"
+      ]
+    },
+    "sim_vellum": {
+      "nodes": [
+        "vellumconstraints",
+        "vellumsolver"
+      ]
+    },
+    "vellum_collision": {
+      "nodes": [
+        "object_merge",
+        "convertheightfield"
+      ]
+    },
+    "vellum_constraint": {
+      "nodes": [
+        "vellumconstraints"
+      ]
+    },
+    "vellum_force": {
+      "nodes": [
+        "windforce",
+        "uniformforce",
+        "vortexforce",
+        "pointforce",
+        "fan"
+      ]
+    },
+    "vellum_drape": {
+      "nodes": [
+        "vellumdrape",
+        "vellumrestblend"
+      ]
+    },
+    "vellum_source": {
+      "nodes": [
+        "vellumsource"
+      ]
+    },
+    "vellum_post": {
+      "nodes": [
+        "vellumpostprocess"
+      ]
+    },
+    "vellum_cache": {
+      "nodes": [
+        "filecache::2.0",
+        "vellumpack"
+      ]
+    },
+    "sim_mpm": {
+      "nodes": [
+        "mpmsource",
+        "mpmsolver"
+      ]
+    },
+    "flip_collision": {
+      "nodes": [
+        "collisionsource::2.0",
+        "flipcollide"
+      ]
+    },
+    "flip_flood": {
+      "nodes": [
+        "convertheightfield",
+        "collisionsource::2.0",
+        "flipcontainer",
+        "flipsolver"
+      ]
+    },
+    "flip_source": {
+      "nodes": [
+        "flipsource"
+      ]
+    },
+    "flip_boundary": {
+      "nodes": [
+        "flipboundary"
+      ]
+    },
+    "flip_tank": {
+      "nodes": [
+        "particlefluidtank"
+      ]
+    },
+    "flip_force": {
+      "nodes": [
+        "uniformforce",
+        "vortexforce",
+        "windforce",
+        "drag",
+        "pointforce",
+        "fan",
+        "popaxisforce"
+      ]
+    },
+    "flip_cache": {
+      "nodes": [
+        "filecache::2.0"
+      ]
+    },
+    "convert_heightfield": {
+      "nodes": [
+        "convertheightfield"
+      ]
+    },
+    "heightfield_crop": {
+      "nodes": [
+        "heightfield_crop"
+      ]
+    },
+    "heightfield_morph": {
+      "nodes": [
+        "volumewrangle"
+      ]
+    },
+    "heightfield_fill": {
+      "nodes": [
+        "volumewrangle"
+      ]
+    },
+    "heightfield_patch": {
+      "nodes": [
+        "heightfield_patch"
+      ]
+    },
+    "heightfield_tilesplit": {
+      "nodes": [
+        "heightfield_tilesplit"
+      ]
+    },
+    "heightfield_clip": {
+      "nodes": [
+        "heightfield_clip"
+      ]
+    },
+    "heightfield_cutout": {
+      "nodes": [
+        "heightfield_cutoutbyobject"
+      ]
+    },
+    "heightfield_erode": {
+      "nodes": [
+        "heightfield_erode::3.0"
+      ]
+    },
+    "heightfield_flatten": {
+      "nodes": [
+        "heightfield_flatten"
+      ]
+    },
+    "heightfield_maskbyconcavity": {
+      "nodes": [
+        "heightfield_maskbyconcavity"
+      ]
+    },
+    "heightfield_visualize": {
+      "nodes": [
+        "heightfield_visualize"
+      ]
+    },
+    "heightfield_maskbyfeature": {
+      "nodes": [
+        "heightfield_maskbyfeature"
+      ]
+    },
+    "heightfield_maskbyocclusion": {
+      "nodes": [
+        "heightfield_maskbyocclusion"
+      ]
+    },
+    "heightfield_maskbyshadow": {
+      "nodes": [
+        "heightfield_maskbyshadow"
+      ]
+    },
+    "heightfield_maskbyobject": {
+      "nodes": [
+        "heightfield_maskbyobject"
+      ]
+    },
+    "heightfield_deform": {
+      "nodes": [
+        "heightfield_deform"
+      ]
+    },
+    "heightfield_layer": {
+      "nodes": [
+        "heightfield_layerclear",
+        "heightfield_layerproperty",
+        "heightfield_isolatelayer"
+      ]
+    },
+    "terrain_analysis": {
+      "nodes": [
+        "labs::terrain_analysis::1.0"
+      ],
+      "category": "Labs"
+    },
+    "heightfield_noise": {
+      "nodes": [
+        "heightfield_noise"
+      ]
+    },
+    "heightfield_blur": {
+      "nodes": [
+        "heightfield_blur"
+      ]
+    },
+    "heightfield_flowfield": {
+      "nodes": [
+        "heightfield_flowfield"
+      ]
+    },
+    "heightfield_project": {
+      "nodes": [
+        "heightfield_project"
+      ]
+    },
+    "heightfield_scatter": {
+      "nodes": [
+        "heightfield_scatter::2.0"
+      ]
+    },
+    "heightfield_terrace": {
+      "nodes": [
+        "heightfield_terrace::2.0"
+      ]
+    },
+    "add_tile_packed": {
+      "nodes": [
+        "file",
+        "xform"
+      ]
+    },
+    "set_tile_lod": {
+      "nodes": []
+    },
+    "sop_import": {
+      "nodes": [
+        "sopimport"
+      ]
+    },
+    "usd_import": {
+      "nodes": [
+        "reference::2.0"
+      ]
+    },
+    "usd_light": {
+      "nodes": [
+        "domelight::3.0",
+        "light::2.0"
+      ]
+    },
+    "usd_camera": {
+      "nodes": [
+        "camera"
+      ]
+    },
+    "karma_render_settings": {
+      "nodes": [
+        "karmarendersettings",
+        "usdrender_rop"
+      ]
+    },
+    "ocean_surface": {
+      "nodes": [
+        "oceanspectrum",
+        "oceanevaluate::2.0"
+      ]
+    },
+    "ocean_foam": {
+      "nodes": [
+        "oceanfoam"
+      ]
+    },
+    "ocean_source": {
+      "nodes": [
+        "oceanspectrum",
+        "oceansource::2.0"
+      ]
+    },
+    "cloud": {
+      "nodes": [
+        "cloud::2.0",
+        "cloudnoise"
+      ]
+    },
+    "set_frame": {
+      "nodes": []
+    },
+    "set_display": {
+      "nodes": []
+    },
+    "delete_node": {
+      "nodes": []
+    },
+    "save_scene": {
+      "nodes": []
+    },
+    "list_node_types": {
+      "nodes": []
+    },
+    "reload_node": {
+      "nodes": []
+    },
+    "mem": {
+      "nodes": []
+    },
+    "select_node": {
+      "nodes": []
+    },
+    "frame_selected": {
+      "nodes": []
+    },
+    "layout_nodes": {
+      "nodes": []
+    },
+    "viewport_optimize": {
+      "nodes": []
+    },
+    "scene_info": {
+      "nodes": []
+    },
+    "capabilities": {
+      "nodes": []
+    },
+    "node_reference": {
+      "nodes": []
+    },
+    "vex_reference": {
+      "nodes": []
+    },
+    "acquire_terrain": {
+      "nodes": []
+    },
+    "assign_usd_material": {
+      "nodes": [
+        "materiallibrary"
+      ]
+    },
+    "bridge": {
+      "nodes": [
+        "polybridge"
+      ]
+    },
+    "clean": {
+      "nodes": [
+        "clean"
+      ]
+    },
+    "cop_autostereogram": {
+      "nodes": [
+        "autostereogram"
+      ],
+      "category": "Cop"
+    },
+    "cop_average": {
+      "nodes": [
+        "average"
+      ],
+      "category": "Cop"
+    },
+    "cop_bend": {
+      "nodes": [
+        "bend"
+      ],
+      "category": "Cop"
+    },
+    "cop_blend": {
+      "nodes": [
+        "blend"
+      ],
+      "category": "Cop"
+    },
+    "cop_blur": {
+      "nodes": [
+        "blur"
+      ],
+      "category": "Cop"
+    },
+    "cop_bokeh": {
+      "nodes": [
+        "bokeh"
+      ],
+      "category": "Cop"
+    },
+    "cop_bound_rect": {
+      "nodes": [
+        "boundrect"
+      ],
+      "category": "Cop"
+    },
+    "cop_bright": {
+      "nodes": [
+        "bright"
+      ],
+      "category": "Cop"
+    },
+    "cop_bubble_noise": {
+      "nodes": [
+        "bubblenoise"
+      ],
+      "category": "Cop"
+    },
+    "cop_channel_extract": {
+      "nodes": [
+        "channelextract"
+      ],
+      "category": "Cop"
+    },
+    "cop_channel_join": {
+      "nodes": [
+        "channeljoin"
+      ],
+      "category": "Cop"
+    },
+    "cop_channel_split": {
+      "nodes": [
+        "channelsplit"
+      ],
+      "category": "Cop"
+    },
+    "cop_channel_swap": {
+      "nodes": [
+        "channelswap"
+      ],
+      "category": "Cop"
+    },
+    "cop_checkerboard": {
+      "nodes": [
+        "checkerboard"
+      ],
+      "category": "Cop"
+    },
+    "cop_chladni": {
+      "nodes": [
+        "chladni"
+      ],
+      "category": "Cop"
+    },
+    "cop_chroma_key": {
+      "nodes": [
+        "chromakey"
+      ],
+      "category": "Cop"
+    },
+    "cop_chromatic_aberration": {
+      "nodes": [
+        "chromaticaberration"
+      ],
+      "category": "Cop"
+    },
+    "cop_clamp": {
+      "nodes": [
+        "clamp"
+      ],
+      "category": "Cop"
+    },
+    "cop_cloud_noise_3d": {
+      "nodes": [
+        "cloudnoise3d"
+      ],
+      "category": "Cop"
+    },
+    "cop_color_correct": {
+      "nodes": [
+        "colorcorrect"
+      ],
+      "category": "Cop"
+    },
+    "cop_combine_normals": {
+      "nodes": [
+        "combinenormals"
+      ],
+      "category": "Cop"
+    },
+    "cop_compare": {
+      "nodes": [
+        "compare"
+      ],
+      "category": "Cop"
+    },
+    "cop_constant": {
+      "nodes": [
+        "constant"
+      ],
+      "category": "Cop"
+    },
+    "cop_contact_sheet": {
+      "nodes": [
+        "contactsheet"
+      ],
+      "category": "Cop"
+    },
+    "cop_contrast": {
+      "nodes": [
+        "contrast"
+      ],
+      "category": "Cop"
+    },
+    "cop_convert_depth": {
+      "nodes": [
+        "convertdepth"
+      ],
+      "category": "Cop"
+    },
+    "cop_convert_normal": {
+      "nodes": [
+        "convertnormal"
+      ],
+      "category": "Cop"
+    },
+    "cop_convolve": {
+      "nodes": [
+        "convolve3"
+      ],
+      "category": "Cop"
+    },
+    "cop_copy_xform": {
+      "nodes": [
+        "copyxform"
+      ],
+      "category": "Cop"
+    },
+    "cop_corner_pin": {
+      "nodes": [
+        "cornerpin"
+      ],
+      "category": "Cop"
+    },
+    "cop_crop": {
+      "nodes": [
+        "crop"
+      ],
+      "category": "Cop"
+    },
+    "cop_cross": {
+      "nodes": [
+        "cross"
+      ],
+      "category": "Cop"
+    },
+    "cop_crystal_noise": {
+      "nodes": [
+        "crystalnoise"
+      ],
+      "category": "Cop"
+    },
+    "cop_crystal_noise_3d": {
+      "nodes": [
+        "crystalnoise3d"
+      ],
+      "category": "Cop"
+    },
+    "cop_curvature": {
+      "nodes": [
+        "curvature"
+      ],
+      "category": "Cop"
+    },
+    "cop_defocus": {
+      "nodes": [
+        "defocus"
+      ],
+      "category": "Cop"
+    },
+    "cop_denoise_tvd": {
+      "nodes": [
+        "denoisetvd"
+      ],
+      "category": "Cop"
+    },
+    "cop_derivative": {
+      "nodes": [
+        "derivative"
+      ],
+      "category": "Cop"
+    },
+    "cop_dilate_erode": {
+      "nodes": [
+        "dilateerode"
+      ],
+      "category": "Cop"
+    },
+    "cop_distort": {
+      "nodes": [
+        "distort"
+      ],
+      "category": "Cop"
+    },
+    "cop_dot": {
+      "nodes": [
+        "dot"
+      ],
+      "category": "Cop"
+    },
+    "cop_edge_detect": {
+      "nodes": [
+        "edgedetect"
+      ],
+      "category": "Cop"
+    },
+    "cop_edge_detect_contour": {
+      "nodes": [
+        "edgedetectcontour"
+      ],
+      "category": "Cop"
+    },
+    "cop_edge_detect_depth": {
+      "nodes": [
+        "edgedetectdepth"
+      ],
+      "category": "Cop"
+    },
+    "cop_edge_detect_normal": {
+      "nodes": [
+        "edgedetectnormal"
+      ],
+      "category": "Cop"
+    },
+    "cop_equalize": {
+      "nodes": [
+        "equalize"
+      ],
+      "category": "Cop"
+    },
+    "cop_feather": {
+      "nodes": [
+        "feather"
+      ],
+      "category": "Cop"
+    },
+    "cop_fill": {
+      "nodes": [
+        "fill"
+      ],
+      "category": "Cop"
+    },
+    "cop_fill_connected": {
+      "nodes": [
+        "fillconnected"
+      ],
+      "category": "Cop"
+    },
+    "cop_flip": {
+      "nodes": [
+        "flip"
+      ],
+      "category": "Cop"
+    },
+    "cop_fractal_noise": {
+      "nodes": [
+        "fractalnoise"
+      ],
+      "category": "Cop"
+    },
+    "cop_fractal_noise_3d": {
+      "nodes": [
+        "fractalnoise3d"
+      ],
+      "category": "Cop"
+    },
+    "cop_gamma": {
+      "nodes": [
+        "gamma"
+      ],
+      "category": "Cop"
+    },
+    "cop_glow": {
+      "nodes": [
+        "glow"
+      ],
+      "category": "Cop"
+    },
+    "cop_heat_distort": {
+      "nodes": [
+        "heatdistort"
+      ],
+      "category": "Cop"
+    },
+    "cop_heat_distort_by_layer": {
+      "nodes": [
+        "heatdistortbylayer"
+      ],
+      "category": "Cop"
+    },
+    "cop_height_to_ao": {
+      "nodes": [
+        "heighttoambientocclusion"
+      ],
+      "category": "Cop"
+    },
+    "cop_height_to_normal": {
+      "nodes": [
+        "heighttonormal"
+      ],
+      "category": "Cop"
+    },
+    "cop_height_to_shadow": {
+      "nodes": [
+        "heighttoshadow"
+      ],
+      "category": "Cop"
+    },
+    "cop_heightfield_visualize": {
+      "nodes": [
+        "heightfield_visualize"
+      ],
+      "category": "Cop"
+    },
+    "cop_hextile": {
+      "nodes": [
+        "hextile"
+      ],
+      "category": "Cop"
+    },
+    "cop_histogram": {
+      "nodes": [
+        "histogram"
+      ],
+      "category": "Cop"
+    },
+    "cop_hsv": {
+      "nodes": [
+        "hsv"
+      ],
+      "category": "Cop"
+    },
+    "cop_hyperbolic_tile": {
+      "nodes": [
+        "hyperbolictile"
+      ],
+      "category": "Cop"
+    },
+    "cop_id_to_mask": {
+      "nodes": [
+        "idtomask"
+      ],
+      "category": "Cop"
+    },
+    "cop_id_to_mono": {
+      "nodes": [
+        "idtomono"
+      ],
+      "category": "Cop"
+    },
+    "cop_id_to_rgb": {
+      "nodes": [
+        "idtorgb"
+      ],
+      "category": "Cop"
+    },
+    "cop_id_to_sdf": {
+      "nodes": [
+        "idtosdf"
+      ],
+      "category": "Cop"
+    },
+    "cop_ill_pixel": {
+      "nodes": [
+        "illpixel"
+      ],
+      "category": "Cop"
+    },
+    "cop_invert": {
+      "nodes": [
+        "invert"
+      ],
+      "category": "Cop"
+    },
+    "cop_julia": {
+      "nodes": [
+        "julia"
+      ],
+      "category": "Cop"
+    },
+    "cop_kuwahara": {
+      "nodes": [
+        "kuwaharafilter"
+      ],
+      "category": "Cop"
+    },
+    "cop_lattice_deform": {
+      "nodes": [
+        "latticedeform"
+      ],
+      "category": "Cop"
+    },
+    "cop_layer": {
+      "nodes": [
+        "layer"
+      ],
+      "category": "Cop"
+    },
+    "cop_layer_attrib_create": {
+      "nodes": [
+        "layerattribcreate"
+      ],
+      "category": "Cop"
+    },
+    "cop_layer_attrib_delete": {
+      "nodes": [
+        "layerattribdelete"
+      ],
+      "category": "Cop"
+    },
+    "cop_layer_properties": {
+      "nodes": [
+        "layerproperties"
+      ],
+      "category": "Cop"
+    },
+    "cop_lens_distort": {
+      "nodes": [
+        "lensdistort"
+      ],
+      "category": "Cop"
+    },
+    "cop_light": {
+      "nodes": [
+        "light"
+      ],
+      "category": "Cop"
+    },
+    "cop_match_udim": {
+      "nodes": [
+        "matchudim"
+      ],
+      "category": "Cop"
+    },
+    "cop_median": {
+      "nodes": [
+        "median"
+      ],
+      "category": "Cop"
+    },
+    "cop_mirror": {
+      "nodes": [
+        "mirror"
+      ],
+      "category": "Cop"
+    },
+    "cop_mono": {
+      "nodes": [
+        "mono"
+      ],
+      "category": "Cop"
+    },
+    "cop_mono_to_id": {
+      "nodes": [
+        "monotoid"
+      ],
+      "category": "Cop"
+    },
+    "cop_mono_to_rgb": {
+      "nodes": [
+        "monotorgb"
+      ],
+      "category": "Cop"
+    },
+    "cop_mono_to_rgba": {
+      "nodes": [
+        "monotorgba"
+      ],
+      "category": "Cop"
+    },
+    "cop_mono_to_sdf": {
+      "nodes": [
+        "monotosdf"
+      ],
+      "category": "Cop"
+    },
+    "cop_phasor_noise": {
+      "nodes": [
+        "phasornoise"
+      ],
+      "category": "Cop"
+    },
+    "cop_pixelate": {
+      "nodes": [
+        "pixelate"
+      ],
+      "category": "Cop"
+    },
+    "cop_polar_to_uv": {
+      "nodes": [
+        "polartouv"
+      ],
+      "category": "Cop"
+    },
+    "cop_pos_map": {
+      "nodes": [
+        "posmap"
+      ],
+      "category": "Cop"
+    },
+    "cop_pos_sample": {
+      "nodes": [
+        "possample"
+      ],
+      "category": "Cop"
+    },
+    "cop_prefix_sum": {
+      "nodes": [
+        "prefixsum"
+      ],
+      "category": "Cop"
+    },
+    "cop_premult": {
+      "nodes": [
+        "premult"
+      ],
+      "category": "Cop"
+    },
+    "cop_project_on_layer": {
+      "nodes": [
+        "projectonlayer"
+      ],
+      "category": "Cop"
+    },
+    "cop_quantize": {
+      "nodes": [
+        "quantize"
+      ],
+      "category": "Cop"
+    },
+    "cop_ramp": {
+      "nodes": [
+        "ramp"
+      ],
+      "category": "Cop"
+    },
+    "cop_random_mono": {
+      "nodes": [
+        "randommono"
+      ],
+      "category": "Cop"
+    },
+    "cop_random_rgb": {
+      "nodes": [
+        "randomrgb"
+      ],
+      "category": "Cop"
+    },
+    "cop_remap": {
+      "nodes": [
+        "remap"
+      ],
+      "category": "Cop"
+    },
+    "cop_resample": {
+      "nodes": [
+        "resample"
+      ],
+      "category": "Cop"
+    },
+    "cop_rgb_to_rgba": {
+      "nodes": [
+        "rgbtorgba"
+      ],
+      "category": "Cop"
+    },
+    "cop_rgb_to_uv": {
+      "nodes": [
+        "rgbtouv"
+      ],
+      "category": "Cop"
+    },
+    "cop_rgba_to_rgb": {
+      "nodes": [
+        "rgbatorgb"
+      ],
+      "category": "Cop"
+    },
+    "cop_rgba_to_uv": {
+      "nodes": [
+        "rgbatouv"
+      ],
+      "category": "Cop"
+    },
+    "cop_sample": {
+      "nodes": [
+        "sample"
+      ],
+      "category": "Cop"
+    },
+    "cop_sdf_adjust": {
+      "nodes": [
+        "sdfadjust"
+      ],
+      "category": "Cop"
+    },
+    "cop_sdf_blend": {
+      "nodes": [
+        "sdfblend"
+      ],
+      "category": "Cop"
+    },
+    "cop_sdf_shape": {
+      "nodes": [
+        "sdfshape"
+      ],
+      "category": "Cop"
+    },
+    "cop_sdf_to_mono": {
+      "nodes": [
+        "sdftomono"
+      ],
+      "category": "Cop"
+    },
+    "cop_sdf_to_rgb": {
+      "nodes": [
+        "sdftorgb"
+      ],
+      "category": "Cop"
+    },
+    "cop_segment_connectivity": {
+      "nodes": [
+        "segmentbyconnectivity"
+      ],
+      "category": "Cop"
+    },
+    "cop_segment_value": {
+      "nodes": [
+        "segmentbyvalue"
+      ],
+      "category": "Cop"
+    },
+    "cop_sequence_blend": {
+      "nodes": [
+        "sequenceblend"
+      ],
+      "category": "Cop"
+    },
+    "cop_sharpen": {
+      "nodes": [
+        "sharpen"
+      ],
+      "category": "Cop"
+    },
+    "cop_slope_dir": {
+      "nodes": [
+        "slopedir"
+      ],
+      "category": "Cop"
+    },
+    "cop_smooth_fill": {
+      "nodes": [
+        "smoothfill"
+      ],
+      "category": "Cop"
+    },
+    "cop_space_transform": {
+      "nodes": [
+        "spacetransform"
+      ],
+      "category": "Cop"
+    },
+    "cop_statistics": {
+      "nodes": [
+        "statistics"
+      ],
+      "category": "Cop"
+    },
+    "cop_statistics_by_id": {
+      "nodes": [
+        "statisticsbyid"
+      ],
+      "category": "Cop"
+    },
+    "cop_streak_blur": {
+      "nodes": [
+        "streakblur"
+      ],
+      "category": "Cop"
+    },
+    "cop_surface_dither": {
+      "nodes": [
+        "surfacedither"
+      ],
+      "category": "Cop"
+    },
+    "cop_swirl": {
+      "nodes": [
+        "swirl"
+      ],
+      "category": "Cop"
+    },
+    "cop_tile_pattern": {
+      "nodes": [
+        "tilepattern"
+      ],
+      "category": "Cop"
+    },
+    "cop_tonemap": {
+      "nodes": [
+        "tonemap"
+      ],
+      "category": "Cop"
+    },
+    "cop_transform": {
+      "nodes": [
+        "xform"
+      ],
+      "category": "Cop"
+    },
+    "cop_triplanar": {
+      "nodes": [
+        "triplanar"
+      ],
+      "category": "Cop"
+    },
+    "cop_triplanar_hextile": {
+      "nodes": [
+        "triplanarhextile"
+      ],
+      "category": "Cop"
+    },
+    "cop_triplanar_uv": {
+      "nodes": [
+        "triplanaruv"
+      ],
+      "category": "Cop"
+    },
+    "cop_uv_map": {
+      "nodes": [
+        "uvmap"
+      ],
+      "category": "Cop"
+    },
+    "cop_uv_map_by_id": {
+      "nodes": [
+        "uvmapbyid"
+      ],
+      "category": "Cop"
+    },
+    "cop_uv_to_polar": {
+      "nodes": [
+        "uvtopolar"
+      ],
+      "category": "Cop"
+    },
+    "cop_uv_to_rgb": {
+      "nodes": [
+        "uvtorgb"
+      ],
+      "category": "Cop"
+    },
+    "cop_uv_to_rgba": {
+      "nodes": [
+        "uvtorgba"
+      ],
+      "category": "Cop"
+    },
+    "cop_uv_xform": {
+      "nodes": [
+        "uvxform"
+      ],
+      "category": "Cop"
+    },
+    "cop_vector_xform": {
+      "nodes": [
+        "vectorxform"
+      ],
+      "category": "Cop"
+    },
+    "cop_vector_xform_2d": {
+      "nodes": [
+        "vectorxform2d"
+      ],
+      "category": "Cop"
+    },
+    "cop_vignette": {
+      "nodes": [
+        "vignette"
+      ],
+      "category": "Cop"
+    },
+    "cop_wipe": {
+      "nodes": [
+        "wipe"
+      ],
+      "category": "Cop"
+    },
+    "cop_worley_noise": {
+      "nodes": [
+        "worleynoise"
+      ],
+      "category": "Cop"
+    },
+    "cop_worley_noise_3d": {
+      "nodes": [
+        "worleynoise3d"
+      ],
+      "category": "Cop"
+    },
+    "cop_xform_2d": {
+      "nodes": [
+        "xform2d"
+      ],
+      "category": "Cop"
+    },
+    "cop_zcomp": {
+      "nodes": [
+        "zcomp"
+      ],
+      "category": "Cop"
+    },
+    "crease": {
+      "nodes": [
+        "crease"
+      ]
+    },
+    "debris_source": {
+      "nodes": [
+        "debrissource::2.0"
+      ]
+    },
+    "dissolve": {
+      "nodes": [
+        "dissolve"
+      ]
+    },
+    "divide": {
+      "nodes": [
+        "divide"
+      ]
+    },
+    "export_pointcloud": {
+      "nodes": [
+        "geometry"
+      ]
+    },
+    "karma_fog_box": {
+      "nodes": [
+        "karmafogbox"
+      ]
+    },
+    "lsystem": {
+      "nodes": [
+        "geo"
+      ]
+    },
+    "mirror": {
+      "nodes": [
+        "mirror"
+      ]
+    },
+    "ml_volume_upres": {
+      "nodes": [
+        "ml_volumeupres"
+      ]
+    },
+    "null": {
+      "nodes": [
+        "null"
+      ]
+    },
+    "ocean_evaluate": {
+      "nodes": [
+        "oceanevaluate::2.0"
+      ]
+    },
+    "ocean_spectrum": {
+      "nodes": [
+        "grid"
+      ]
+    },
+    "onnx_inference": {
+      "nodes": [
+        "onnx"
+      ]
+    },
+    "pca": {
+      "nodes": [
+        "pca"
+      ]
+    },
+    "point_replicate": {
+      "nodes": [
+        "pointreplicate"
+      ]
+    },
+    "point_velocity": {
+      "nodes": [
+        "pointvelocity"
+      ]
+    },
+    "pointdeform": {
+      "nodes": [
+        "pointdeform"
+      ]
+    },
+    "polyexpand2d": {
+      "nodes": [
+        "polyexpand2d"
+      ]
+    },
+    "polysplit_loop": {
+      "nodes": [
+        "polysplit::2.0"
+      ]
+    },
+    "quad_remesh": {
+      "nodes": [
+        "quadremesh"
+      ]
+    },
+    "rbd_attach_constraints": {
+      "nodes": [
+        "object_merge"
+      ]
+    },
+    "rbd_guide": {
+      "nodes": [
+        "object_merge"
+      ]
+    },
+    "rbd_solver": {
+      "nodes": [
+        "rbdbulletsolver"
+      ]
+    },
+    "render_geo_settings": {
+      "nodes": [
+        "rendergeometrysettings"
+      ]
+    },
+    "revolve": {
+      "nodes": [
+        "revolve::2.0"
+      ]
+    },
+    "skin": {
+      "nodes": [
+        "skin"
+      ]
+    },
+    "sort": {
+      "nodes": [
+        "sort"
+      ]
+    },
+    "sweep": {
+      "nodes": [
+        "sweep::2.0"
+      ]
+    },
+    "switch": {
+      "nodes": [
+        "switch"
+      ]
+    },
+    "uv_transfer": {
+      "nodes": [
+        "labs::uv_transfer::1.1"
+      ],
+      "category": "Labs"
+    },
+    "vdb_reshape": {
+      "nodes": [
+        "vdbreshapesdf"
+      ]
+    },
+    "vellum_attach": {
+      "nodes": [
+        "vellumattachconstraints"
+      ]
+    },
+    "volume_velocity": {
+      "nodes": [
+        "volumevelocity"
+      ]
+    },
+    "cop_layer_from_curves": {
+      "nodes": [
+        "layerfromcurves"
+      ],
+      "category": "Cop"
+    },
+    "cop_layer_to_geo": {
+      "nodes": [
+        "layertogeo"
+      ],
+      "category": "Cop"
+    },
+    "cop_layer_to_points": {
+      "nodes": [
+        "layertopoints"
+      ],
+      "category": "Cop"
+    },
+    "cop_mask_from_curves": {
+      "nodes": [
+        "maskfromcurves"
+      ],
+      "category": "Cop"
+    },
+    "cop_rasterize_curves": {
+      "nodes": [
+        "rasterizecurves"
+      ],
+      "category": "Cop"
+    },
+    "cop_rasterize_geo": {
+      "nodes": [
+        "rasterizegeo"
+      ],
+      "category": "Cop"
+    },
+    "cop_rasterize_setup": {
+      "nodes": [
+        "rasterizesetup"
+      ],
+      "category": "Cop"
+    },
+    "cop_sop_import": {
+      "nodes": [
+        "sopimport"
+      ],
+      "category": "Cop"
+    },
+    "cop_geo_to_layer": {
+      "nodes": [
+        "geotolayer::2.0"
+      ],
+      "category": "Cop"
+    },
+    "cop_integrate_volume": {
+      "nodes": [
+        "integratevolume"
+      ],
+      "category": "Cop"
+    },
+    "cop_layer_from_vdb": {
+      "nodes": [
+        "layerfromvdb"
+      ],
+      "category": "Cop"
+    },
+    "cop_rasterize_volume": {
+      "nodes": [
+        "rasterizevolume"
+      ],
+      "category": "Cop"
+    },
+    "cop_vdb_from_layer": {
+      "nodes": [
+        "vdbfromlayer"
+      ],
+      "category": "Cop"
+    },
+    "cop_vdb_posmap": {
+      "nodes": [
+        "vdbposmap"
+      ],
+      "category": "Cop"
+    },
+    "cop_bake_geometry_textures": {
+      "nodes": [
+        "bakegeometrytextures"
+      ],
+      "category": "Cop"
+    },
+    "cop_curve_scatter": {
+      "nodes": [
+        "curvescatter"
+      ],
+      "category": "Cop"
+    },
+    "cop_layer_to_vdb_leafpoints": {
+      "nodes": [
+        "layertovdbleafpoints"
+      ],
+      "category": "Cop"
+    },
+    "cop_rasterize_layer": {
+      "nodes": [
+        "rasterizelayer"
+      ],
+      "category": "Cop"
+    },
+    "cop_raytrace": {
+      "nodes": [
+        "raytrace"
+      ],
+      "category": "Cop"
+    },
+    "cop_shape_scatter": {
+      "nodes": [
+        "shapescatter"
+      ],
+      "category": "Cop"
+    },
+    "cop_stamp_point": {
+      "nodes": [
+        "stamppoint"
+      ],
+      "category": "Cop"
+    },
+    "cop_vdb_activate_from_points": {
+      "nodes": [
+        "vdbactivatefrompoints"
+      ],
+      "category": "Cop"
+    },
+    "cop_vdb_leafpoints": {
+      "nodes": [
+        "vdbleafpoints"
+      ],
+      "category": "Cop"
+    },
+    "cop_vdb_reshape": {
+      "nodes": [
+        "vdbreshape"
+      ],
+      "category": "Cop"
+    },
+    "cop_vdb_visualize": {
+      "nodes": [
+        "vdbvisualize"
+      ],
+      "category": "Cop"
+    },
+    "cop_vdb_visualize_slice": {
+      "nodes": [
+        "vdbvisualizeslice"
+      ],
+      "category": "Cop"
+    },
+    "cop_vdb_visualize_tree": {
+      "nodes": [
+        "vdbvisualizetree"
+      ],
+      "category": "Cop"
+    },
+    "cop_vdb_visualize_velocity": {
+      "nodes": [
+        "vdbvisualizevelocity"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_activate": {
+      "nodes": [
+        "pyro_activate"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_advect": {
+      "nodes": [
+        "pyro_advect"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_buoyancy": {
+      "nodes": [
+        "pyro_buoyancy"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_configure": {
+      "nodes": [
+        "pyro_configure"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_dissipate": {
+      "nodes": [
+        "pyro_dissipate"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_disturbance": {
+      "nodes": [
+        "pyro_disturbance"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_source_from_layer": {
+      "nodes": [
+        "pyro_sourcefromlayer"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_source_from_points": {
+      "nodes": [
+        "pyro_sourcefrompoints"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_turbulence": {
+      "nodes": [
+        "pyro_turbulence"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_uniform_force": {
+      "nodes": [
+        "pyro_uniformforce"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_advect_by_map": {
+      "nodes": [
+        "pyro_advectbymap"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_axis_force": {
+      "nodes": [
+        "pyro_axisforce"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_block_begin": {
+      "nodes": [
+        "pyro_block_begin"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_block_end": {
+      "nodes": [
+        "pyro_block_end"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_build_advection_map": {
+      "nodes": [
+        "pyro_buildadvectionmap"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_light_ambient": {
+      "nodes": [
+        "pyro_lightambient"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_light_from_points": {
+      "nodes": [
+        "pyro_lightfrompoints"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_light_scatter": {
+      "nodes": [
+        "pyro_lightscatter"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_packed_mipmap": {
+      "nodes": [
+        "pyro_packedmipmap"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_project_electrostatic": {
+      "nodes": [
+        "pyro_projectnondivergentelectrostatic"
+      ],
+      "category": "Cop"
+    },
+    "cop_cable_merge": {
+      "nodes": [
+        "cablemerge"
+      ],
+      "category": "Cop"
+    },
+    "cop_cable_pack": {
+      "nodes": [
+        "cablepack"
+      ],
+      "category": "Cop"
+    },
+    "cop_cable_split": {
+      "nodes": [
+        "cablesplit"
+      ],
+      "category": "Cop"
+    },
+    "cop_cable_unpack": {
+      "nodes": [
+        "cableunpack"
+      ],
+      "category": "Cop"
+    },
+    "cop_cryptomatte": {
+      "nodes": [
+        "cryptomatte"
+      ],
+      "category": "Cop"
+    },
+    "cop_cryptomatte_decode": {
+      "nodes": [
+        "cryptomattedecode"
+      ],
+      "category": "Cop"
+    },
+    "cop_cryptomatte_encode": {
+      "nodes": [
+        "cryptomatteencode"
+      ],
+      "category": "Cop"
+    },
+    "cop_grunge_aurora": {
+      "nodes": [
+        "grunge_aurora"
+      ],
+      "category": "Cop"
+    },
+    "cop_grunge_birchbark": {
+      "nodes": [
+        "grunge_birchbark"
+      ],
+      "category": "Cop"
+    },
+    "cop_grunge_layered_noise": {
+      "nodes": [
+        "grunge_layerednoise"
+      ],
+      "category": "Cop"
+    },
+    "cop_grunge_pinebark": {
+      "nodes": [
+        "grunge_pinebark"
+      ],
+      "category": "Cop"
+    },
+    "cop_grunge_rust": {
+      "nodes": [
+        "grunge_rust"
+      ],
+      "category": "Cop"
+    },
+    "batch_export": {
+      "nodes": [
+        "blast"
+      ]
+    },
+    "boolean_curve": {
+      "nodes": [
+        "labs::boolean_curve::1.0"
+      ],
+      "category": "Labs"
+    },
+    "capsule": {
+      "nodes": [
+        "labs::capsule::1.0"
+      ],
+      "category": "Labs"
+    },
+    "cloud_billowy_noise": {
+      "nodes": [
+        "cloudbillowynoise"
+      ]
+    },
+    "cloud_clip": {
+      "nodes": [
+        "cloudclip"
+      ]
+    },
+    "cloud_shape": {
+      "nodes": [
+        "cloudshapegenerate"
+      ]
+    },
+    "cloud_wispy_noise": {
+      "nodes": [
+        "cloudwispynoise"
+      ]
+    },
+    "connect_polygon_neighbours": {
+      "nodes": [
+        "labs::connect_polygon_neighbours::1.0"
+      ],
+      "category": "Labs"
+    },
+    "convex_decompose": {
+      "nodes": [
+        "convexdecomposition"
+      ]
+    },
+    "cop_cable_filter": {
+      "nodes": [
+        "cablefilter"
+      ],
+      "category": "Cop"
+    },
+    "cop_cable_rename": {
+      "nodes": [
+        "cablerename"
+      ],
+      "category": "Cop"
+    },
+    "cop_cable_sort": {
+      "nodes": [
+        "cablesort"
+      ],
+      "category": "Cop"
+    },
+    "cop_cable_switch": {
+      "nodes": [
+        "cableswitch"
+      ],
+      "category": "Cop"
+    },
+    "cop_cache": {
+      "nodes": [
+        "cache"
+      ],
+      "category": "Cop"
+    },
+    "cop_camera_import": {
+      "nodes": [
+        "cameraimport"
+      ],
+      "category": "Cop"
+    },
+    "cop_denoise_ai": {
+      "nodes": [
+        "denoiseai"
+      ],
+      "category": "Cop"
+    },
+    "cop_fetch": {
+      "nodes": [
+        "fetch"
+      ],
+      "category": "Cop"
+    },
+    "cop_file": {
+      "nodes": [
+        "file"
+      ],
+      "category": "Cop"
+    },
+    "cop_font": {
+      "nodes": [
+        "font"
+      ],
+      "category": "Cop"
+    },
+    "cop_live_video": {
+      "nodes": [
+        "livevideo"
+      ],
+      "category": "Cop"
+    },
+    "cop_ocio_transform": {
+      "nodes": [
+        "ociotransform"
+      ],
+      "category": "Cop"
+    },
+    "cop_onnx": {
+      "nodes": [
+        "onnx"
+      ],
+      "category": "Cop"
+    },
+    "cop_pyro_solver": {
+      "nodes": [
+        "pyro_block_begin"
+      ],
+      "category": "Cop"
+    },
+    "cop_rop_image": {
+      "nodes": [
+        "rop_image"
+      ],
+      "category": "Cop"
+    },
+    "cop_slapcomp_import": {
+      "nodes": [
+        "slapcompimport"
+      ],
+      "category": "Cop"
+    },
+    "copy_transform": {
+      "nodes": [
+        "copyxform"
+      ]
+    },
+    "curve_branches": {
+      "nodes": [
+        "labs::curve_branches"
+      ],
+      "category": "Labs"
+    },
+    "curve_resample_by_density": {
+      "nodes": [
+        "labs::curve_resample_by_density::1.0"
+      ],
+      "category": "Labs"
+    },
+    "curve_sweep": {
+      "nodes": [
+        "labs::curve_sweep"
+      ],
+      "category": "Labs"
+    },
+    "cylinder_generator": {
+      "nodes": [
+        "labs::cylinder_generator::2.0"
+      ],
+      "category": "Labs"
+    },
+    "disc_generator": {
+      "nodes": [
+        "labs::disc_generator::1.1"
+      ],
+      "category": "Labs"
+    },
+    "edge_group_to_polylines": {
+      "nodes": [
+        "labs::edge_group_to_polylines::1.0"
+      ],
+      "category": "Labs"
+    },
+    "edgegroup_to_curve": {
+      "nodes": [
+        "labs::edgegroup_to_curve::1.1"
+      ],
+      "category": "Labs"
+    },
+    "flip_volume_combine": {
+      "nodes": [
+        "flipvolumecombine"
+      ]
+    },
+    "heightfield_remap": {
+      "nodes": [
+        "heightfield_remap"
+      ]
+    },
+    "heightfield_resample": {
+      "nodes": [
+        "heightfield_resample"
+      ]
+    },
+    "helix": {
+      "nodes": [
+        "geo"
+      ]
+    },
+    "hexagon_grid": {
+      "nodes": [
+        "labs::hexagon_grid::1.0"
+      ],
+      "category": "Labs"
+    },
+    "maps_baker": {
+      "nodes": [
+        "labs::maps_baker::5.0"
+      ],
+      "category": "Labs"
+    },
+    "material_graph_assign": {
+      "nodes": [
+        "assignmaterial"
+      ]
+    },
+    "material_graph_create": {
+      "nodes": [
+        "materiallibrary"
+      ]
+    },
+    "material_noise_channel": {
+      "nodes": [
+        "mtlxrange"
+      ]
+    },
+    "material_ramp_on_attribute": {
+      "nodes": [
+        "mtlxgeompropvalue"
+      ]
+    },
+    "merge_splines": {
+      "nodes": [
+        "labs::merge_splines::1.0"
+      ],
+      "category": "Labs"
+    },
+    "mpm_collider": {
+      "nodes": [
+        "object_merge"
+      ]
+    },
+    "mpm_container": {
+      "nodes": [
+        "mpmcontainer"
+      ]
+    },
+    "mpm_debrissource": {
+      "nodes": [
+        "mpmdebrissource"
+      ]
+    },
+    "mpm_surface": {
+      "nodes": [
+        "mpmsurface"
+      ]
+    },
+    "poly_split": {
+      "nodes": [
+        "polysplit::2.0"
+      ]
+    },
+    "polywire": {
+      "nodes": [
+        "convert"
+      ]
+    },
+    "polywire_uv": {
+      "nodes": [
+        "labs::polywire_uv::1.1"
+      ],
+      "category": "Labs"
+    },
+    "progressive_resample": {
+      "nodes": [
+        "labs::progressive_resample"
+      ],
+      "category": "Labs"
+    },
+    "quad_sphere_generator": {
+      "nodes": [
+        "labs::quad_sphere_generator::1.1"
+      ],
+      "category": "Labs"
+    },
+    "quadrangulate": {
+      "nodes": [
+        "labs::quadrangulate::2.0"
+      ],
+      "category": "Labs"
+    },
+    "quick_basic_tree": {
+      "nodes": [
+        "labs::quick_basic_tree"
+      ],
+      "category": "Labs"
+    },
+    "rbd_material_fracture": {
+      "nodes": [
+        "rbdmaterialfracture::3.0"
+      ]
+    },
+    "setup_prorender": {
+      "nodes": [
+        "usdrender_rop"
+      ]
+    },
+    "simple_shapes": {
+      "nodes": [
+        "labs::simple_shapes::2.0"
+      ],
+      "category": "Labs"
+    },
+    "spiral": {
+      "nodes": [
+        "labs::spiral::1.1"
+      ],
+      "category": "Labs"
+    },
+    "superformula_shapes": {
+      "nodes": [
+        "labs::superformula_shapes::1.0"
+      ],
+      "category": "Labs"
+    },
+    "sweep_geometry": {
+      "nodes": [
+        "labs::sweep_geometry"
+      ],
+      "category": "Labs"
+    },
+    "symmetrize": {
+      "nodes": [
+        "labs::symmetrize"
+      ],
+      "category": "Labs"
+    },
+    "thicken": {
+      "nodes": [
+        "labs::thicken::1.1"
+      ],
+      "category": "Labs"
+    },
+    "tree_branch_generator": {
+      "nodes": [
+        "labs::tree_branch_generator::1.2"
+      ],
+      "category": "Labs"
+    },
+    "tree_controller": {
+      "nodes": [
+        "labs::tree_controller::1.1"
+      ],
+      "category": "Labs"
+    },
+    "tree_leaf_generator": {
+      "nodes": [
+        "labs::tree_leaf_generator::1.0"
+      ],
+      "category": "Labs"
+    },
+    "tree_simple_leaf": {
+      "nodes": [
+        "labs::tree_simple_leaf::1.0"
+      ],
+      "category": "Labs"
+    },
+    "tree_trunk_generator": {
+      "nodes": [
+        "labs::tree_trunk_generator::1.1"
+      ],
+      "category": "Labs"
+    },
+    "view_vertex_order": {
+      "nodes": [
+        "labs::view_vertex_order::1.0"
+      ],
+      "category": "Labs"
+    },
+    "volume_combine": {
+      "nodes": [
+        "volumecombine"
+      ]
+    },
+    "volume_rasterize_attributes": {
+      "nodes": [
+        "volumerasterizeattributes"
+      ]
+    },
+    "voxelmesh": {
+      "nodes": [
+        "labs::voxelmesh::2.0"
+      ],
+      "category": "Labs"
+    },
+    "attribute_normalize_float": {
+      "nodes": [
+        "labs::attribute_normalize_float::1.0"
+      ],
+      "category": "Labs"
+    },
+    "attribute_normalize_vector": {
+      "nodes": [
+        "labs::attribute_normalize_vector::1.0"
+      ],
+      "category": "Labs"
+    },
+    "attribute_value_replace": {
+      "nodes": [
+        "labs::attribute_value_replace"
+      ],
+      "category": "Labs"
+    },
+    "automatic_trim_texture": {
+      "nodes": [
+        "labs::automatic_trim_texture"
+      ],
+      "category": "Labs"
+    },
+    "autouv": {
+      "nodes": [
+        "labs::autouv"
+      ],
+      "category": "Labs"
+    },
+    "box_clip": {
+      "nodes": [
+        "labs::box_clip"
+      ],
+      "category": "Labs"
+    },
+    "boxcutter": {
+      "nodes": [
+        "labs::boxcutter::1.0"
+      ],
+      "category": "Labs"
+    },
+    "boxcutter_subutil": {
+      "nodes": [
+        "labs::boxcutter_subutil"
+      ],
+      "category": "Labs"
+    },
+    "calculate_occlusion": {
+      "nodes": [
+        "labs::calculate_occlusion::2.0"
+      ],
+      "category": "Labs"
+    },
+    "calculate_slope": {
+      "nodes": [
+        "labs::calculate_slope"
+      ],
+      "category": "Labs"
+    },
+    "calculate_thickness": {
+      "nodes": [
+        "labs::calculate_thickness::1.0"
+      ],
+      "category": "Labs"
+    },
+    "calculate_uv_distortion": {
+      "nodes": [
+        "labs::calculate_uv_distortion::1.0"
+      ],
+      "category": "Labs"
+    },
+    "color_adjustment": {
+      "nodes": [
+        "labs::color_adjustment"
+      ],
+      "category": "Labs"
+    },
+    "color_blend": {
+      "nodes": [
+        "labs::color_blend"
+      ],
+      "category": "Labs"
+    },
+    "color_gradient": {
+      "nodes": [
+        "labs::color_gradient"
+      ],
+      "category": "Labs"
+    },
+    "distance_from_border": {
+      "nodes": [
+        "labs::distance_from_border"
+      ],
+      "category": "Labs"
+    },
+    "edge_color": {
+      "nodes": [
+        "labs::edge_color"
+      ],
+      "category": "Labs"
+    },
+    "fast_gaussian_curvature": {
+      "nodes": [
+        "labs::fast_gaussian_curvature::1.0"
+      ],
+      "category": "Labs"
+    },
+    "fast_group_unshared": {
+      "nodes": [
+        "labs::fast_group_unshared::1.0"
+      ],
+      "category": "Labs"
+    },
+    "group_by_attribute": {
+      "nodes": [
+        "labs::group_by_attribute::1.0"
+      ],
+      "category": "Labs"
+    },
+    "group_by_measure": {
+      "nodes": [
+        "labs::group_by_measure"
+      ],
+      "category": "Labs"
+    },
+    "group_curve_corners": {
+      "nodes": [
+        "labs::group_curve_corners"
+      ],
+      "category": "Labs"
+    },
+    "group_grow": {
+      "nodes": [
+        "labs::group_expand"
+      ],
+      "category": "Labs"
+    },
+    "group_invert": {
+      "nodes": [
+        "labs::group_invert::1.0"
+      ],
+      "category": "Labs"
+    },
+    "inside_face_uvs": {
+      "nodes": [
+        "labs::inside_face_uvs::1.0"
+      ],
+      "category": "Labs"
+    },
+    "loops_from_selection": {
+      "nodes": [
+        "labs::loops_from_selection::1.0"
+      ],
+      "category": "Labs"
+    },
+    "measure_curvature": {
+      "nodes": [
+        "labs::measure_curvature::3.1"
+      ],
+      "category": "Labs"
+    },
+    "merge_small_islands": {
+      "nodes": [
+        "labs::merge_small_islands::1.0"
+      ],
+      "category": "Labs"
+    },
+    "mesh_slice": {
+      "nodes": [
+        "labs::mesh_slice"
+      ],
+      "category": "Labs"
+    },
+    "min_max_average": {
+      "nodes": [
+        "labs::min_max_average::1.0"
+      ],
+      "category": "Labs"
+    },
+    "physical_ambient_occlusion": {
+      "nodes": [
+        "labs::physical_ambient_occlusion::1.1"
+      ],
+      "category": "Labs"
+    },
+    "polyscalpel": {
+      "nodes": [
+        "Labs::polyscalpel::1.0"
+      ],
+      "category": "Labs"
+    },
+    "polyslice": {
+      "nodes": [
+        "labs::polyslice::1.2"
+      ],
+      "category": "Labs"
+    },
+    "radial_sort": {
+      "nodes": [
+        "labs::radial_sort::1.1"
+      ],
+      "category": "Labs"
+    },
+    "random_selection": {
+      "nodes": [
+        "labs::random_selection::1.1"
+      ],
+      "category": "Labs"
+    },
+    "remove_uv_distortion": {
+      "nodes": [
+        "labs::remove_uv_distortion::1.0"
+      ],
+      "category": "Labs"
+    },
+    "sort_geometry": {
+      "nodes": [
+        "labs::sort::1.0"
+      ],
+      "category": "Labs"
+    },
+    "spectral_feature_extract": {
+      "nodes": [
+        "labs::spectral_feature_extract::1.0"
+      ],
+      "category": "Labs"
+    },
+    "split_prim_by_normal": {
+      "nodes": [
+        "labs::split_prim_by_normal::1.0"
+      ],
+      "category": "Labs"
+    },
+    "texel_density": {
+      "nodes": [
+        "labs::texel_density::1.0"
+      ],
+      "category": "Labs"
+    },
+    "uv_remove_overlap": {
+      "nodes": [
+        "labs::uv_remove_overlap::1.0"
+      ],
+      "category": "Labs"
+    },
+    "uv_unitize": {
+      "nodes": [
+        "labs::uv_unitize::1.1"
+      ],
+      "category": "Labs"
+    },
+    "uv_unwrap_cylinder": {
+      "nodes": [
+        "labs::uv_unwrap_cylinder::1.0"
+      ],
+      "category": "Labs"
+    },
+    "validate_geometry_type": {
+      "nodes": [
+        "labs::validate_geometry_type::1.0"
+      ],
+      "category": "Labs"
+    },
+    "visualize_vector": {
+      "nodes": [
+        "labs::visualize_vector::1.0"
+      ],
+      "category": "Labs"
+    },
+    "align_and_distribute": {
+      "nodes": [
+        "labs::align_and_distribute::2.0"
+      ],
+      "category": "Labs"
+    },
+    "axis_align": {
+      "nodes": [
+        "labs::axis_align"
+      ],
+      "category": "Labs"
+    },
+    "building_from_patterns": {
+      "nodes": [
+        "labs::building_from_patterns::1.1"
+      ],
+      "category": "Labs"
+    },
+    "building_generator": {
+      "nodes": [
+        "labs::building_generator::4.0"
+      ],
+      "category": "Labs"
+    },
+    "building_module": {
+      "nodes": [
+        "labs::building_generator_utility::2.0"
+      ],
+      "category": "Labs"
+    },
+    "cable_generator": {
+      "nodes": [
+        "labs::cable_generator::2.0"
+      ],
+      "category": "Labs"
+    },
+    "chaotic_shapes": {
+      "nodes": [
+        "labs::chaotic_shapes::1.0"
+      ],
+      "category": "Labs"
+    },
+    "cluster_refine": {
+      "nodes": [
+        "labs::cluster_refine::1.0"
+      ],
+      "category": "Labs"
+    },
+    "connectivity_and_segmentation": {
+      "nodes": [
+        "labs::connectivity_and_segmentation::1.0"
+      ],
+      "category": "Labs"
+    },
+    "decal_projector": {
+      "nodes": [
+        "labs::decal_projector::1.1"
+      ],
+      "category": "Labs"
+    },
+    "delight": {
+      "nodes": [
+        "labs::delight"
+      ],
+      "category": "Labs"
+    },
+    "detail_mesh": {
+      "nodes": [
+        "labs::detail_mesh::1.1"
+      ],
+      "category": "Labs"
+    },
+    "dirtskirt": {
+      "nodes": [
+        "labs::dirtskirt::1.0"
+      ],
+      "category": "Labs"
+    },
+    "dissolve_flat_edges": {
+      "nodes": [
+        "labs::dissolve_flat_edges::1.0"
+      ],
+      "category": "Labs"
+    },
+    "edge_damage": {
+      "nodes": [
+        "labs::edge_damage::2.1"
+      ],
+      "category": "Labs"
+    },
+    "edge_smooth": {
+      "nodes": [
+        "labs::edge_smooth::1.0"
+      ],
+      "category": "Labs"
+    },
+    "extract_borders": {
+      "nodes": [
+        "labs::extract_borders"
+      ],
+      "category": "Labs"
+    },
+    "extract_silhouette": {
+      "nodes": [
+        "labs::extract_silhouette::1.0"
+      ],
+      "category": "Labs"
+    },
+    "hf_combine_masks": {
+      "nodes": [
+        "labs::hf_combine_masks"
+      ],
+      "category": "Labs"
+    },
+    "hf_insert_mask": {
+      "nodes": [
+        "labs::hf_insert_mask"
+      ],
+      "category": "Labs"
+    },
+    "instance_attributes": {
+      "nodes": [
+        "labs::instance_attributes::1.0"
+      ],
+      "category": "Labs"
+    },
+    "lot_subdivision": {
+      "nodes": [
+        "labs::lot_subdivision::2.0"
+      ],
+      "category": "Labs"
+    },
+    "mandelbulb_generator": {
+      "nodes": [
+        "labs::mandelbulb_generator::1.1"
+      ],
+      "category": "Labs"
+    },
+    "mesh_sharpen": {
+      "nodes": [
+        "labs::mesh_sharpen"
+      ],
+      "category": "Labs"
+    },
+    "mesh_tiler": {
+      "nodes": [
+        "labs::mesh_tiler::1.0"
+      ],
+      "category": "Labs"
+    },
+    "multi_bounding_box": {
+      "nodes": [
+        "labs::multi_bounding_box"
+      ],
+      "category": "Labs"
+    },
+    "path_deform": {
+      "nodes": [
+        "labs::path_deform"
+      ],
+      "category": "Labs"
+    },
+    "pathfinding_global": {
+      "nodes": [
+        "labs::pathfinding_global::1.0"
+      ],
+      "category": "Labs"
+    },
+    "physics_painter": {
+      "nodes": [
+        "labs::physics_painter"
+      ],
+      "category": "Labs"
+    },
+    "polydeform": {
+      "nodes": [
+        "labs::polydeform"
+      ],
+      "category": "Labs"
+    },
+    "remove_inside_faces": {
+      "nodes": [
+        "labs::remove_inside_faces"
+      ],
+      "category": "Labs"
+    },
+    "road_generator": {
+      "nodes": [
+        "labs::road_generator::1.2"
+      ],
+      "category": "Labs"
+    },
+    "scifi_panels": {
+      "nodes": [
+        "labs::scifi_panels::1.0"
+      ],
+      "category": "Labs"
+    },
+    "settlement_connections": {
+      "nodes": [
+        "labs::settlement_connections::1.0"
+      ],
+      "category": "Labs"
+    },
+    "simple_rope_wrap": {
+      "nodes": [
+        "labs::simple_rope_wrap::1.0"
+      ],
+      "category": "Labs"
+    },
+    "sine_wave": {
+      "nodes": [
+        "labs::sine_wave"
+      ],
+      "category": "Labs"
+    },
+    "snow_buildup": {
+      "nodes": [
+        "labs::snow_buildup::2.0"
+      ],
+      "category": "Labs"
+    },
+    "soften_normals": {
+      "nodes": [
+        "labs::soften_normals"
+      ],
+      "category": "Labs"
+    },
+    "straight_skeleton_2d": {
+      "nodes": [
+        "labs::straight_skeleton_2D"
+      ],
+      "category": "Labs"
+    },
+    "straight_skeleton_3d": {
+      "nodes": [
+        "labs::straight_skeleton_3d"
+      ],
+      "category": "Labs"
+    },
+    "straighten": {
+      "nodes": [
+        "labs::straighten::1.0"
+      ],
+      "category": "Labs"
+    },
+    "terrain_segment": {
+      "nodes": [
+        "labs::terrain_segment::1.0"
+      ],
+      "category": "Labs"
+    },
+    "terrain_texture": {
+      "nodes": [
+        "labs::terrain_texture::1.0"
+      ],
+      "category": "Labs"
+    },
+    "tree_branch_placer": {
+      "nodes": [
+        "labs::tree_branch_placer::1.1"
+      ],
+      "category": "Labs"
+    },
+    "tree_hierarchy": {
+      "nodes": [
+        "labs::tree_hierarchy::1.0"
+      ],
+      "category": "Labs"
+    },
+    "triplanar_displace": {
+      "nodes": [
+        "labs::triplanar_displace"
+      ],
+      "category": "Labs"
+    },
+    "turntable": {
+      "nodes": [
+        "labs::turntable"
+      ],
+      "category": "Labs"
+    },
+    "vdb_transform_properties": {
+      "nodes": [
+        "labs::vdb_transform_properties::1.0"
+      ],
+      "category": "Labs"
+    },
+    "wang_tiles_decoder": {
+      "nodes": [
+        "labs::wang_tiles_decoder"
+      ],
+      "category": "Labs"
+    },
+    "wang_tiles_sample": {
+      "nodes": [
+        "labs::wang_tiles_sample"
+      ],
+      "category": "Labs"
+    },
+    "wavefunction_collapse_2d": {
+      "nodes": [
+        "labs::2d_wavefunctioncollapse::1.1"
+      ],
+      "category": "Labs"
+    },
+    "wfc_initialize": {
+      "nodes": [
+        "labs::wfc_initialize"
+      ],
+      "category": "Labs"
+    },
+    "wfc_sample_paint": {
+      "nodes": [
+        "labs::wfc_sample_paint"
+      ],
+      "category": "Labs"
+    },
+    "destruction_cleanup": {
+      "nodes": [
+        "labs::destruction_cleanup::2.0"
+      ],
+      "category": "Labs"
+    },
+    "flowmap": {
+      "nodes": [
+        "labs::flowmap::2.0"
+      ],
+      "category": "Labs"
+    },
+    "flowmap_guide": {
+      "nodes": [
+        "labs::flowmap_guide"
+      ],
+      "category": "Labs"
+    },
+    "flowmap_obstacle": {
+      "nodes": [
+        "labs::flowmap_obstacle::3.0"
+      ],
+      "category": "Labs"
+    },
+    "flowmap_to_color": {
+      "nodes": [
+        "labs::flowmap_to_color"
+      ],
+      "category": "Labs"
+    },
+    "flowmap_visualize": {
+      "nodes": [
+        "labs::flowmap_visualize"
+      ],
+      "category": "Labs"
+    },
+    "gameres": {
+      "nodes": [
+        "labs::gameres::3.1"
+      ],
+      "category": "Labs"
+    },
+    "kelvin_wakes_deformer": {
+      "nodes": [
+        "labs::kelvin_wakes_deformer::1.0"
+      ],
+      "category": "Labs"
+    },
+    "lightning": {
+      "nodes": [
+        "labs::lightning"
+      ],
+      "category": "Labs"
+    },
+    "loop_volume": {
+      "nodes": [
+        "labs::loop_volume::1.0"
+      ],
+      "category": "Labs"
+    },
+    "make_loop": {
+      "nodes": [
+        "labs::make_loop::2.1"
+      ],
+      "category": "Labs"
+    },
+    "niagara": {
+      "nodes": [
+        "labs::niagara::2.0"
+      ],
+      "category": "Labs"
+    },
+    "pcg_export": {
+      "nodes": [
+        "labs::pcg_export::1.0"
+      ],
+      "category": "Labs"
+    },
+    "procedural_smoke": {
+      "nodes": [
+        "labs::procedural_smoke"
+      ],
+      "category": "Labs"
+    },
+    "rbd_edge_strip": {
+      "nodes": [
+        "labs::rbd_edge_strip"
+      ],
+      "category": "Labs"
+    },
+    "splatter": {
+      "nodes": [
+        "labs::splatter"
+      ],
+      "category": "Labs"
+    },
+    "terrain_layer_export": {
+      "nodes": [
+        "labs::terrain_layer_export::1.1"
+      ],
+      "category": "Labs"
+    },
+    "terrain_layer_import": {
+      "nodes": [
+        "labs::terrain_layer_import::1.1"
+      ],
+      "category": "Labs"
+    },
+    "texture_sheets": {
+      "nodes": [
+        "labs::texture_sheets::2.0"
+      ],
+      "category": "Labs"
+    },
+    "unreal_spline": {
+      "nodes": [
+        "labs::unreal_spline::1.0"
+      ],
+      "category": "Labs"
+    },
+    "unreal_worldcomposition_prepare": {
+      "nodes": [
+        "labs::unreal_worldcomposition_prepare::1.0"
+      ],
+      "category": "Labs"
+    },
+    "vector_field": {
+      "nodes": [
+        "labs::vector_field"
+      ],
+      "category": "Labs"
+    },
+    "volume_adjust_look": {
+      "nodes": [
+        "labs::volume_adjust_look::1.0"
+      ],
+      "category": "Labs"
+    },
+    "volume_texture": {
+      "nodes": [
+        "labs::volume_texture::1.0"
+      ],
+      "category": "Labs"
+    },
+    "niagara_rop": {
+      "nodes": [
+        "labs::niagara_rop"
+      ],
+      "category": "Labs"
+    },
+    "rbd_to_fbx": {
+      "nodes": [
+        "labs::rbd_to_fbx::3.0"
+      ],
+      "category": "Labs"
+    },
+    "unreal_groom_export": {
+      "nodes": [
+        "labs::unreal_groom_export::1.0"
+      ],
+      "category": "Labs"
+    },
+    "vertex_animation_textures": {
+      "nodes": [
+        "labs::vertex_animation_textures::3.0"
+      ],
+      "category": "Labs"
+    },
+    "xyz_pointcloud_exporter": {
+      "nodes": [
+        "labs::xyz_pointcloud_exporter"
+      ],
+      "category": "Labs"
+    },
+    "biome_attributes_evolve": {
+      "nodes": [
+        "labs::biome_attributes_evolve::1.0"
+      ],
+      "category": "Labs"
+    },
+    "biome_attributes_to_terrain": {
+      "nodes": [
+        "labs::biome_attributes_to_terrain::1.0"
+      ],
+      "category": "Labs"
+    },
+    "biome_initialize": {
+      "nodes": [
+        "labs::biome_initialize::1.0"
+      ],
+      "category": "Labs"
+    },
+    "biome_profile": {
+      "nodes": [
+        "labs::biome_profile::1.0"
+      ],
+      "category": "Labs"
+    },
+    "biome_region_assign": {
+      "nodes": [
+        "labs::biome_region_assign::1.0"
+      ],
+      "category": "Labs"
+    },
+    "convert_regions_to_curves_subutil": {
+      "nodes": [
+        "labs::convert_regions_to_curves_subutil::1.0"
+      ],
+      "category": "Labs"
+    },
+    "export_uv_wireframe": {
+      "nodes": [
+        "labs::export_uv_wireframe::1.0"
+      ],
+      "category": "Labs"
+    },
+    "extract_filename": {
+      "nodes": [
+        "labs::extract_filename"
+      ],
+      "category": "Labs"
+    },
+    "fbx_archive_import": {
+      "nodes": [
+        "labs::fbx_archive_import"
+      ],
+      "category": "Labs"
+    },
+    "filecache": {
+      "nodes": [
+        "labs::filecache::2.0"
+      ],
+      "category": "Labs"
+    },
+    "goz_export": {
+      "nodes": [
+        "labs::goz_export"
+      ],
+      "category": "Labs"
+    },
+    "houdini_icon": {
+      "nodes": [
+        "labs::houdini_icon::1.1"
+      ],
+      "category": "Labs"
+    },
+    "instant_meshes": {
+      "nodes": [
+        "labs::instant_meshes::2.0"
+      ],
+      "category": "Labs"
+    },
+    "ml_cv_directory_import": {
+      "nodes": [
+        "labs::ml_cv_directory_import::1.0"
+      ],
+      "category": "Labs"
+    },
+    "ml_cv_keypoint_metadata": {
+      "nodes": [
+        "labs::ml_cv_keypoint_metadata::1.0"
+      ],
+      "category": "Labs"
+    },
+    "ml_cv_label_metadata": {
+      "nodes": [
+        "labs::ml_cv_label_metadata::1.0"
+      ],
+      "category": "Labs"
+    },
+    "ml_cv_promote_synth_attribute": {
+      "nodes": [
+        "labs::ml_cv_promote_synth_attribute::1.0"
+      ],
+      "category": "Labs"
+    },
+    "ml_cv_rop_annotation_output": {
+      "nodes": [
+        "labs::ml_cv_rop_annotation_output::1.0"
+      ],
+      "category": "Labs"
+    },
+    "ml_cv_texture_mask": {
+      "nodes": [
+        "labs::ml_cv_texture_mask::1.0"
+      ],
+      "category": "Labs"
+    },
+    "ml_cv_vector_data": {
+      "nodes": [
+        "labs::ml_cv_vector_data::1.0"
+      ],
+      "category": "Labs"
+    },
+    "ml_cv_visualize_keypoints": {
+      "nodes": [
+        "labs::ml_cv_visualize_keypoints::1.0"
+      ],
+      "category": "Labs"
+    },
+    "multi_file": {
+      "nodes": [
+        "labs::multi_file"
+      ],
+      "category": "Labs"
+    },
+    "obj_importer": {
+      "nodes": [
+        "labs::obj_importer"
+      ],
+      "category": "Labs"
+    },
+    "osm_buildings": {
+      "nodes": [
+        "labs::osm_buildings"
+      ],
+      "category": "Labs"
+    },
+    "osm_filter": {
+      "nodes": [
+        "labs::osm_filter"
+      ],
+      "category": "Labs"
+    },
+    "quickmaterial": {
+      "nodes": [
+        "labs::quickmaterial::2.2"
+      ],
+      "category": "Labs"
+    },
+    "region_assignment_subutil": {
+      "nodes": [
+        "labs::region_assignment_subutil::1.0"
+      ],
+      "category": "Labs"
+    },
+    "regions_from_image": {
+      "nodes": [
+        "labs::regions_from_image::1.1"
+      ],
+      "category": "Labs"
+    },
+    "rop_zibravdb_compress": {
+      "nodes": [
+        "labs::rop_zibravdb_compress::1.0"
+      ],
+      "category": "Labs"
+    },
+    "simple_baker": {
+      "nodes": [
+        "labs::simple_baker::2.0"
+      ],
+      "category": "Labs"
+    },
+    "simple_retime": {
+      "nodes": [
+        "labs::simple_retime::1.0"
+      ],
+      "category": "Labs"
+    },
+    "static_fracture_export": {
+      "nodes": [
+        "labs::static_fracture_export"
+      ],
+      "category": "Labs"
+    },
+    "substance_material": {
+      "nodes": [
+        "labs::substance_material"
+      ],
+      "category": "Labs"
+    },
+    "testgeometry_luiz": {
+      "nodes": [
+        "labs::testgeometry_luiz::2.0"
+      ],
+      "category": "Labs"
+    },
+    "testgeometry_paul": {
+      "nodes": [
+        "labs::testgeometry_paul::2.0"
+      ],
+      "category": "Labs"
+    },
+    "trace_psd_file": {
+      "nodes": [
+        "labs::trace_psd_file::3.0"
+      ],
+      "category": "Labs"
+    },
+    "udim_tile_number": {
+      "nodes": [
+        "labs::udim_tile_number::1.0"
+      ],
+      "category": "Labs"
+    },
+    "unreal_pivotpainter": {
+      "nodes": [
+        "labs::unreal_pivotpainter::1.1"
+      ],
+      "category": "Labs"
+    },
+    "visualize_uvs": {
+      "nodes": [
+        "labs::visualize_uvs::1.2"
+      ],
+      "category": "Labs"
+    },
+    "zibravdb_filecache": {
+      "nodes": [
+        "labs::zibravdb_filecache::1.0"
+      ],
+      "category": "Labs"
+    },
+    "biome_curve_label": {
+      "nodes": [
+        "labs::biome_curve_label::1.0"
+      ],
+      "category": "Labs"
+    },
+    "biome_curve_setup": {
+      "nodes": [
+        "labs::biome_curve_setup::1.0"
+      ],
+      "category": "Labs"
+    },
+    "biome_define": {
+      "nodes": [
+        "labs::biome_define::1.0"
+      ],
+      "category": "Labs"
+    },
+    "biome_definitions_file": {
+      "nodes": [
+        "labs::biome_definitions_file::1.0"
+      ],
+      "category": "Labs"
+    },
+    "biome_plant_define": {
+      "nodes": [
+        "labs::biome_plant_define::1.0"
+      ],
+      "category": "Labs"
+    },
+    "biome_plant_definitions_file": {
+      "nodes": [
+        "labs::biome_plant_definitions_file::1.0"
+      ],
+      "category": "Labs"
+    },
+    "blackbody_texture": {
+      "nodes": [
+        "labs::blackbody_cop"
+      ],
+      "category": "Labs"
+    },
+    "csv_exporter": {
+      "nodes": [
+        "labs::csv_exporter"
+      ],
+      "category": "Labs"
+    },
+    "demosaic": {
+      "nodes": [
+        "labs::demosaic::1.0"
+      ],
+      "category": "Labs"
+    },
+    "games_baker": {
+      "nodes": [
+        "labs::games_baker::2.0"
+      ],
+      "category": "Labs"
+    },
+    "json_exporter": {
+      "nodes": [
+        "labs::json_exporter::1.0"
+      ],
+      "category": "Labs"
+    },
+    "normal_combine": {
+      "nodes": [
+        "labs::normal_combine"
+      ],
+      "category": "Labs"
+    },
+    "normal_invert": {
+      "nodes": [
+        "labs::normal_invert"
+      ],
+      "category": "Labs"
+    },
+    "normal_levels": {
+      "nodes": [
+        "labs::normal_levels"
+      ],
+      "category": "Labs"
+    },
+    "normal_map": {
+      "nodes": [
+        "labs::normal_map"
+      ],
+      "category": "Labs"
+    },
+    "normal_normalize": {
+      "nodes": [
+        "labs::normal_normalize"
+      ],
+      "category": "Labs"
+    },
+    "normal_rotate": {
+      "nodes": [
+        "labs::normal_rotate"
+      ],
+      "category": "Labs"
+    },
+    "vector_normalize": {
+      "nodes": [
+        "labs::vector_normalize::1.0"
+      ],
+      "category": "Labs"
+    },
+    "attribute_to_texture": {
+      "nodes": [
+        "labs::attribute_import::1.0"
+      ],
+      "category": "Labs"
+    },
+    "grid_texture": {
+      "nodes": [
+        "labs::grid_texture"
+      ],
+      "category": "Labs"
+    },
+    "normal_color": {
+      "nodes": [
+        "labs::normal_color"
+      ],
+      "category": "Labs"
+    },
+    "sbs_archive": {
+      "nodes": [
+        "labs::sbs_archive"
+      ],
+      "category": "Labs"
+    },
+    "blend_shapes": {
+      "nodes": [
+        "blendshapes::2.0"
+      ],
+      "category": "KineFX"
+    },
+    "bone_capture": {
+      "nodes": [
+        "capture"
+      ],
+      "category": "KineFX"
+    },
+    "bone_capture_lines": {
+      "nodes": [
+        "bonecapturelines"
+      ],
+      "category": "KineFX"
+    },
+    "bone_deform": {
+      "nodes": [
+        "bonedeform"
+      ],
+      "category": "KineFX"
+    },
+    "capture_correct": {
+      "nodes": [
+        "capturecorrect"
+      ],
+      "category": "KineFX"
+    },
+    "capture_mirror": {
+      "nodes": [
+        "capturemirror"
+      ],
+      "category": "KineFX"
+    },
+    "capture_override": {
+      "nodes": [
+        "captureoverride"
+      ],
+      "category": "KineFX"
+    },
+    "capture_packed_geo": {
+      "nodes": [
+        "kinefx::capturepackedgeo"
+      ],
+      "category": "KineFX"
+    },
+    "capture_proximity": {
+      "nodes": [
+        "captureproximity"
+      ],
+      "category": "KineFX"
+    },
+    "capture_region": {
+      "nodes": [
+        "cregion"
+      ],
+      "category": "KineFX"
+    },
+    "character_blend_shape_channels": {
+      "nodes": [
+        "kinefx::characterblendshapechannels"
+      ],
+      "category": "KineFX"
+    },
+    "character_blend_shapes": {
+      "nodes": [
+        "kinefx::characterblendshapes"
+      ],
+      "category": "KineFX"
+    },
+    "character_blend_shapes_add": {
+      "nodes": [
+        "kinefx::characterblendshapesadd"
+      ],
+      "category": "KineFX"
+    },
+    "character_blend_shapes_core": {
+      "nodes": [
+        "kinefx::characterblendshapescore"
+      ],
+      "category": "KineFX"
+    },
+    "character_blend_shapes_extract": {
+      "nodes": [
+        "kinefx::characterblendshapesextract"
+      ],
+      "category": "KineFX"
+    },
+    "character_io": {
+      "nodes": [
+        "kinefx::characterio::2.0"
+      ],
+      "category": "KineFX"
+    },
+    "character_skeleton": {
+      "nodes": [
+        "kinefx::skeleton"
+      ],
+      "category": "KineFX"
+    },
+    "clip_export": {
+      "nodes": [
+        "kinefx::clipexport"
+      ],
+      "category": "KineFX"
+    },
+    "clip_import": {
+      "nodes": [
+        "kinefx::clipimport"
+      ],
+      "category": "KineFX"
+    },
+    "compute_rig_pose": {
+      "nodes": [
+        "kinefx::computerigpose"
+      ],
+      "category": "KineFX"
+    },
+    "configure_joint_limits": {
+      "nodes": [
+        "kinefx::configurejointlimits"
+      ],
+      "category": "KineFX"
+    },
+    "configure_joints": {
+      "nodes": [
+        "kinefx::configurejoints"
+      ],
+      "category": "KineFX"
+    },
+    "deform_skeleton_skin": {
+      "nodes": [
+        "kinefx::deformskelskin"
+      ],
+      "category": "KineFX"
+    },
+    "delete_joints": {
+      "nodes": [
+        "kinefx::deletejoints"
+      ],
+      "category": "KineFX"
+    },
+    "dembones_skinning_converter": {
+      "nodes": [
+        "kinefx::dembones_skinningconverter"
+      ],
+      "category": "KineFX"
+    },
+    "dynamic_warp": {
+      "nodes": [
+        "kinefx::dynamicwarp"
+      ],
+      "category": "KineFX"
+    },
+    "fbik_configure_targets": {
+      "nodes": [
+        "kinefx::fbikconfiguretargets"
+      ],
+      "category": "KineFX"
+    },
+    "fbx_anim_export": {
+      "nodes": [
+        "kinefx::rop_fbxanimoutput"
+      ],
+      "category": "KineFX"
+    },
+    "fbx_anim_import": {
+      "nodes": [
+        "kinefx::fbxanimimport"
+      ],
+      "category": "KineFX"
+    },
+    "fbx_character_export": {
+      "nodes": [
+        "kinefx::rop_fbxcharacteroutput"
+      ],
+      "category": "KineFX"
+    },
+    "fbx_character_import": {
+      "nodes": [
+        "kinefx::fbxcharacterimport"
+      ],
+      "category": "KineFX"
+    },
+    "fbx_skin_import": {
+      "nodes": [
+        "kinefx::fbxskinimport"
+      ],
+      "category": "KineFX"
+    },
+    "full_body_ik": {
+      "nodes": [
+        "kinefx::fullbodyik"
+      ],
+      "category": "KineFX"
+    },
+    "gltf_anim_import": {
+      "nodes": [
+        "kinefx::gltfanimimport"
+      ],
+      "category": "KineFX"
+    },
+    "gltf_character_export": {
+      "nodes": [
+        "kinefx::rop_gltfcharacteroutput"
+      ],
+      "category": "KineFX"
+    },
+    "gltf_character_import": {
+      "nodes": [
+        "kinefx::gltfcharacterimport"
+      ],
+      "category": "KineFX"
+    },
+    "gltf_skin_import": {
+      "nodes": [
+        "kinefx::gltfskinimport"
+      ],
+      "category": "KineFX"
+    },
+    "group_joints": {
+      "nodes": [
+        "kinefx::groupjoints"
+      ],
+      "category": "KineFX"
+    },
+    "ik_chains": {
+      "nodes": [
+        "kinefx::ikchains::2.0"
+      ],
+      "category": "KineFX"
+    },
+    "joint_capture_biharmonic": {
+      "nodes": [
+        "kinefx::jointcapturebiharmonic"
+      ],
+      "category": "KineFX"
+    },
+    "joint_capture_paint": {
+      "nodes": [
+        "kinefx::jointcapturepaint"
+      ],
+      "category": "KineFX"
+    },
+    "joint_capture_proximity": {
+      "nodes": [
+        "kinefx::jointcaptureproximity"
+      ],
+      "category": "KineFX"
+    },
+    "joint_deform": {
+      "nodes": [
+        "kinefx::jointdeform"
+      ],
+      "category": "KineFX"
+    },
+    "mocap_import": {
+      "nodes": [
+        "kinefx::mocapimport"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip": {
+      "nodes": [
+        "kinefx::motionclip"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_blend": {
+      "nodes": [
+        "kinefx::motionclipblend::2.0"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_compute_create": {
+      "nodes": [
+        "kinefx::computemotionclipcreate"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_compute_retime": {
+      "nodes": [
+        "kinefx::computemotionclipretime"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_create": {
+      "nodes": [
+        "kinefx::motionclipcreate"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_cycle": {
+      "nodes": [
+        "kinefx::motionclipcycle::2.0"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_evaluate": {
+      "nodes": [
+        "kinefx::motionclipevaluate"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_extract": {
+      "nodes": [
+        "kinefx::motionclipextract"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_info": {
+      "nodes": [
+        "kinefx::motionclipcreateclipinfo"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_key_poses": {
+      "nodes": [
+        "kinefx::motionclipextractkeyposes"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_locomotion": {
+      "nodes": [
+        "kinefx::motionclipextractlocomotion"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_merge": {
+      "nodes": [
+        "kinefx::motionclipmerge"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_pose_delete": {
+      "nodes": [
+        "kinefx::motionclipposedelete::2.0"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_pose_insert": {
+      "nodes": [
+        "kinefx::motionclipposeinsert"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_retime": {
+      "nodes": [
+        "kinefx::motionclipretime"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_sequence": {
+      "nodes": [
+        "kinefx::motionclipsequence::2.0"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_unpack": {
+      "nodes": [
+        "kinefx::motionclipunpack"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_update": {
+      "nodes": [
+        "kinefx::motionclipupdate"
+      ],
+      "category": "KineFX"
+    },
+    "motion_clip_velocity": {
+      "nodes": [
+        "kinefx::motionclipcomputevelocity"
+      ],
+      "category": "KineFX"
+    },
+    "motion_mixer_retime": {
+      "nodes": [
+        "kinefx::motionmixerretime"
+      ],
+      "category": "KineFX"
+    },
+    "motion_mixer_smooth": {
+      "nodes": [
+        "kinefx::motionmixersmooth"
+      ],
+      "category": "KineFX"
+    },
+    "motion_mixer_transform": {
+      "nodes": [
+        "kinefx::motionmixertransform"
+      ],
+      "category": "KineFX"
+    },
+    "name_from_capture_weight": {
+      "nodes": [
+        "labs::name_from_capture_weight::1.0"
+      ],
+      "category": "KineFX"
+    },
+    "orient_joints": {
+      "nodes": [
+        "kinefx::orientjoints"
+      ],
+      "category": "KineFX"
+    },
+    "parent_joints": {
+      "nodes": [
+        "kinefx::parentjoints"
+      ],
+      "category": "KineFX"
+    },
+    "point_capture_biharmonic": {
+      "nodes": [
+        "kinefx::pointcapturebiharmonic"
+      ],
+      "category": "KineFX"
+    },
+    "pose_difference": {
+      "nodes": [
+        "kinefx::posedifference"
+      ],
+      "category": "KineFX"
+    },
+    "pose_space_deform_combine": {
+      "nodes": [
+        "posespacedeformcombine"
+      ],
+      "category": "KineFX"
+    },
+    "pose_space_edit_configure": {
+      "nodes": [
+        "posespaceeditconfigure"
+      ],
+      "category": "KineFX"
+    },
+    "retarget_biped_fbx": {
+      "nodes": [
+        "kinefx::retargetbipedfbx"
+      ],
+      "category": "KineFX"
+    },
+    "retarget_fbx_export": {
+      "nodes": [
+        "kinefx::retargetfbxexport"
+      ],
+      "category": "KineFX"
+    },
+    "reverse_foot": {
+      "nodes": [
+        "kinefx::reversefoot"
+      ],
+      "category": "KineFX"
+    },
+    "rig_copy_transforms": {
+      "nodes": [
+        "kinefx::rigcopytransforms"
+      ],
+      "category": "KineFX"
+    },
+    "rig_doctor": {
+      "nodes": [
+        "kinefx::rigdoctor"
+      ],
+      "category": "KineFX"
+    },
+    "rig_match_pose": {
+      "nodes": [
+        "kinefx::rigmatchpose"
+      ],
+      "category": "KineFX"
+    },
+    "rig_mirror_pose": {
+      "nodes": [
+        "kinefx::rigmirrorpose"
+      ],
+      "category": "KineFX"
+    },
+    "rig_pose": {
+      "nodes": [
+        "kinefx::rigpose"
+      ],
+      "category": "KineFX"
+    },
+    "rig_stash_pose": {
+      "nodes": [
+        "kinefx::rigstashpose"
+      ],
+      "category": "KineFX"
+    },
+    "scene_character_export": {
+      "nodes": [
+        "kinefx::scenecharacterexport"
+      ],
+      "category": "KineFX"
+    },
+    "secondary_motion": {
+      "nodes": [
+        "kinefx::secondarymotion"
+      ],
+      "category": "KineFX"
+    },
+    "skeleton_blend": {
+      "nodes": [
+        "kinefx::skeletonblend::3.0"
+      ],
+      "category": "KineFX"
+    },
+    "skeleton_deform": {
+      "nodes": [
+        "deform"
+      ],
+      "category": "KineFX"
+    },
+    "skeleton_mirror": {
+      "nodes": [
+        "kinefx::skeletonmirror"
+      ],
+      "category": "KineFX"
+    },
+    "skinning_converter": {
+      "nodes": [
+        "labs::skinning_converter::3.0"
+      ],
+      "category": "KineFX"
+    },
+    "spline_ik": {
+      "nodes": [
+        "kinefx::splineik"
+      ],
+      "category": "KineFX"
+    },
+    "stabilize_joint": {
+      "nodes": [
+        "kinefx::stabilizejoint"
+      ],
+      "category": "KineFX"
+    },
+    "usd_anim_import": {
+      "nodes": [
+        "kinefx::usdanimimport"
+      ],
+      "category": "KineFX"
+    },
+    "usd_character_import": {
+      "nodes": [
+        "kinefx::usdcharacterimport"
+      ],
+      "category": "KineFX"
+    },
+    "usd_skin_import": {
+      "nodes": [
+        "kinefx::usdskinimport"
+      ],
+      "category": "KineFX"
+    },
+    "visualize_rig": {
+      "nodes": [
+        "kinefx::visrig"
+      ],
+      "category": "KineFX"
+    },
+    "agent_animation_unpack": {
+      "nodes": [
+        "kinefx::agentanimationunpack"
+      ],
+      "category": "Crowd"
+    },
+    "agent_camera": {
+      "nodes": [
+        "agentcam"
+      ],
+      "category": "Crowd"
+    },
+    "agent_channels": {
+      "nodes": [
+        "agent"
+      ],
+      "category": "Crowd"
+    },
+    "agent_character_unpack": {
+      "nodes": [
+        "kinefx::agentcharacterunpack"
+      ],
+      "category": "Crowd"
+    },
+    "agent_clip": {
+      "nodes": [
+        "agentclip::2.0"
+      ],
+      "category": "Crowd"
+    },
+    "agent_clip_properties": {
+      "nodes": [
+        "agentclipproperties"
+      ],
+      "category": "Crowd"
+    },
+    "agent_clip_transition_graph": {
+      "nodes": [
+        "agentcliptransitiongraph"
+      ],
+      "category": "Crowd"
+    },
+    "agent_collision_layer": {
+      "nodes": [
+        "agentcollisionlayer"
+      ],
+      "category": "Crowd"
+    },
+    "agent_configure_joints": {
+      "nodes": [
+        "agentconfigurejoints"
+      ],
+      "category": "Crowd"
+    },
+    "agent_constraint_network": {
+      "nodes": [
+        "agentconstraintnetwork"
+      ],
+      "category": "Crowd"
+    },
+    "agent_definition_cache": {
+      "nodes": [
+        "agentdefinitioncache"
+      ],
+      "category": "Crowd"
+    },
+    "agent_edit": {
+      "nodes": [
+        "agentedit"
+      ],
+      "category": "Crowd"
+    },
+    "agent_from_rig": {
+      "nodes": [
+        "kinefx::agentfromrig"
+      ],
+      "category": "Crowd"
+    },
+    "agent_layer": {
+      "nodes": [
+        "agentlayer::2.0"
+      ],
+      "category": "Crowd"
+    },
+    "agent_look_at": {
+      "nodes": [
+        "agentlookat::3.0"
+      ],
+      "category": "Crowd"
+    },
+    "agent_metadata": {
+      "nodes": [
+        "agentmetadata"
+      ],
+      "category": "Crowd"
+    },
+    "agent_pose_from_rig": {
+      "nodes": [
+        "kinefx::agentposefromrig"
+      ],
+      "category": "Crowd"
+    },
+    "agent_prep": {
+      "nodes": [
+        "agentprep::3.0"
+      ],
+      "category": "Crowd"
+    },
+    "agent_proxy": {
+      "nodes": [
+        "agentproxy"
+      ],
+      "category": "Crowd"
+    },
+    "agent_relationship": {
+      "nodes": [
+        "agentrelationship"
+      ],
+      "category": "Crowd"
+    },
+    "agent_source": {
+      "nodes": [
+        "agent"
+      ],
+      "category": "Crowd"
+    },
+    "agent_transform_group": {
+      "nodes": [
+        "agenttransformgroup"
+      ],
+      "category": "Crowd"
+    },
+    "agent_unpack": {
+      "nodes": [
+        "agentunpack"
+      ],
+      "category": "Crowd"
+    },
+    "agent_vellum_unpack": {
+      "nodes": [
+        "agentvellumunpack"
+      ],
+      "category": "Crowd"
+    },
+    "auto_rig_character_placer": {
+      "nodes": [
+        "auto_rig_character_placer"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_eye": {
+      "nodes": [
+        "auto_rig_eye"
+      ],
+      "category": "KineFX"
+    },
+    "biped_auto_rig": {
+      "nodes": [
+        "biped_auto_rig"
+      ],
+      "category": "KineFX"
+    },
+    "bone_link": {
+      "nodes": [
+        "bonelink"
+      ],
+      "category": "KineFX"
+    },
+    "bone_solidify": {
+      "nodes": [
+        "bonesolidify"
+      ],
+      "category": "KineFX"
+    },
+    "capture_attribute_pack": {
+      "nodes": [
+        "captureattribpack"
+      ],
+      "category": "KineFX"
+    },
+    "capture_attribute_unpack": {
+      "nodes": [
+        "captureattribunpack"
+      ],
+      "category": "KineFX"
+    },
+    "capture_layer_paint": {
+      "nodes": [
+        "capturelayerpaint::2.0"
+      ],
+      "category": "KineFX"
+    },
+    "channel_pose_difference": {
+      "nodes": [
+        "posedifference"
+      ],
+      "category": "KineFX"
+    },
+    "channel_spring": {
+      "nodes": [
+        "spring"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_begin": {
+      "nodes": [
+        "constraintbegin"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_blend": {
+      "nodes": [
+        "constraintblend"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_export": {
+      "nodes": [
+        "constraintexport"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_get_local_space": {
+      "nodes": [
+        "constraintgetlocalspace"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_get_parent_space": {
+      "nodes": [
+        "constraintgetparentspace"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_get_world_space": {
+      "nodes": [
+        "constraintgetworldspace"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_look_at": {
+      "nodes": [
+        "constraintlookat"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_object": {
+      "nodes": [
+        "constraintobject"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_object_offset": {
+      "nodes": [
+        "constraintobjectoffset"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_object_pretransform": {
+      "nodes": [
+        "constraintobjectpretransform"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_offset": {
+      "nodes": [
+        "constraintoffset"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_offset_blend": {
+      "nodes": [
+        "constraintoffsetblend"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_parent": {
+      "nodes": [
+        "constraintparent"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_parent_extended": {
+      "nodes": [
+        "constraintparentx"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_path": {
+      "nodes": [
+        "constraintpath"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_points": {
+      "nodes": [
+        "constraintpoints"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_pose": {
+      "nodes": [
+        "pose"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_sequence": {
+      "nodes": [
+        "constraintsequence"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_simple_blend": {
+      "nodes": [
+        "constraintsimpleblend"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_surface": {
+      "nodes": [
+        "constraintsurface"
+      ],
+      "category": "KineFX"
+    },
+    "constraint_transform": {
+      "nodes": [
+        "constrainttransform"
+      ],
+      "category": "KineFX"
+    },
+    "crowd_assign_layers": {
+      "nodes": [
+        "crowdassignlayers"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_motion_path": {
+      "nodes": [
+        "crowdmotionpath"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_motion_path_apply_relationship": {
+      "nodes": [
+        "crowdmotionpathapplyrel"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_motion_path_arcing_layer": {
+      "nodes": [
+        "crowdmotionpatharcinglayer"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_motion_path_avoid": {
+      "nodes": [
+        "crowdmotionpathavoid"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_motion_path_edit": {
+      "nodes": [
+        "crowdmotionpathedit"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_motion_path_edit_core": {
+      "nodes": [
+        "crowdmotionpatheditcore"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_motion_path_evaluate": {
+      "nodes": [
+        "crowdmotionpathevaluate"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_motion_path_evaluate_core": {
+      "nodes": [
+        "crowdmotionpathevaluatecore"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_motion_path_follow": {
+      "nodes": [
+        "crowdmotionpathfollow"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_motion_path_layer": {
+      "nodes": [
+        "crowdmotionpathlayer"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_motion_path_retime": {
+      "nodes": [
+        "crowdmotionpathretime"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_motion_path_transition": {
+      "nodes": [
+        "crowdmotionpathtransition"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_motion_path_trigger": {
+      "nodes": [
+        "crowdmotionpathtrigger"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_source": {
+      "nodes": [
+        "crowdsource::3.0"
+      ],
+      "category": "Crowd"
+    },
+    "deform_bone_rig_quadruped_tail": {
+      "nodes": [
+        "deform_bone_rig_quadruped_tail"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_quadruped_toes_4f": {
+      "nodes": [
+        "deform_bone_rig_quadruped_toes_4f"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_quadruped_toes_5f": {
+      "nodes": [
+        "deform_bone_rig_quadruped_toes_5f"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_biped_arm": {
+      "nodes": [
+        "deform_rig_biped_arm"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_biped_hand_4f_2s": {
+      "nodes": [
+        "deform_rig_biped_hand_4f_2s"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_biped_hand_4f_3s": {
+      "nodes": [
+        "deform_rig_biped_hand_4f_3s"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_biped_hand_5f_3s": {
+      "nodes": [
+        "deform_rig_biped_hand_5f_3s"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_biped_head_and_neck": {
+      "nodes": [
+        "deform_rig_biped_head_and_neck"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_biped_leg": {
+      "nodes": [
+        "deform_rig_biped_leg"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_biped_spine_3pc": {
+      "nodes": [
+        "deform_rig_biped_spine_3pc"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_biped_spine_5pc": {
+      "nodes": [
+        "deform_rig_biped_spine_5pc"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_quadruped_back_leg": {
+      "nodes": [
+        "deform_rig_quadruped_back_leg"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_quadruped_front_leg": {
+      "nodes": [
+        "deform_rig_quadruped_front_leg"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_quadruped_head_and_neck": {
+      "nodes": [
+        "deform_rig_quadruped_head_and_neck"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_quadruped_ik_spine": {
+      "nodes": [
+        "deform_rig_quadruped_ik_spine"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_quadruped_tail": {
+      "nodes": [
+        "deform_rig_quadruped_tail"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_quadruped_toes_4f": {
+      "nodes": [
+        "deform_rig_quadruped_toes_4f"
+      ],
+      "category": "KineFX"
+    },
+    "deform_rig_quadruped_toes_5f": {
+      "nodes": [
+        "deform_rig_quadruped_toes_5f"
+      ],
+      "category": "KineFX"
+    },
+    "dembones_skinning_bake": {
+      "nodes": [
+        "dembones_skinningconverter::1.0"
+      ],
+      "category": "KineFX"
+    },
+    "dembones_skinning_export": {
+      "nodes": [
+        "dembones_skinningconverter"
+      ],
+      "category": "KineFX"
+    },
+    "dembones_skinning_external": {
+      "nodes": [
+        "labs::dembones_skinningconverter"
+      ],
+      "category": "KineFX"
+    },
+    "franken_muscle": {
+      "nodes": [
+        "frankenmuscle"
+      ],
+      "category": "Muscle"
+    },
+    "franken_muscle_paint": {
+      "nodes": [
+        "frankenmusclepaint"
+      ],
+      "category": "Muscle"
+    },
+    "impostor_camera_rig": {
+      "nodes": [
+        "labs::impostor_camera_rig"
+      ],
+      "category": "KineFX"
+    },
+    "jiggle": {
+      "nodes": [
+        "jiggle"
+      ],
+      "category": "KineFX"
+    },
+    "lag": {
+      "nodes": [
+        "lag"
+      ],
+      "category": "KineFX"
+    },
+    "mocap_acclaim": {
+      "nodes": [
+        "mcacclaim"
+      ],
+      "category": "KineFX"
+    },
+    "mocap_biped_1": {
+      "nodes": [
+        "mocapbiped1"
+      ],
+      "category": "KineFX"
+    },
+    "mocap_biped_2": {
+      "nodes": [
+        "mocapbiped2"
+      ],
+      "category": "KineFX"
+    },
+    "mocap_biped_3": {
+      "nodes": [
+        "mocapbiped3"
+      ],
+      "category": "KineFX"
+    },
+    "muscle_adjust_volume": {
+      "nodes": [
+        "muscleadjustvolume"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_auto_tension_lines": {
+      "nodes": [
+        "muscleautotensionlines"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_constraint_properties_fem": {
+      "nodes": [
+        "muscleconstraintpropertiesfem"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_constraint_properties_otis": {
+      "nodes": [
+        "muscleconstraintpropertiesotis"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_constraint_properties_vellum": {
+      "nodes": [
+        "muscleconstraintpropertiesvellum"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_deform": {
+      "nodes": [
+        "muscledeform::2.0"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_deintersect": {
+      "nodes": [
+        "muscledeintersect"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_flex": {
+      "nodes": [
+        "muscleflex::2.0"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_id": {
+      "nodes": [
+        "muscleid"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_merge": {
+      "nodes": [
+        "musclemerge"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_mirror": {
+      "nodes": [
+        "musclemirror"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_paint": {
+      "nodes": [
+        "musclepaint"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_preroll": {
+      "nodes": [
+        "musclepreroll"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_properties": {
+      "nodes": [
+        "muscleproperties"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_properties_otis": {
+      "nodes": [
+        "musclepropertiesotis"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_slide_constraint": {
+      "nodes": [
+        "muscleslideconstraint"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_solidify": {
+      "nodes": [
+        "musclesolidify"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_tension_lines": {
+      "nodes": [
+        "muscletensionlines"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_tension_lines_activate": {
+      "nodes": [
+        "muscletensionlinesactivate"
+      ],
+      "category": "Muscle"
+    },
+    "muscle_tpose": {
+      "nodes": [
+        "muscletpose"
+      ],
+      "category": "Muscle"
+    },
+    "neuron_mocap": {
+      "nodes": [
+        "labs::neuron_mocap"
+      ],
+      "category": "KineFX"
+    },
+    "otis_configure_muscle_tissue": {
+      "nodes": [
+        "otisconfiguremuscleandtissue"
+      ],
+      "category": "Muscle"
+    },
+    "post_anim_deform": {
+      "nodes": [
+        "labs::post_anim_deform::1.0"
+      ],
+      "category": "KineFX"
+    },
+    "rokoko_mocap": {
+      "nodes": [
+        "labs::rokoko_mocap"
+      ],
+      "category": "KineFX"
+    },
+    "tissue_properties": {
+      "nodes": [
+        "tissueproperties"
+      ],
+      "category": "Muscle"
+    },
+    "tissue_properties_otis": {
+      "nodes": [
+        "tissuepropertiesotis"
+      ],
+      "category": "Muscle"
+    },
+    "tissue_solidify": {
+      "nodes": [
+        "tissuesolidify::2.0"
+      ],
+      "category": "Muscle"
+    },
+    "tissue_solidify_otis": {
+      "nodes": [
+        "tissuesolidifyotis"
+      ],
+      "category": "Muscle"
+    },
+    "toon_character": {
+      "nodes": [
+        "toon_character"
+      ],
+      "category": "KineFX"
+    },
+    "toon_character_deform_rig": {
+      "nodes": [
+        "toon_character_deform_rig"
+      ],
+      "category": "KineFX"
+    },
+    "classic_bone": {
+      "nodes": [
+        "bone"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_biped_arm": {
+      "nodes": [
+        "deform_bone_rig_biped_arm"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_biped_hand_4f_2s": {
+      "nodes": [
+        "deform_bone_rig_biped_hand_4f_2s"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_biped_hand_4f_3s": {
+      "nodes": [
+        "deform_bone_rig_biped_hand_4f_3s"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_biped_hand_5f_3s": {
+      "nodes": [
+        "deform_bone_rig_biped_hand_5f_3s"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_biped_head_and_neck": {
+      "nodes": [
+        "deform_bone_rig_biped_head_and_neck"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_biped_leg": {
+      "nodes": [
+        "deform_bone_rig_biped_leg"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_biped_spine_3pc": {
+      "nodes": [
+        "deform_bone_rig_biped_spine_3pc"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_biped_spine_5pc": {
+      "nodes": [
+        "deform_bone_rig_biped_spine_5pc"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_quadruped_back_leg": {
+      "nodes": [
+        "deform_bone_rig_quadruped_back_leg"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_quadruped_front_leg": {
+      "nodes": [
+        "deform_bone_rig_quadruped_front_leg"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_quadruped_head_and_neck": {
+      "nodes": [
+        "deform_bone_rig_quadruped_head_and_neck"
+      ],
+      "category": "KineFX"
+    },
+    "deform_bone_rig_quadruped_ik_spine": {
+      "nodes": [
+        "deform_bone_rig_quadruped_ik_spine"
+      ],
+      "category": "KineFX"
+    },
+    "agent_terrain_adaptation": {
+      "nodes": [
+        "agentterrainadaptation::3.0"
+      ],
+      "category": "Crowd"
+    },
+    "agent_terrain_projection": {
+      "nodes": [
+        "agentterrainprojection"
+      ],
+      "category": "Crowd"
+    },
+    "agent_look_at_apply": {
+      "nodes": [
+        "agentlookatapply::3.0"
+      ],
+      "category": "Crowd"
+    },
+    "agent_clip_layer": {
+      "nodes": [
+        "agentcliplayer"
+      ],
+      "category": "Crowd"
+    },
+    "agent_arcing_clip_layer": {
+      "nodes": [
+        "agentarcingcliplayer"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_fuzzy_logic": {
+      "nodes": [
+        "crowdfuzzylogic"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_object": {
+      "nodes": [
+        "crowdobject"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_state": {
+      "nodes": [
+        "crowdstate::3.0"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_trigger": {
+      "nodes": [
+        "crowdtrigger::2.0"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_trigger_logic": {
+      "nodes": [
+        "crowdtriggerlogic::2.0"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_transition": {
+      "nodes": [
+        "crowdtransition::3.0"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_sop_import": {
+      "nodes": [
+        "sopcrowdimport"
+      ],
+      "category": "Crowd"
+    },
+    "crowd_render_procedural": {
+      "nodes": [
+        "houdinicrowdprocedural"
+      ],
+      "category": "Crowd"
+    },
+    "bake_skinning": {
+      "nodes": [
+        "bakeskinning"
+      ],
+      "category": "Crowd"
+    },
+    "agent_transforms": {
+      "nodes": [
+        "agenttransforms"
+      ],
+      "category": "Crowd"
+    },
+    "agent_transform_names": {
+      "nodes": [
+        "agenttransformnames"
+      ],
+      "category": "Crowd"
+    },
+    "agent_transform_count": {
+      "nodes": [
+        "agenttransformcount"
+      ],
+      "category": "Crowd"
+    },
+    "agent_rig_find": {
+      "nodes": [
+        "agentrigfind"
+      ],
+      "category": "Crowd"
+    },
+    "agent_rig_children": {
+      "nodes": [
+        "agentrigchildren"
+      ],
+      "category": "Crowd"
+    },
+    "agent_rig_parent": {
+      "nodes": [
+        "agentrigparent"
+      ],
+      "category": "Crowd"
+    },
+    "agent_clip_weights": {
+      "nodes": [
+        "agentclipweights"
+      ],
+      "category": "Crowd"
+    },
+    "agent_layers": {
+      "nodes": [
+        "agentlayers"
+      ],
+      "category": "Crowd"
+    },
+    "agent_layer_name": {
+      "nodes": [
+        "agentlayername"
+      ],
+      "category": "Crowd"
+    },
+    "agent_layer_bindings": {
+      "nodes": [
+        "agentlayerbindings"
+      ],
+      "category": "Crowd"
+    },
+    "agent_layer_shapes": {
+      "nodes": [
+        "agentlayershapes"
+      ],
+      "category": "Crowd"
+    },
+    "agent_convert_transforms": {
+      "nodes": [
+        "agentconverttransforms"
+      ],
+      "category": "Crowd"
+    },
+    "glue_constraint": {
+      "nodes": [
+        "glueconrel"
+      ]
+    },
+    "hard_constraint": {
+      "nodes": [
+        "hardconrel"
+      ]
+    },
+    "no_constraint": {
+      "nodes": [
+        "noconrel"
+      ]
+    },
+    "bullet_soft_constraint": {
+      "nodes": [
+        "bulletsoftconrel"
+      ]
+    },
+    "cone_twist_constraint": {
+      "nodes": [
+        "conetwistconrel"
+      ]
+    },
+    "constraint_relationship": {
+      "nodes": [
+        "conrelationship"
+      ]
+    },
+    "apply_constraint": {
+      "nodes": [
+        "constraint"
+      ]
+    },
+    "constraint_network_relationship": {
+      "nodes": [
+        "constraintnetworkrelationship"
+      ]
+    },
+    "motion_data": {
+      "nodes": [
+        "motion"
+      ]
+    },
+    "softbody_constraint": {
+      "nodes": [
+        "sbdconstraint"
+      ]
+    },
+    "cloth_stitch_constraint": {
+      "nodes": [
+        "clothstitchconstraint"
+      ]
+    },
+    "fem_attach_constraint": {
+      "nodes": [
+        "femattachconstraint"
+      ]
+    },
+    "fem_fuse_constraint": {
+      "nodes": [
+        "femfuseconstraint"
+      ]
+    },
+    "fem_region_constraint": {
+      "nodes": [
+        "femregionconstraint"
+      ]
+    },
+    "fem_slide_constraint": {
+      "nodes": [
+        "femslideconstraint"
+      ]
+    },
+    "fem_target_constraint": {
+      "nodes": [
+        "femtargetconstraint"
+      ]
+    },
+    "animation_rig_biped_arm": {
+      "nodes": [
+        "animation_rig_biped_arm"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_biped_hand_4f_2s": {
+      "nodes": [
+        "animation_rig_biped_hand_4f_2s"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_biped_hand_4f_3s": {
+      "nodes": [
+        "animation_rig_biped_hand_4f_3s"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_biped_hand_5f_3s": {
+      "nodes": [
+        "animation_rig_biped_hand_5f_3s"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_biped_head_and_neck": {
+      "nodes": [
+        "animation_rig_biped_head_and_neck"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_biped_leg": {
+      "nodes": [
+        "animation_rig_biped_leg"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_biped_spine_3pc": {
+      "nodes": [
+        "animation_rig_biped_spine_3pc"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_biped_spine_5pc": {
+      "nodes": [
+        "animation_rig_biped_spine_5pc"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_character_placer": {
+      "nodes": [
+        "animation_rig_character_placer"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_quadruped_back_leg": {
+      "nodes": [
+        "animation_rig_quadruped_back_leg"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_quadruped_front_leg": {
+      "nodes": [
+        "animation_rig_quadruped_front_leg"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_quadruped_head_and_neck": {
+      "nodes": [
+        "animation_rig_quadruped_head_and_neck"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_quadruped_ik_spine": {
+      "nodes": [
+        "animation_rig_quadruped_ik_spine"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_quadruped_tail": {
+      "nodes": [
+        "animation_rig_quadruped_tail"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_quadruped_toes_4f": {
+      "nodes": [
+        "animation_rig_quadruped_toes_4f"
+      ],
+      "category": "KineFX"
+    },
+    "animation_rig_quadruped_toes_5f": {
+      "nodes": [
+        "animation_rig_quadruped_toes_5f"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_biped_arm": {
+      "nodes": [
+        "auto_rig_biped_arm"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_biped_hand_4f_2s": {
+      "nodes": [
+        "auto_rig_biped_hand_4f_2s"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_biped_hand_4f_3s": {
+      "nodes": [
+        "auto_rig_biped_hand_4f_3s"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_biped_hand_5f_3s": {
+      "nodes": [
+        "auto_rig_biped_hand_5f_3s"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_biped_head_and_neck": {
+      "nodes": [
+        "auto_rig_biped_head_and_neck"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_biped_leg": {
+      "nodes": [
+        "auto_rig_biped_leg"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_biped_spine_3pc": {
+      "nodes": [
+        "auto_rig_biped_spine_3pc"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_biped_spine_5pc": {
+      "nodes": [
+        "auto_rig_biped_spine_5pc"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_quadruped_back_leg": {
+      "nodes": [
+        "auto_rig_quadruped_back_leg"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_quadruped_front_leg": {
+      "nodes": [
+        "auto_rig_quadruped_front_leg"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_quadruped_head_and_neck": {
+      "nodes": [
+        "auto_rig_quadruped_head_and_neck"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_quadruped_ik_spine": {
+      "nodes": [
+        "auto_rig_quadruped_ik_spine"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_quadruped_tail": {
+      "nodes": [
+        "auto_rig_quadruped_tail"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_quadruped_toes_4f": {
+      "nodes": [
+        "auto_rig_quadruped_toes_4f"
+      ],
+      "category": "KineFX"
+    },
+    "auto_rig_quadruped_toes_5f": {
+      "nodes": [
+        "auto_rig_quadruped_toes_5f"
+      ],
+      "category": "KineFX"
+    },
+    "mocap_rig_biped_arm": {
+      "nodes": [
+        "mocap_rig_biped_arm"
+      ],
+      "category": "KineFX"
+    },
+    "mocap_rig_biped_head_and_neck": {
+      "nodes": [
+        "mocap_rig_biped_head_and_neck"
+      ],
+      "category": "KineFX"
+    },
+    "mocap_rig_biped_leg": {
+      "nodes": [
+        "mocap_rig_biped_leg"
+      ],
+      "category": "KineFX"
+    },
+    "mocap_rig_biped_spine_3pc": {
+      "nodes": [
+        "mocap_rig_biped_spine_3pc"
+      ],
+      "category": "KineFX"
+    },
+    "mocap_rig_biped_spine_5pc": {
+      "nodes": [
+        "mocap_rig_biped_spine_5pc"
+      ],
+      "category": "KineFX"
+    },
+    "quadruped_auto_rig_4f": {
+      "nodes": [
+        "quadruped_auto_rig_4f"
+      ],
+      "category": "KineFX"
+    },
+    "quadruped_auto_rig_5f": {
+      "nodes": [
+        "quadruped_auto_rig_5f"
+      ],
+      "category": "KineFX"
+    },
+    "bake_animation_rop": {
+      "nodes": [
+        "bake_animation"
+      ]
+    },
+    "bake_flipbook_textures": {
+      "nodes": [
+        "labs::flipbook_textures::1.0"
+      ]
+    },
+    "bake_haircard_texture": {
+      "nodes": [
+        "haircardtex"
+      ]
+    },
+    "bake_impostor_texture": {
+      "nodes": [
+        "labs::impostor_texture"
+      ]
+    },
+    "bake_karma_texture": {
+      "nodes": [
+        "karmatexturebaker"
+      ]
+    },
+    "bake_motion_vectors": {
+      "nodes": [
+        "labs::motion_vectors"
+      ]
+    },
+    "dopio": {
+      "nodes": [
+        "dopio"
+      ]
+    },
+    "export_brickmap": {
+      "nodes": [
+        "brickmap"
+      ]
+    },
+    "export_channel": {
+      "nodes": [
+        "channel"
+      ]
+    },
+    "export_geo_to_i3d": {
+      "nodes": [
+        "geo2i3d"
+      ]
+    },
+    "export_geometry_raw": {
+      "nodes": [
+        "geometryraw"
+      ]
+    },
+    "export_ifd_archive": {
+      "nodes": [
+        "ifdarchive"
+      ]
+    },
+    "export_image_to_i3d": {
+      "nodes": [
+        "image3d"
+      ]
+    },
+    "export_mdd": {
+      "nodes": [
+        "mdd"
+      ]
+    },
+    "export_ml_example_output": {
+      "nodes": [
+        "ml_exampleoutput"
+      ]
+    },
+    "export_ml_example_raw": {
+      "nodes": [
+        "ml_exampleraw"
+      ]
+    },
+    "export_ml_example_raw_sop": {
+      "nodes": [
+        "rop_ml_exampleraw"
+      ]
+    },
+    "heightfield_output": {
+      "nodes": [
+        "heightfield_output"
+      ]
+    },
+    "husk_image_metadata": {
+      "nodes": [
+        "huskimagemetadata"
+      ]
+    },
+    "karma_cryptomatte": {
+      "nodes": [
+        "karmacryptomatte"
+      ]
+    },
+    "karma_render_products": {
+      "nodes": [
+        "karmarenderproducts"
+      ]
+    },
+    "karma_render_properties": {
+      "nodes": [
+        "karmarenderproperties"
+      ]
+    },
+    "karma_render_vars": {
+      "nodes": [
+        "karmastandardrendervars"
+      ]
+    },
+    "render_comp": {
+      "nodes": [
+        "comp"
+      ]
+    },
+    "render_dsm_merge": {
+      "nodes": [
+        "dsmmerge"
+      ]
+    },
+    "render_image": {
+      "nodes": [
+        "image"
+      ]
+    },
+    "render_karma_rop": {
+      "nodes": [
+        "karma"
+      ]
+    },
+    "render_mantra": {
+      "nodes": [
+        "ifd"
+      ]
+    },
+    "render_product": {
+      "nodes": [
+        "renderproduct"
+      ]
+    },
+    "render_settings_usd": {
+      "nodes": [
+        "rendersettings"
+      ]
+    },
+    "render_usd": {
+      "nodes": [
+        "usdrender"
+      ]
+    },
+    "render_var": {
+      "nodes": [
+        "rendervar"
+      ]
+    },
+    "render_vars_additional": {
+      "nodes": [
+        "additionalrendervars"
+      ]
+    },
+    "rop_geometryraw": {
+      "nodes": [
+        "rop_geometryraw"
+      ]
+    },
+    "skin_deform": {
+      "nodes": [
+        "skindeform"
+      ]
+    },
+    "skin_properties": {
+      "nodes": [
+        "skinproperties"
+      ]
+    },
+    "skin_solidify": {
+      "nodes": [
+        "skinsolidify::2.0"
+      ]
+    },
+    "feather_attrib_interpolate": {
+      "nodes": [
+        "featherattribinterpolate"
+      ]
+    },
+    "feather_barb_tangents": {
+      "nodes": [
+        "featherbarbtangents"
+      ]
+    },
+    "feather_barb_transform": {
+      "nodes": [
+        "featherbarbxform"
+      ]
+    },
+    "feather_clump": {
+      "nodes": [
+        "featherclump"
+      ]
+    },
+    "feather_convert": {
+      "nodes": [
+        "featherconvert"
+      ]
+    },
+    "feather_deform": {
+      "nodes": [
+        "featherdeform"
+      ]
+    },
+    "feather_deintersect": {
+      "nodes": [
+        "featherdeintersect"
+      ]
+    },
+    "feather_min_dist": {
+      "nodes": [
+        "feathermindist"
+      ]
+    },
+    "feather_noise": {
+      "nodes": [
+        "feathernoise"
+      ]
+    },
+    "feather_normalize": {
+      "nodes": [
+        "feathernormalize"
+      ]
+    },
+    "feather_primitive": {
+      "nodes": [
+        "featherprimitive"
+      ]
+    },
+    "feather_ray": {
+      "nodes": [
+        "featherray"
+      ]
+    },
+    "feather_resample": {
+      "nodes": [
+        "featherresample"
+      ]
+    },
+    "feather_surface": {
+      "nodes": [
+        "feathersurface"
+      ]
+    },
+    "feather_surface_blend": {
+      "nodes": [
+        "feathersurfaceblend"
+      ]
+    },
+    "feather_template": {
+      "nodes": [
+        "file"
+      ]
+    },
+    "feather_template_assign": {
+      "nodes": [
+        "feathertemplateassign"
+      ]
+    },
+    "feather_template_interpolate": {
+      "nodes": [
+        "feathertemplateinterpolate"
+      ]
+    },
+    "feather_uncondense": {
+      "nodes": [
+        "featheruncondense"
+      ]
+    },
+    "feather_visualize": {
+      "nodes": [
+        "feathervisualize"
+      ]
+    },
+    "feather_width": {
+      "nodes": [
+        "featherwidth"
+      ]
+    },
+    "fiber_groom": {
+      "nodes": [
+        "fibergroom"
+      ]
+    },
+    "fur_setup": {
+      "nodes": [
+        "fur"
+      ]
+    },
+    "groom_blend": {
+      "nodes": [
+        "groomblend"
+      ]
+    },
+    "guide_advect": {
+      "nodes": [
+        "guideadvect"
+      ]
+    },
+    "guide_clump_center": {
+      "nodes": [
+        "guideclumpcenter"
+      ]
+    },
+    "guide_collide_vdb": {
+      "nodes": [
+        "guidecollidevdb"
+      ]
+    },
+    "guide_deform": {
+      "nodes": [
+        "guidedeform"
+      ]
+    },
+    "guide_fill": {
+      "nodes": [
+        "guidefill"
+      ]
+    },
+    "guide_find_strays": {
+      "nodes": [
+        "guidefindstrays"
+      ]
+    },
+    "guide_groom": {
+      "nodes": [
+        "guidegroom::2.0"
+      ]
+    },
+    "guide_group": {
+      "nodes": [
+        "guidegroup"
+      ]
+    },
+    "guide_grow_to_surface": {
+      "nodes": [
+        "guidegrowtosurface"
+      ]
+    },
+    "guide_initialize": {
+      "nodes": [
+        "guideinit"
+      ]
+    },
+    "guide_interpolation_mesh": {
+      "nodes": [
+        "guideinterpolationmesh"
+      ]
+    },
+    "guide_mask": {
+      "nodes": [
+        "guidemask"
+      ]
+    },
+    "guide_partition": {
+      "nodes": [
+        "guidepartition"
+      ]
+    },
+    "guide_process": {
+      "nodes": [
+        "guideprocess"
+      ]
+    },
+    "guide_reguide": {
+      "nodes": [
+        "reguide"
+      ]
+    },
+    "guide_skin_attrib_lookup": {
+      "nodes": [
+        "guideskinattriblookup"
+      ]
+    },
+    "guide_surface": {
+      "nodes": [
+        "guidesurface"
+      ]
+    },
+    "guide_tangent_space": {
+      "nodes": [
+        "guidetangentspace"
+      ]
+    },
+    "guide_transfer": {
+      "nodes": [
+        "guidetransfer"
+      ]
+    },
+    "guide_volume": {
+      "nodes": [
+        "guidevolume"
+      ]
+    },
+    "hair_card_generate": {
+      "nodes": [
+        "haircardgen"
+      ]
+    },
+    "hair_clump": {
+      "nodes": [
+        "hairclump::2.0"
+      ]
+    },
+    "hair_comb": {
+      "nodes": [
+        "comb"
+      ]
+    },
+    "hair_generate": {
+      "nodes": [
+        "hairgen::2.0"
+      ]
+    },
+    "hair_growth_field": {
+      "nodes": [
+        "hairgrowthfield"
+      ]
+    },
+    "hair_volume_rasterize": {
+      "nodes": [
+        "volumerasterizehair"
+      ]
+    },
+    "convert_vdb_points": {
+      "nodes": [
+        "convertvdbpoints"
+      ]
+    },
+    "extrude_volume": {
+      "nodes": [
+        "extrudevolume"
+      ]
+    },
+    "paint_fog_volume": {
+      "nodes": [
+        "paintfogvolume"
+      ]
+    },
+    "points_from_volume": {
+      "nodes": [
+        "pointsfromvolume"
+      ]
+    },
+    "vdb_activate_sdf": {
+      "nodes": [
+        "vdbactivatesdf"
+      ]
+    },
+    "vdb_create": {
+      "nodes": [
+        "vdb"
+      ]
+    },
+    "vdb_merge": {
+      "nodes": [
+        "vdbmerge"
+      ]
+    },
+    "vdb_occlusion_mask": {
+      "nodes": [
+        "vdbocclusionmask"
+      ]
+    },
+    "vdb_topology_to_sdf": {
+      "nodes": [
+        "vdbtopologytosdf"
+      ]
+    },
+    "volume_adjust_fog": {
+      "nodes": [
+        "volumeadjustfog"
+      ]
+    },
+    "volume_analysis": {
+      "nodes": [
+        "volumeanalysis"
+      ]
+    },
+    "volume_bound": {
+      "nodes": [
+        "volumebound"
+      ]
+    },
+    "volume_convert": {
+      "nodes": [
+        "convertvolume"
+      ]
+    },
+    "volume_create": {
+      "nodes": [
+        "volume"
+      ]
+    },
+    "volume_feather": {
+      "nodes": [
+        "volumefeather"
+      ]
+    },
+    "volume_from_attrib": {
+      "nodes": [
+        "volumefromattrib"
+      ]
+    },
+    "volume_merge": {
+      "nodes": [
+        "volumemerge"
+      ]
+    },
+    "volume_noise_fog": {
+      "nodes": [
+        "volumenoisefog"
+      ]
+    },
+    "volume_noise_sdf": {
+      "nodes": [
+        "volumenoisesdf"
+      ]
+    },
+    "volume_ramp": {
+      "nodes": [
+        "volumeramp"
+      ]
+    },
+    "volume_rasterize_curve": {
+      "nodes": [
+        "volumerasterizecurve"
+      ]
+    },
+    "volume_reduce": {
+      "nodes": [
+        "volumereduce"
+      ]
+    },
+    "volume_resample": {
+      "nodes": [
+        "volumeresample"
+      ]
+    },
+    "volume_resize": {
+      "nodes": [
+        "volumeresize"
+      ]
+    },
+    "volume_sdf": {
+      "nodes": [
+        "volumesdf"
+      ]
+    },
+    "volume_surface": {
+      "nodes": [
+        "volumesurface"
+      ]
+    },
+    "volume_vector_join": {
+      "nodes": [
+        "volumevectorjoin"
+      ]
+    },
+    "volume_vector_split": {
+      "nodes": [
+        "volumevectorsplit"
+      ]
+    },
+    "volume_velocity_from_curves": {
+      "nodes": [
+        "volumevelocityfromcurves"
+      ]
+    },
+    "volume_velocity_from_surface": {
+      "nodes": [
+        "volumevelocityfromsurface"
+      ]
+    },
+    "lattice_from_volume": {
+      "nodes": [
+        "latticefromvolume"
+      ]
+    },
+    "paint_color_volume": {
+      "nodes": [
+        "paintcolorvolume"
+      ]
+    },
+    "paint_sdf_volume": {
+      "nodes": [
+        "paintsdfvolume"
+      ]
+    },
+    "vdb_convex_clip_sdf": {
+      "nodes": [
+        "vdbconvexclipsdf"
+      ]
+    },
+    "vdb_diagnostics": {
+      "nodes": [
+        "vdbdiagnostics"
+      ]
+    },
+    "vdb_lod": {
+      "nodes": [
+        "vdblod"
+      ]
+    },
+    "vdb_points_delete": {
+      "nodes": [
+        "vdbpointsdelete"
+      ]
+    },
+    "vdb_points_group": {
+      "nodes": [
+        "vdbpointsgroup"
+      ]
+    },
+    "vdb_rasterize_frustum": {
+      "nodes": [
+        "vdbrasterizefrustum"
+      ]
+    },
+    "vdb_visualize_tree": {
+      "nodes": [
+        "vdbvisualizetree"
+      ]
+    },
+    "volume_ambient_occlusion": {
+      "nodes": [
+        "volumeambientocclusion"
+      ]
+    },
+    "volume_arrival_time": {
+      "nodes": [
+        "volumearrivaltime"
+      ]
+    },
+    "volume_bake": {
+      "nodes": [
+        "bakevolume"
+      ]
+    },
+    "volume_bin": {
+      "nodes": [
+        "volumebin"
+      ]
+    },
+    "volume_break": {
+      "nodes": [
+        "volumebreak"
+      ]
+    },
+    "volume_compress": {
+      "nodes": [
+        "volumecompress"
+      ]
+    },
+    "volume_convolve": {
+      "nodes": [
+        "volumeconvolve3"
+      ]
+    },
+    "volume_deform": {
+      "nodes": [
+        "volumedeform"
+      ]
+    },
+    "volume_fft": {
+      "nodes": [
+        "volumefft"
+      ]
+    },
+    "volume_noise_vector": {
+      "nodes": [
+        "volumenoisevector"
+      ]
+    },
+    "volume_normalize": {
+      "nodes": [
+        "volumenormalize"
+      ]
+    },
+    "volume_optical_flow": {
+      "nodes": [
+        "volumeopticalflow"
+      ]
+    },
+    "volume_patch": {
+      "nodes": [
+        "volumepatch"
+      ]
+    },
+    "volume_rasterize_lattice": {
+      "nodes": [
+        "volumerasterizelattice"
+      ]
+    },
+    "volume_splice": {
+      "nodes": [
+        "volumesplice"
+      ]
+    },
+    "volume_stamp": {
+      "nodes": [
+        "volumestamp"
+      ]
+    },
+    "volume_trail": {
+      "nodes": [
+        "volumetrail"
+      ]
+    },
+    "chop_area": {
+      "nodes": [
+        "area"
+      ]
+    },
+    "chop_attribute": {
+      "nodes": [
+        "attribute"
+      ]
+    },
+    "chop_blend": {
+      "nodes": [
+        "blend"
+      ]
+    },
+    "chop_channel": {
+      "nodes": [
+        "channel"
+      ]
+    },
+    "chop_composite": {
+      "nodes": [
+        "comp"
+      ]
+    },
+    "chop_constant": {
+      "nodes": [
+        "constant"
+      ]
+    },
+    "chop_copy": {
+      "nodes": [
+        "copy"
+      ]
+    },
+    "chop_count": {
+      "nodes": [
+        "count"
+      ]
+    },
+    "chop_cycle": {
+      "nodes": [
+        "cycle"
+      ]
+    },
+    "chop_delay": {
+      "nodes": [
+        "delay"
+      ]
+    },
+    "chop_delete": {
+      "nodes": [
+        "delete"
+      ]
+    },
+    "chop_envelope": {
+      "nodes": [
+        "envelope"
+      ]
+    },
+    "chop_extend": {
+      "nodes": [
+        "extend"
+      ]
+    },
+    "chop_fan": {
+      "nodes": [
+        "fan"
+      ]
+    },
+    "chop_filter": {
+      "nodes": [
+        "filter"
+      ]
+    },
+    "chop_function": {
+      "nodes": [
+        "function"
+      ]
+    },
+    "chop_hold": {
+      "nodes": [
+        "hold"
+      ]
+    },
+    "chop_interp": {
+      "nodes": [
+        "interp"
+      ]
+    },
+    "chop_invert": {
+      "nodes": [
+        "invert"
+      ]
+    },
+    "chop_lag": {
+      "nodes": [
+        "lag"
+      ]
+    },
+    "chop_layer": {
+      "nodes": [
+        "layer"
+      ]
+    },
+    "chop_limit": {
+      "nodes": [
+        "limit"
+      ]
+    },
+    "chop_lookup": {
+      "nodes": [
+        "lookup"
+      ]
+    },
+    "chop_math": {
+      "nodes": [
+        "math"
+      ]
+    },
+    "chop_merge": {
+      "nodes": [
+        "merge"
+      ]
+    },
+    "chop_multiply": {
+      "nodes": [
+        "multiply"
+      ]
+    },
+    "chop_noise": {
+      "nodes": [
+        "noise"
+      ]
+    },
+    "chop_null": {
+      "nodes": [
+        "null"
+      ]
+    },
+    "chop_oscillator": {
+      "nodes": [
+        "oscillator"
+      ]
+    },
+    "chop_pulse": {
+      "nodes": [
+        "pulse"
+      ]
+    },
+    "chop_rename": {
+      "nodes": [
+        "rename"
+      ]
+    },
+    "chop_reorder": {
+      "nodes": [
+        "reorder"
+      ]
+    },
+    "chop_resample": {
+      "nodes": [
+        "resample"
+      ]
+    },
+    "chop_shift": {
+      "nodes": [
+        "shift"
+      ]
+    },
+    "chop_shuffle": {
+      "nodes": [
+        "shuffle"
+      ]
+    },
+    "chop_slope": {
+      "nodes": [
+        "slope"
+      ]
+    },
+    "chop_spectrum": {
+      "nodes": [
+        "spectrum"
+      ]
+    },
+    "chop_spline": {
+      "nodes": [
+        "spline"
+      ]
+    },
+    "chop_stretch": {
+      "nodes": [
+        "stretch"
+      ]
+    },
+    "chop_switch": {
+      "nodes": [
+        "switch"
+      ]
+    },
+    "chop_trigger": {
+      "nodes": [
+        "trigger"
+      ]
+    },
+    "chop_trim": {
+      "nodes": [
+        "trim"
+      ]
+    },
+    "chop_vector": {
+      "nodes": [
+        "vector"
+      ]
+    },
+    "chop_warp": {
+      "nodes": [
+        "warp"
+      ]
+    },
+    "chop_wave": {
+      "nodes": [
+        "wave"
+      ]
+    },
+    "chop_waveform": {
+      "nodes": [
+        "waveform"
+      ]
+    },
+    "usd_collection": {
+      "nodes": [
+        "collection::2.0"
+      ]
+    },
+    "usd_component_geometry": {
+      "nodes": [
+        "componentgeometry"
+      ]
+    },
+    "usd_component_geometry_variants": {
+      "nodes": [
+        "componentgeometryvariants"
+      ]
+    },
+    "usd_component_material": {
+      "nodes": [
+        "componentmaterial"
+      ]
+    },
+    "usd_coordsys": {
+      "nodes": [
+        "coordsys"
+      ]
+    },
+    "usd_create_xform": {
+      "nodes": [
+        "createxform"
+      ]
+    },
+    "usd_duplicate": {
+      "nodes": [
+        "duplicate"
+      ]
+    },
+    "usd_extract_instances": {
+      "nodes": [
+        "extractinstances"
+      ]
+    },
+    "usd_graft_branches": {
+      "nodes": [
+        "graftbranches"
+      ]
+    },
+    "usd_graft_stages": {
+      "nodes": [
+        "graftstages"
+      ]
+    },
+    "usd_instancer": {
+      "nodes": [
+        "instancer"
+      ]
+    },
+    "usd_isolate_scene": {
+      "nodes": [
+        "isolatescene"
+      ]
+    },
+    "usd_layout": {
+      "nodes": [
+        "layout"
+      ]
+    },
+    "usd_merge_point_instancers": {
+      "nodes": [
+        "mergepointinstancers"
+      ]
+    },
+    "usd_modify_point_instances": {
+      "nodes": [
+        "modifypointinstances"
+      ]
+    },
+    "usd_point_xform": {
+      "nodes": [
+        "pointxform"
+      ]
+    },
+    "usd_prim_basiscurves": {
+      "nodes": [
+        "basiscurves"
+      ]
+    },
+    "usd_prim_capsule": {
+      "nodes": [
+        "capsule::2.0"
+      ]
+    },
+    "usd_prim_cone": {
+      "nodes": [
+        "cone"
+      ]
+    },
+    "usd_prim_cube": {
+      "nodes": [
+        "cube"
+      ]
+    },
+    "usd_prim_cylinder": {
+      "nodes": [
+        "cylinder::2.0"
+      ]
+    },
+    "usd_prim_hermitecurves": {
+      "nodes": [
+        "hermitecurves"
+      ]
+    },
+    "usd_prim_mesh": {
+      "nodes": [
+        "mesh"
+      ]
+    },
+    "usd_prim_points": {
+      "nodes": [
+        "points"
+      ]
+    },
+    "usd_prim_primitive": {
+      "nodes": [
+        "primitive"
+      ]
+    },
+    "usd_prim_sphere": {
+      "nodes": [
+        "sphere"
+      ]
+    },
+    "usd_prune": {
+      "nodes": [
+        "prune"
+      ]
+    },
+    "usd_resample_transforms": {
+      "nodes": [
+        "resampletransforms"
+      ]
+    },
+    "usd_restructure_scenegraph": {
+      "nodes": [
+        "restructurescenegraph"
+      ]
+    },
+    "usd_retime_instances": {
+      "nodes": [
+        "retimeinstances"
+      ]
+    },
+    "usd_scene_import": {
+      "nodes": [
+        "sceneimport::2.0"
+      ]
+    },
+    "usd_scope": {
+      "nodes": [
+        "scope"
+      ]
+    },
+    "usd_split_point_instancers": {
+      "nodes": [
+        "splitpointinstancers"
+      ]
+    },
+    "usd_split_primitive": {
+      "nodes": [
+        "splitprimitive"
+      ]
+    },
+    "usd_split_scene": {
+      "nodes": [
+        "splitscene"
+      ]
+    },
+    "usd_transform_uv": {
+      "nodes": [
+        "transformuv"
+      ]
+    },
+    "usd_xform": {
+      "nodes": [
+        "xform"
+      ]
+    },
+    "usd_add_variant": {
+      "nodes": [
+        "addvariant"
+      ]
+    },
+    "usd_auto_select_lod": {
+      "nodes": [
+        "autoselectlod"
+      ]
+    },
+    "usd_configure_property": {
+      "nodes": [
+        "configureproperty"
+      ]
+    },
+    "usd_configure_stage": {
+      "nodes": [
+        "configurestage"
+      ]
+    },
+    "usd_copy_property": {
+      "nodes": [
+        "copyproperty"
+      ]
+    },
+    "usd_create_lod": {
+      "nodes": [
+        "createlod"
+      ]
+    },
+    "usd_draw_mode": {
+      "nodes": [
+        "drawmode"
+      ]
+    },
+    "usd_edit_material": {
+      "nodes": [
+        "editmaterial"
+      ]
+    },
+    "usd_edit_material_properties": {
+      "nodes": [
+        "editmaterialproperties"
+      ]
+    },
+    "usd_edit_properties": {
+      "nodes": [
+        "editproperties"
+      ]
+    },
+    "usd_edit_xform": {
+      "nodes": [
+        "edit"
+      ]
+    },
+    "usd_explore_variants": {
+      "nodes": [
+        "explorevariants::2.0"
+      ]
+    },
+    "usd_layer_break": {
+      "nodes": [
+        "layerbreak"
+      ]
+    },
+    "usd_light_distant": {
+      "nodes": [
+        "distantlight::2.0"
+      ]
+    },
+    "usd_light_filter_library": {
+      "nodes": [
+        "lightfilterlibrary"
+      ]
+    },
+    "usd_light_geometry": {
+      "nodes": [
+        "geometrylight"
+      ]
+    },
+    "usd_light_mixer": {
+      "nodes": [
+        "lightmixer"
+      ]
+    },
+    "usd_light_portal": {
+      "nodes": [
+        "portallight"
+      ]
+    },
+    "usd_material_variation": {
+      "nodes": [
+        "materialvariation"
+      ]
+    },
+    "usd_set_extents": {
+      "nodes": [
+        "setextents"
+      ]
+    },
+    "usd_set_variant": {
+      "nodes": [
+        "setvariant"
+      ]
+    },
+    "usd_shadow_catcher": {
+      "nodes": [
+        "shadowcatcher"
+      ]
+    },
+    "usd_shot_split": {
+      "nodes": [
+        "shotsplit"
+      ]
+    },
+    "usd_shot_switch": {
+      "nodes": [
+        "shotswitch"
+      ]
+    },
+    "usd_store_parameter_values": {
+      "nodes": [
+        "storeparametervalues"
+      ]
+    },
+    "usd_unassign_material": {
+      "nodes": [
+        "unassignmaterial"
+      ]
+    },
+    "usd_vary_material_assignment": {
+      "nodes": [
+        "varymaterialassignment"
+      ]
+    },
+    "attrib_adjust_array": {
+      "nodes": [
+        "attribadjustarray"
+      ]
+    },
+    "attrib_adjust_color": {
+      "nodes": [
+        "attribadjustcolor"
+      ]
+    },
+    "attrib_adjust_dict": {
+      "nodes": [
+        "attribadjustdict"
+      ]
+    },
+    "attrib_adjust_float": {
+      "nodes": [
+        "attribadjustfloat"
+      ]
+    },
+    "attrib_adjust_integer": {
+      "nodes": [
+        "attribadjustinteger"
+      ]
+    },
+    "attrib_adjust_vector": {
+      "nodes": [
+        "attribadjustvector"
+      ]
+    },
+    "attrib_combine": {
+      "nodes": [
+        "attribcombine"
+      ]
+    },
+    "attrib_fade": {
+      "nodes": [
+        "attribfade"
+      ]
+    },
+    "attrib_fill": {
+      "nodes": [
+        "attribfill"
+      ]
+    },
+    "attrib_find": {
+      "nodes": [
+        "attribfind"
+      ]
+    },
+    "attrib_from_map": {
+      "nodes": [
+        "attribfrommap"
+      ]
+    },
+    "attrib_from_parm": {
+      "nodes": [
+        "attribfromparm"
+      ]
+    },
+    "attrib_from_pieces": {
+      "nodes": [
+        "attribfrompieces"
+      ]
+    },
+    "attrib_mirror": {
+      "nodes": [
+        "attribmirror"
+      ]
+    },
+    "attrib_paint": {
+      "nodes": [
+        "attribpaint"
+      ]
+    },
+    "attrib_remap": {
+      "nodes": [
+        "attribremap"
+      ]
+    },
+    "attrib_sort": {
+      "nodes": [
+        "attribsort"
+      ]
+    },
+    "attrib_string_edit": {
+      "nodes": [
+        "attribstringedit"
+      ]
+    },
+    "bulge": {
+      "nodes": [
+        "bulge"
+      ]
+    },
+    "cap": {
+      "nodes": [
+        "cap"
+      ]
+    },
+    "circle_from_edges": {
+      "nodes": [
+        "circlefromedges"
+      ]
+    },
+    "circle_spline": {
+      "nodes": [
+        "circlespline"
+      ]
+    },
+    "convert_line": {
+      "nodes": [
+        "convertline"
+      ]
+    },
+    "creep": {
+      "nodes": [
+        "creep"
+      ]
+    },
+    "delta_mush": {
+      "nodes": [
+        "deltamush"
+      ]
+    },
+    "detangle": {
+      "nodes": [
+        "detangle"
+      ]
+    },
+    "elastic_transform": {
+      "nodes": [
+        "elastictransform"
+      ]
+    },
+    "fillet": {
+      "nodes": [
+        "fillet"
+      ]
+    },
+    "join": {
+      "nodes": [
+        "join"
+      ]
+    },
+    "laplacian": {
+      "nodes": [
+        "laplacian"
+      ]
+    },
+    "magnet": {
+      "nodes": [
+        "magnet"
+      ]
+    },
+    "orient_along_curve": {
+      "nodes": [
+        "orientalongcurve"
+      ]
+    },
+    "poly_cap": {
+      "nodes": [
+        "polycap"
+      ]
+    },
+    "poly_cut": {
+      "nodes": [
+        "polycut"
+      ]
+    },
+    "poly_hinge": {
+      "nodes": [
+        "polyhinge"
+      ]
+    },
+    "poly_loft": {
+      "nodes": [
+        "polyloft"
+      ]
+    },
+    "poly_patch": {
+      "nodes": [
+        "polypatch"
+      ]
+    },
+    "poly_path": {
+      "nodes": [
+        "polypath"
+      ]
+    },
+    "poly_soup": {
+      "nodes": [
+        "polysoup"
+      ]
+    },
+    "poly_spline": {
+      "nodes": [
+        "polyspline"
+      ]
+    },
+    "poly_stitch": {
+      "nodes": [
+        "polystitch"
+      ]
+    },
+    "shrinkwrap": {
+      "nodes": [
+        "shrinkwrap"
+      ]
+    },
+    "soft_peak": {
+      "nodes": [
+        "softpeak"
+      ]
+    },
+    "soft_transform": {
+      "nodes": [
+        "softxform"
+      ]
+    },
+    "stitch": {
+      "nodes": [
+        "stitch"
+      ]
+    },
+    "surface_relax": {
+      "nodes": [
+        "surfacerelax"
+      ]
+    },
+    "vector_deform": {
+      "nodes": [
+        "vectordeform"
+      ]
+    },
+    "ragdoll_solver": {
+      "nodes": [
+        "kinefx::ragdollsolver::2.0"
+      ]
+    },
+    "muscle_solver": {
+      "nodes": [
+        "musclesolver"
+      ]
+    },
+    "muscle_solver_fem": {
+      "nodes": [
+        "musclesolverfem"
+      ]
+    },
+    "muscle_solver_vellum": {
+      "nodes": [
+        "musclesolvervellum"
+      ]
+    },
+    "tissue_solver": {
+      "nodes": [
+        "tissuesolver"
+      ]
+    },
+    "tissue_solver_vellum": {
+      "nodes": [
+        "tissuesolvervellum"
+      ]
+    },
+    "skin_solver_vellum": {
+      "nodes": [
+        "skinsolvervellum"
+      ]
+    },
+    "armature_deform": {
+      "nodes": [
+        "armaturedeform"
+      ]
+    },
+    "fem_solver": {
+      "nodes": [
+        "femsolidobject",
+        "femsolver"
+      ]
+    },
+    "solid_object_solver": {
+      "nodes": [
+        "solidobject",
+        "femsolver"
+      ]
+    },
+    "filament_solver": {
+      "nodes": [
+        "filamentobject",
+        "filamentsolver"
+      ]
+    },
+    "crowd_solver": {
+      "nodes": [
+        "crowdobject",
+        "crowdsolver::3.0"
+      ]
+    },
+    "solid_embed": {
+      "nodes": [
+        "solidembed"
+      ]
+    },
+    "tet_conform": {
+      "nodes": [
+        "tetconform"
+      ]
+    },
+    "tet_embed": {
+      "nodes": [
+        "tetembed"
+      ]
+    },
+    "tet_fracture": {
+      "nodes": [
+        "tetfracture"
+      ]
+    },
+    "tet_layer": {
+      "nodes": [
+        "tetlayer"
+      ]
+    },
+    "tet_partition": {
+      "nodes": [
+        "tetpartition"
+      ]
+    },
+    "tet_strata": {
+      "nodes": [
+        "tetstrata"
+      ]
+    },
+    "tet_surface": {
+      "nodes": [
+        "tetrasurface"
+      ]
+    },
+    "tetrahedralize": {
+      "nodes": [
+        "tetrahedralize"
+      ]
+    },
+    "topo_slide": {
+      "nodes": [
+        "toposlidebycurverefs"
+      ]
+    },
+    "topo_transfer": {
+      "nodes": [
+        "topotransfer"
+      ]
+    },
+    "unpack_usd": {
+      "nodes": [
+        "unpackusd"
+      ]
+    },
+    "usd_configure_geometry": {
+      "nodes": [
+        "usdconfiguregeometry"
+      ]
+    },
+    "usd_configure_prims_from_points": {
+      "nodes": [
+        "usdconfigureprimsfrompoints"
+      ]
+    },
+    "usd_configure_sop": {
+      "nodes": [
+        "usdconfigure"
+      ]
+    },
+    "usd_export_sop": {
+      "nodes": [
+        "usdexport"
+      ]
+    },
+    "usd_import_sop": {
+      "nodes": [
+        "usdimport"
+      ]
+    },
+    "chop_blendpose": {
+      "nodes": [
+        "blendpose"
+      ]
+    },
+    "chop_export_transforms": {
+      "nodes": [
+        "exporttransforms"
+      ]
+    },
+    "chop_extract_bone_transforms": {
+      "nodes": [
+        "extractbonetransforms"
+      ]
+    },
+    "chop_extract_pose_drivers": {
+      "nodes": [
+        "extractposedrivers"
+      ]
+    },
+    "chop_footplant": {
+      "nodes": [
+        "footplant"
+      ]
+    },
+    "chop_iksolver": {
+      "nodes": [
+        "iksolver"
+      ]
+    },
+    "chop_inversekin": {
+      "nodes": [
+        "inversekin"
+      ]
+    },
+    "chop_stashpose": {
+      "nodes": [
+        "stashpose"
+      ]
+    },
+    "chop_transform_chain": {
+      "nodes": [
+        "transformchain"
+      ]
+    },
+    "shot_layer_edit": {
+      "nodes": [
+        "shotlayeredit"
+      ]
+    },
+    "shot_load": {
+      "nodes": [
+        "shotload"
+      ]
+    },
+    "shot_output": {
+      "nodes": [
+        "shotoutput"
+      ]
+    },
+    "usd_blend_constraint": {
+      "nodes": [
+        "blendconstraint"
+      ]
+    },
+    "usd_followpath_constraint": {
+      "nodes": [
+        "followpathconstraint"
+      ]
+    },
+    "usd_geo_clip_sequence": {
+      "nodes": [
+        "geoclipsequence"
+      ]
+    },
+    "usd_geometry_sequence": {
+      "nodes": [
+        "geometrysequence"
+      ]
+    },
+    "usd_lookat_constraint": {
+      "nodes": [
+        "lookatconstraint"
+      ]
+    },
+    "usd_parent_constraint": {
+      "nodes": [
+        "parentconstraint"
+      ]
+    },
+    "usd_points_constraint": {
+      "nodes": [
+        "pointsconstraint"
+      ]
+    },
+    "usd_stitch": {
+      "nodes": [
+        "usdstitch"
+      ]
+    },
+    "usd_stitch_clips": {
+      "nodes": [
+        "usdstitchclips"
+      ]
+    },
+    "usd_surface_constraint": {
+      "nodes": [
+        "surfaceconstraint"
+      ]
+    },
+    "usd_value_clip": {
+      "nodes": [
+        "valueclip"
+      ]
+    },
+    "usd_zip": {
+      "nodes": [
+        "usdzip"
+      ]
+    },
+    "rivet": {
+      "nodes": [
+        "rivet"
+      ]
+    },
+    "sticky": {
+      "nodes": [
+        "sticky"
+      ]
+    },
+    "blend_sticky": {
+      "nodes": [
+        "blendsticky"
+      ]
+    },
+    "three_point_light": {
+      "nodes": [
+        "three_point_light"
+      ]
+    },
+    "indirect_light": {
+      "nodes": [
+        "indirectlight"
+      ]
+    },
+    "ambient_light": {
+      "nodes": [
+        "ambient"
+      ]
+    },
+    "environment_fog": {
+      "nodes": [
+        "fog"
+      ]
+    },
+    "reference_image": {
+      "nodes": [
+        "refimage"
+      ]
+    },
+    "stereo_camera": {
+      "nodes": [
+        "stereocam"
+      ]
+    },
+    "stereo_camera_rig": {
+      "nodes": [
+        "stereocamrig"
+      ]
+    },
+    "vr_camera": {
+      "nodes": [
+        "vrcam"
+      ]
+    },
+    "ml_attrib_generate": { "nodes": ["ml_attribgenerate"] },
+    "ml_deform": { "nodes": ["ml_deform"] },
+    "ml_example": { "nodes": ["ml_example"] },
+    "ml_example_partition": { "nodes": ["ml_examplepartition"] },
+    "ml_extract_example": { "nodes": ["ml_extractexample"] },
+    "ml_pose_generate": { "nodes": ["ml_posegenerate"] },
+    "ml_pose_serialize": { "nodes": ["ml_poseserialize"] }
+  }
+}

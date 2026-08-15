@@ -1,0 +1,28 @@
+name: Release
+
+# Builds the compiled gateway and attaches it to the GitHub Release as a binary
+# artifact (the binary is never committed to the tree — target/ is gitignored).
+# When ProRender is packaged, add its binary to the `files:` list below.
+
+on:
+  release:
+    types: [created]
+
+permissions:
+  contents: write   # required to upload release assets
+
+jobs:
+  build:
+    name: build + attach gateway binary
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: cargo build --release
+        working-directory: gateway
+        run: cargo build --release
+      - name: attach binary to the release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            gateway/target/release/houdini-bridge-mcp.exe

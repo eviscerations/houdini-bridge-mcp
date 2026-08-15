@@ -1,0 +1,4 @@
+{
+    "comment" : "houdini-bridge-mcp startup package. Adds the sibling 'houdini-bridge-mcp' plugin folder to HOUDINI_PATH so its scripts/456.py runs at GUI startup and auto-arms the in-Houdini executor from ~/.houdini-bridge-mcp/arm.json. Location-independent: $HOUDINI_PACKAGE_PATH resolves to the directory containing THIS package file, so no absolute paths or usernames are baked in.",
+    "hpath" : "$HOUDINI_PACKAGE_PATH/../houdini-bridge-mcp"
+}
