@@ -146,9 +146,14 @@ lit scene, and render. Pixels come off the **Northstar (HIP)** path on gfx1030+ 
   **docs** — it modifies Apache-2.0 files (supplied as patches, applied to a fresh upstream checkout;
   upstream copyright/license headers retained). See [`NOTICE.md`](NOTICE.md) and the bundled
   [`LICENSE.RadeonProRenderUSD.txt`](LICENSE.RadeonProRenderUSD.txt).
-- This folder ships **no AMD binaries** — no RPR cores (`RadeonProRender64`, `Northstar64`,
-  `Hybrid`/`HybridPro`), image filters, ML libs, or device kernels. You obtain those **directly from AMD**
-  (the RadeonProRenderUSD Releases page / RPR SDK); they are covered by **AMD's own license terms**, not by
-  this repository.
+- **The Git repo ships no binaries** — only port patches, package JSONs, and docs; build-from-source
+  users fetch AMD's SDK/cores themselves. **The prebuilt release, however, bundles the full built stack**
+  for a complete drop-in — the `hdRpr` delegate *and* AMD's render cores (`RadeonProRender64`,
+  `Northstar64`, `Tahoe64`, `Hybrid`/`HybridPro`, `RprLoadStore64`), Radeon Image Filters, Radeon ML, and
+  the precompiled device kernels. **All of it is Apache-2.0** — AMD's
+  [`RadeonProRenderSDK`](https://github.com/GPUOpen-LibrariesAndSDKs/RadeonProRenderSDK), `RadeonML`, and
+  `RadeonImageFilter` are each Apache-2.0 (the bundled MIOpen is MIT, the DXC runtime NCSA) — so it is
+  redistributed under those permissive terms with full attribution. See the release bundle's own
+  `THIRD-PARTY-LICENSES.md`. No bundled component carries a proprietary EULA or a no-redistribution restriction.
 - **Trademarks:** "AMD", "Radeon", and "Radeon ProRender" are trademarks of Advanced Micro Devices, Inc.,
   used here only to identify the integrated software. This project is not affiliated with or endorsed by AMD.
