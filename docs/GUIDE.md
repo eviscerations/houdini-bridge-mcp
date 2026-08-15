@@ -216,4 +216,3 @@ graph; you render in Houdini) → `snapshot` / `capture_ui` to review.
 ProRender's `hdRpr` delegate built natively for Houdini 21 — "RPR" then shows up as a GPU Hydra renderer in
 Solaris (`husk --renderer HdRprPlugin`, or the Scene Viewer renderer menu). It's independent of the core
 toolset and needs no code here.
-</content>
