@@ -221,9 +221,18 @@ def gen_readme_tables(data: dict) -> str:
 def first_sentence(s: str) -> str:
     s = s.strip()
     # Split on the first sentence-ending period followed by a space + capital, or end.
+    depth = 0
     for i in range(len(s) - 1):
-        if s[i] == "." and (i + 1 >= len(s) or s[i + 1] == " "):
-            # avoid splitting on decimals / abbreviations like "e.g."
+        c = s[i]
+        if c == "(":
+            depth += 1
+            continue
+        if c == ")":
+            depth = max(0, depth - 1)
+            continue
+        if depth == 0 and c == "." and (i + 1 >= len(s) or s[i + 1] == " "):
+            # Never split inside a parenthetical (e.g. an "(e.g. ...)" / "(0 uniform, ...)"
+            # clause), nor on decimals / abbreviations where the next word is lowercase.
             if i + 2 < len(s) and s[i + 2].islower():
                 continue
             return s[: i + 1]

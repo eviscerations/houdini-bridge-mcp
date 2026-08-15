@@ -314,7 +314,7 @@ curl.exe http://127.0.0.1:8765/health -H "X-HMCP-Token: <your-token>"
 
 | ツール | 機能 | 主なパラメータ |
 |---|---|---|
-| `remesh` | 均一三角形化リメッシュ（Remesh 2.0） — 三角形化された／スキャンした面を、スムージング、シミュレーション、クリーンな変形のために、形の整った均一なサイズの三角形へ再構築します。targetsizeはワールド単位のターゲットエッジ長（小さいほど密なメッシュ、高ポリゴン数）、sizing=uniformはどこでも一様なサイズ、sizing=adaptiveは曲率に応じて小さな三角形を集中させます（density＝適応ターゲット密度の乗数）。gradationはuniform⇔adaptiveのブレンドをバイアスします（0でuniform.. | `input` (+13 optional) |
+| `remesh` | 均一三角形化リメッシュ（Remesh 2.0） — 三角形化された／スキャンした面を、スムージング、シミュレーション、クリーンな変形のために、形の整った均一なサイズの三角形へ再構築します。targetsizeはワールド単位のターゲットエッジ長（小さいほど密なメッシュ、高ポリゴン数）、sizing=uniformはどこでも一様なサイズ、sizing=adaptiveは曲率に応じて小さな三角形を集中させます（density＝適応ターゲット密度の乗数）。gradationはuniform⇔adaptiveのブレンドをバイアスします（0でuniform..1で完全に曲率適応）。iterations＝スムージング／最適化のパス数、smoothing＝パスごとの点の緩和強度。min_edge/max_edgeは生成されるエッジ長をクランプします。 | `input` (+13 optional) |
 | `polyreduce` | デシメート（PolyReduce 2.0） — シルエットとフィーチャーを保ちつつ、LOD／リアルタイム納品のためにメッシュをポリゴン数の一部へ削減します。targetは削減の対象を選び：poly_percent / pt_percent（パーセンテージ、デフォルト、percentage経由）または poly_count / pt_count（絶対的なfinalcount — LODの主力）。qualitytoleranceは品質を速度と引き換えにします。 | `input` (+11 optional) |
 | `boolean` | AをBに対してブーリアン（メッシュCSG）します（boolean::2.0） — ソリッドを切断／結合します。 | `input` (+7 optional) |
 | `sweep` | 断面をバックボーンカーブに沿ってスイープしてサーフェスを作ります — カーブ→ジオメトリの要：パイプ、ケーブル、ロープ、レール、道路／川のリボン、建築トリム。shape=tube\|square\|ribbonは組み込みプロファイルを使い（tube: radius、square/ribbon: width、colsが密度を設定）、shape=inputは自分のcross_section SOP（入力1）をスイープします。 | `input` (+15 optional) |
@@ -333,7 +333,7 @@ curl.exe http://127.0.0.1:8765/health -H "X-HMCP-Token: <your-token>"
 | `copy_transform` | コピー＆トランスフォーム（copyxform）：入力のN個のコピーを、それぞれ累積的な増分トランスフォームで作ります（コピーiにはi倍のtranslate/rotate/scaleが適用されます）。 | `input` (+14 optional) |
 | `helix` | ヘリックス／コイルカーブ（spiral SOP）を持つ新規の/obj geoを作成します — スプリング／コイル／ねじの生成器（エジェクターロッドのスプリング、ボルトのねじ山、DNA鎖、螺旋ガイド）。turns＝回転数、height＝軸方向の上昇（0＝平坦な螺旋）、start/end_radiusはコイルをテーパーさせます。 | `name` (+8 optional) |
 | `polywire` | カーブ／ワイヤーをソリッドなチューブジオメトリへ面貼りします（polywire） — スプリング、ケーブル、パイプ、ロープ、ワイヤーフレームレンダー、ニューロン、枝。divisions＝断面の辺数（最小3）、segments＝スパンに沿った分割、joint_correctはワイヤーが交わる箇所での座屈を防ぎます。 | `input` (+9 optional) |
-| `convex_decompose` | 近似的な凸分解（convexdecomposition） — 凹メッシュを凸包の集まりへ分解します。安価なRBD／物理コリジョンプロキシを作る標準的な方法です（凸包は凹メッシュよりコリジョンがはるかに安価で、ほとんどのソルバーは凸コライダーを好みます）。max_concavity（0..1）はフィットと数のトレードオフ：低いほどタイト＋ハル数が多く、高いほど少数／緩くなります。output=hulls（凸ピース、デフォルト）\| segments（元の面を分割＋タグ付け）。per_pieceは各`piece_attrib`のアイランドを分解します（例： | `input` (+10 optional) |
+| `convex_decompose` | 近似的な凸分解（convexdecomposition） — 凹メッシュを凸包の集まりへ分解します。安価なRBD／物理コリジョンプロキシを作る標準的な方法です（凸包は凹メッシュよりコリジョンがはるかに安価で、ほとんどのソルバーは凸コライダーを好みます）。max_concavity（0..1）はフィットと数のトレードオフ：低いほどタイト＋ハル数が多く、高いほど少数／緩くなります。output=hulls（凸ピース、デフォルト）\| segments（元の面を分割＋タグ付け）。per_pieceは各`piece_attrib`のアイランド（例：`name`）を独立して分解します — フラクチャー後の定番です。 | `input` (+10 optional) |
 | `set_color` | 一定の色を割り当てます。 | `input` (+3 optional) |
 | `uv` | modeによるUV：project（uvproject）、unwrap（uvunwrap自動）、layout（uvlayout::3.0のアトラスパッキング）、transform（uvtransform）、またはflatten（uvflatten::3.0のシーム駆動）。 | `input` (+17 optional) |
 | `uv_transfer` | ソースメッシュから入力ジオメトリへUVセットを転写します — トポロジー変更（remesh/quad_remesh/polyreduce）で破壊されたUVを復元します。 | `input`, `source` (+5 optional) |
@@ -474,7 +474,7 @@ curl.exe http://127.0.0.1:8765/health -H "X-HMCP-Token: <your-token>"
 | `timeshift` | 上流のジオメトリをリタイムします — 入力SOPを、プレイバーが別のフレーム／時刻にあるかのように評価します（timeshift SOP）。method=byframeは`frame`を読み（integer_framesのスナップ付き）、method=bytimeは`time`を秒で読みます。clampは範囲外で最初／最後のフレームにサンプルを保持します。 | `input` (+6 optional) |
 | `polyframe` | エレメントごとの向きフレーム — タンジェント（tangentu）、法線（N）、従法線（tangentv）アトリビュート — をカーブまたはサーフェス上に構築します（polyframe SOP）。 | `input` (+13 optional) |
 | `fuse` | 一致する点を溶接／スナップします（Fuse 2.0） — heightfield_tilesplit、boolean、スキャンタイルのマージの後のシームクリーンアップの主力です。distanceは3Dのスナップ許容値（ワールド単位）：その範囲内の点は1つに統合され、タイル間の亀裂を閉じます。snap_typeはdistancesnap（近接、デフォルト）、gridsnap（グリッドへスナップ）、またはspecified（ターゲットアトリビュート経由でスナップ）を選びます。delete_degenerateは点のマージで潰れる面積／長さゼロのプリムを落とし、delete_unusedは孤立した点を除去し、consolidateはスナップされた点を単一の点へマージします（デフォルトで有効）。 | `input` (+6 optional) |
-| `normals` | Normal SOP経由で法線を再計算（または反転）します。mode＝N アトリビュートがどのクラスに書き込まれるか：point（スムーズシェーディング、デフォルト）、vertex（面コーナーごと、ハード／ソフトエッジ）、prim（面ごとにフラット）またはdetail。cusp_angle（度）は角度より鋭いエッジでスムーズ対ファセットのシェーディングを分けます。reverseは法線の向きを反転し（裏返しのスキャン／ブーリアン面を修正）、normalizeは単位長を強制し、weightingは隣接面の法線をどう平均するかを選びます（0で面積による.. | `input` (+6 optional) |
+| `normals` | Normal SOP経由で法線を再計算（または反転）します。mode＝N アトリビュートがどのクラスに書き込まれるか：point（スムーズシェーディング、デフォルト）、vertex（面コーナーごと、ハード／ソフトエッジ）、prim（面ごとにフラット）またはdetail。cusp_angle（度）は角度より鋭いエッジでスムーズ対ファセットのシェーディングを分けます。reverseは法線の向きを反転し（裏返しのスキャン／ブーリアン面を修正）、normalizeは単位長を強制し、weightingは隣接面の法線をどう平均するかを選びます（0で面積による..2）。 | `input` (+6 optional) |
 | `facet_smooth_subdiv` | opで多重化される3つのサーフェスオペレーター。facet（Facet SOP）：再ファセット／統合 — cusp_angleはエッジをシャープにし、unique_pointsは共有点を分割し（ハードなファセットの見た目）、make_planarは各面を平坦化します。smooth（Smooth SOP）：ポリゴンを追加せずに点の位置を緩和 — strengthはスムージング量（0..50）、methodはuniform\|scaledominant\|curvaturedominant、filter_qualityはパス数を上げます（1..5）。subdivide（Subdivide SOP）：ポリゴンを追加 — iterationsは細分化レベル（各レベルでポリゴン数が約4倍、なので3で既に64倍。ノードは3でソフトキャップ）、algorithmはスキームを選び（osdcc＝OpenSubdiv Catmull-Clark、スムーズサーフェスの標準）、close_holesは開いた境界を閉じます。 | `input` (+11 optional) |
 | `lod_create` | opによるLOD／パックドプリミティブのステージング。lod（Labs LOD Create）：レベルオブディテールのチェーンを構築 — levelsはLODの数を設定します（その数の削減スロットを生成し、すべて100%から始まります。後でノード内でスロットごとのパーセンテージを調整してください）。pack（Pack SOP）：入力をパックドプリミティブ（フラットでメモリ軽量なインスタンシング単位）へ統合 — packbynameは名前アトリビュート値ごとに1プリムをパックし、transfer_attributes/transfer_groupsはパターンをパックドプリムへ運び、pivotはパックのピボット（origin\|centroid）を設定します。proxy（Pack SOP）：同じパックですが、パックドビューポートLOD（lodトークン、デフォルトbox）経由で安価なビューポートプロキシとしてステージングされます — 地形のset_tile_lodの一般ジオメトリ版です。 | `input` (+8 optional) |
 | `assemble` | 名前付きピースをPackedFragmentプリミティブへパックします（Assemble SOP） — 破砕／名前付きメッシュの、レンダー／シム対応のパッキングです。packはデフォルトで有効（pack_geoが実際にパックドプリムを出すトグルです）。 | `input` (+14 optional) |
@@ -668,7 +668,7 @@ curl.exe http://127.0.0.1:8765/health -H "X-HMCP-Token: <your-token>"
 | `attribute_transfer` | SOURCEメッシュから入力へ、近接によって点／プリミティブのアトリビュートを転送します（attribtransfer） — LIDARカラー／GISアトリビュートの主力：スキャンからリメッシュへCdをペイントする、トポロジー変更をまたいでN／uvを引き継ぐ。 | `input`, `source` (+4 optional) |
 | `attribute_create` | 定数値を持つ型付きの点／プリミティブ／頂点／detailアトリビュートを作成します（attribcreate） — Cd/pscale/N/id/マテリアルインデックスや任意のカスタムアトリビュートを追加する、ラングルを使わない型付きの手段です。attrib_name = 作成するアトリビュート。type = ストレージ型（float\|int\|vector\|...）。class = 要素クラス。value = 数値または[x,y,z]（string型はvalueにテキストとして文字列を渡します）。size = タプルサイズ1..4。precision = ストレージのビット数。type_infoは変換のセマンティクスをタグ付けし、下流ノードがアトリビュートを正しく変換できるようにします（NにはNormal、CdにはColor、位置にはPoint）。on_existingは名前が既に存在する場合の挙動を決めます。groupは作成対象を制限します。 | `input`, `attrib_name` (+9 optional) |
 | `attribute_promote` | アトリビュートを要素クラス間で移動／集約します（attribpromote） — 点アトリビュートをプリミティブごとの平均に変える、detail値を点に広げる、など。attrib = ソース名。from_class/to_class = point\|prim\|vertex\|detail。method = ソース値を1つの宛先要素へ集約する方法（max\|min\|mean\|mode\|median\|sum\|first\|last\|array...）。out_nameは結果をリネームします。piece_attribは名前付きピースごとに独立して集約します。delete_original：注意 — このノードはデフォルトでソースを削除します。両方を残すにはfalseを渡してください。 | `input`, `attrib` (+7 optional) |
-| `attribute_delete` | クラス＋スペース区切りの名前パターンでアトリビュートを削除します（attribdelete） — エクスポートやソルバの前にCd/N/rest／一時アトリビュートを落とすための整理。point/prim/vertex/detailはそれぞれ削除する名前のスペース区切りパターンです（例： | `input` (+6 optional) |
+| `attribute_delete` | クラス＋スペース区切りの名前パターンでアトリビュートを削除します（attribdelete） — エクスポートやソルバの前にCd/N/rest／一時アトリビュートを落とすための整理。point/prim/vertex/detailはそれぞれ削除する名前のスペース区切りパターンです（例："Cd N *rest*"）。negateは反転させます：リストしたパターンのみを保持し、それ以外をすべて削除します。 | `input` (+6 optional) |
 | `attribute_cast` | アトリビュートのストレージ精度をキャストします（attribcast） — 重いポイントクラウド／地形タイル向けの、メモリを半減する32→16ビット最適化。class = 要素クラス。attribs = スペース区切りの名前パターン（デフォルト* = すべて）。precision = ターゲットのストレージ：わかりやすいfloatの16\|32\|64はfpreal16/32/64に対応し、整数キャストには明示的なノードトークン（uint8\|int8\|int16\|int32\|int64\|fpreal16\|fpreal32\|fpreal64\|preferred）を渡します。 | `input` (+4 optional) |
 | `attribute_interpolate` | UVWまたはキャプチャされたウェイトを介して、ソースジオメトリから点／頂点へアトリビュートを補間します（attribinterpolate）。 | `input` (+16 optional) |
 | `attribute_from_volume` | ボリューム／VDBフィールドを点アトリビュートへサンプリングします（attribfromvolume）。入力／出力のリマップ付き。 | `input` (+10 optional) |
@@ -680,7 +680,7 @@ curl.exe http://127.0.0.1:8765/health -H "X-HMCP-Token: <your-token>"
 | `attribute_swap` | アトリビュートを別の名前へスワップ／コピー／移動します（attribswap）。 | `input` (+6 optional) |
 | `assign_name` | ピース同一性のnameアトリビュートを割り当てます（Name SOP） — インポート／モデリングしたフラグメントを、assemble／RBDの前に整える必須の準備工程です。 | `input` (+7 optional) |
 | `enumerate` | 要素ごとまたはピースごとのインデックス／nameアトリビュートを書き込みます（Enumerate SOP）。 | `input` (+8 optional) |
-| `connectivity` | 接続された各ピースに連番のクラスIDアトリビュートを付与します（connectivity） — ピース単位のblast、サイズによるdespeckle、ピースごとのランダム化、assembleの入力になります。connect_type：point（エッジを共有する点）\| prim（点を共有するプリミティブ）。attrib_name = 出力IDアトリビュート。attrib_type：int \| string（stringは`prefix`を前置します、例： | `input` (+8 optional) |
+| `connectivity` | 接続された各ピースに連番のクラスIDアトリビュートを付与します（connectivity） — ピース単位のblast、サイズによるdespeckle、ピースごとのランダム化、assembleの入力になります。connect_type：point（エッジを共有する点）\| prim（点を共有するプリミティブ）。attrib_name = 出力IDアトリビュート。attrib_type：int \| string（stringは`prefix`を前置します、例：'piece_3'）。groupはラベリングをpoint/primグループに制限します。by_uvはUVシームを挟んで接続を分割します（uv_attribが必要）。 | `input` (+8 optional) |
 | `measure` | 幾何学的な量をアトリビュートへ計算します（measure）。measure_type：perimeter\|area\|volume\|centroid\|curvature\|gradient\|laplacian\|boundaryintegral\|surfaceintegral。attrib_name = 出力。class：points\|prims — 結果を受け取るクラス。curvature_typeはmeasure_type=curvatureのときのみ適用されます。src_attribはgradient/laplacian/*integralが作用するアトリビュートを指定します（例：'height'フィールドの勾配）。total_attribは合計値（メッシュ全体またはピースごとの面積／体積）をdetailアトリビュートへ書き込みます。groupは制限します。 | `input` (+8 optional) |
 | `group_combine` | 2つの名前付きグループを結果グループへブール結合します（groupcombine）。result = 新しいグループ名。group_a / group_b = 既存のソースグループ名。operation：union（いずれかに含まれる）\| intersect（両方に含まれる）\| xor（ちょうど一方に含まれる）\| subtract（Aに含まれBに含まれない）。group_type = 3つすべてのグループのクラス（guessは自動検出）。 | `input`, `result`, `group_a`, `group_b` (+3 optional) |
 | `attrib_adjust_float` | 値パターンでfloatアトリビュートをオーサリング／変更します（attribadjustfloat）。 | `input` (+16 optional) |
@@ -904,13 +904,13 @@ curl.exe http://127.0.0.1:8765/health -H "X-HMCP-Token: <your-token>"
 | `delete_joints` | KineFX Delete Joints — スケルトン（input 0）から `group` で指定したジョイントを削除（または指定分のみ保持）します。オプションで子へ連鎖させます。 | `skeleton` (+5 optional) |
 | `group_joints` | KineFX Group Joints — 選択式からスケルトン（input 0）上のジョイントの名前付きポイントグループを作成/更新します。既存グループとのブーリアンマージに対応します。 | `skeleton` (+7 optional) |
 | `skeleton_blend` | KineFX Skeleton Blend — 1つ以上のスケルトンのポーズをベーススケルトンにブレンドします。 | `skeleton` (+14 optional) |
-| `skeleton_mirror` | KineFX Skeleton Mirror — スケルトン（input 0）のジョイントを平面または点を挟んでミラーリングし、ミラーしたジョイントを find/replace トークンでリネームします（例： | `skeleton` (+13 optional) |
+| `skeleton_mirror` | KineFX Skeleton Mirror — スケルトン（input 0）のジョイントを平面または点を挟んでミラーリングし、ミラーしたジョイントを find/replace トークンでリネームします（例：`_l` -> `_r`）。 | `skeleton` (+13 optional) |
 | `rig_doctor` | KineFX Rig Doctor — スケルトンを検証・修復します。欠落したジョイント名/トランスフォームを初期化し、名前をサニタイズし、input 0 のリグから階層アトリビュート（親インデックス、子インデックス、評価順）を出力します。 | `skeleton` (+16 optional) |
 | `visualize_rig` | KineFX Visualize Rig — input 0 のスケルトンからリグ可視化ジオメトリ（ジョイントのグノモン/ボーンリンク、color/scale でスタイル設定）を生成します。 | `skeleton` (+11 optional) |
 | `rig_pose` | KineFX Rig Pose — スケルトン（input 0）に対するインタラクティブな FK/IK ポージング SOP です。 | `skeleton` (+16 optional) |
 | `compute_rig_pose` | KineFX Compute Rig Pose — スケルトン（input 0）からリグポーズを評価し、結果のトランスフォーム/パラメータアトリビュートをジオメトリにベイクします（rig_pose のヘッドレス版）。 | `skeleton` (+15 optional) |
 | `rig_match_pose` | KineFX Rig Match Pose — `skeleton`（input 0、ターゲットリグ）を `source`（input 1、ソースリグ）のポーズに合わせてポージングします。オプションでバウンディングボックスと基準フレームで位置合わせします。 | `skeleton`, `source` (+18 optional) |
-| `rig_mirror_pose` | KineFX Rig Mirror Pose — スケルトン（input 0）のアニメーション POSE を対称軸/平面を挟んでミラーリングし、左右のジョイントを名前トークンで対応付けます（例： | `skeleton` (+21 optional) |
+| `rig_mirror_pose` | KineFX Rig Mirror Pose — スケルトン（input 0）のアニメーション POSE を対称軸/平面を挟んでミラーリングし、左右のジョイントを名前トークン（例：`_l`<->`_r`）または編集距離で対応付けます。 | `skeleton` (+21 optional) |
 | `rig_stash_pose` | KineFX Rig Stash Pose — スケルトン（input 0）の現在のポーズをポイントアトリビュートに保存（`mode`=store）するか、以前スタッシュしたポーズを復元（`mode`=restore）します。 | `skeleton` (+12 optional) |
 | `rig_copy_transforms` | KineFX Rig Copy Transforms — `source`（input 1）から `skeleton`（input 0、コピー先リグ）へジョイントトランスフォームをコピーします。ジョイントはマッピングアトリビュートまたはマッチアトリビュートで対応付けます。 | `skeleton`, `source` (+6 optional) |
 | `ik_chains` | KineFX IK Chains — `targets`（input 1）として与えたゴール位置に向けて、スケルトン（input 0）の 2 ボーン IK チェーンを解きます。 | `skeleton`, `targets` (+2 optional) |
@@ -1716,7 +1716,7 @@ curl.exe http://127.0.0.1:8765/health -H "X-HMCP-Token: <your-token>"
 | `get_parm` | 1つのノードパラメーター値を読み取り / 取得 / 検査します（読み取り専用、データ専用）：評価済みの値、生の / 展開前の値、parmの型、現在式やキーフレームを保持しているか（その式の文字列とともに）、そして拒否されたコードparmかどうか（注入された式が見えるように）を返します。 | `node`, `parm` (+1 optional) |
 | `set_keyframe` | 数値parmをあるフレームでアニメーションさせるために、リテラルの数値 + オプションの許可リスト化された補間（constant / linear / bezier / ease / …）を用いてキーフレームを1つ設定 / 追加します — float / int / toggle / menuのparm向けのリテラル値アニメーション。 | `node`, `parm`, `frame`, `value` (+2 optional) |
 | `delete_keyframes` | parmのキーフレームを削除 / クリア / 除去して、静的なリテラル値に戻します（アニメーション解除）。 | `node`, `parm` (+3 optional) |
-| `list_keyframes` | parmのキーフレーム / アニメーションの読み取り専用リスト — 各キーフレームのフレーム、リテラル値、補間文字列（例： | `node`, `parm` (+1 optional) |
+| `list_keyframes` | parmのキーフレーム / アニメーションの読み取り専用リスト — 各キーフレームのフレーム、リテラル値、補間文字列（例：'bezier()'）を返し、エージェントがアニメーションを検査できます。 | `node`, `parm` (+1 optional) |
 
 ### デリバリー＆エクスポート
 
